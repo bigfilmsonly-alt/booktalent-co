@@ -26,8 +26,8 @@ export function ForTalent() {
     <section id="for-talent" className="bg-mjcc-black">
       <div className="gold-divider" />
 
-      <div className="px-6 py-20">
-        <div className="text-center mb-12">
+      <div className="px-6 lg:px-12 py-20 lg:py-28">
+        <div className="text-center mb-12 lg:mb-16">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -42,7 +42,7 @@ export function ForTalent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-3xl text-mjcc-cream leading-tight"
+            className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
             Get booked. Get paid. Get managed.
           </motion.h2>
@@ -52,13 +52,13 @@ export function ForTalent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-sm text-mjcc-muted leading-relaxed max-w-xs mx-auto"
+            className="mt-4 text-sm lg:text-base text-mjcc-muted leading-relaxed max-w-xs lg:max-w-md mx-auto"
           >
             You built an audience on national television. We turn that into a business.
           </motion.p>
         </div>
 
-        <div className="space-y-3 max-w-md mx-auto">
+        <div className="space-y-3 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-4 max-w-md lg:max-w-4xl mx-auto">
           {services.map((service, i) => (
             <motion.div
               key={service.title}

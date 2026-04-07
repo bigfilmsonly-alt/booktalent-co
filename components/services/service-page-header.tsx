@@ -11,8 +11,8 @@ interface ServicePageHeaderProps {
 
 export function ServicePageHeader({ serviceNumber, title, description }: ServicePageHeaderProps) {
   return (
-    <section className="bg-mjcc-black px-6 pt-12 pb-16">
-      <div className="max-w-md mx-auto">
+    <section className="bg-mjcc-black px-6 lg:px-12 pt-12 lg:pt-24 pb-16">
+      <div className="max-w-md lg:max-w-3xl mx-auto">
         {/* Breadcrumb */}
         <motion.nav
           initial={{ opacity: 0 }}
@@ -32,7 +32,7 @@ export function ServicePageHeader({ serviceNumber, title, description }: Service
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="block font-serif text-7xl text-mjcc-dark leading-none mb-4"
+          className="block font-serif text-7xl lg:text-9xl text-mjcc-dark leading-none mb-4"
         >
           {serviceNumber}
         </motion.span>
@@ -42,7 +42,7 @@ export function ServicePageHeader({ serviceNumber, title, description }: Service
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="font-serif text-[32px] sm:text-4xl text-mjcc-cream leading-[1.1] tracking-tight"
+          className="font-serif text-[32px] sm:text-4xl lg:text-5xl text-mjcc-cream leading-[1.1] tracking-tight"
         >
           {title}
         </motion.h1>

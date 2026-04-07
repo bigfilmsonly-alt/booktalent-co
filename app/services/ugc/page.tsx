@@ -21,8 +21,8 @@ export default function UGCPage() {
       <div className="gold-divider" />
 
       {/* Tier cards */}
-      <section className="px-6 py-12">
-        <div className="max-w-md mx-auto space-y-6">
+      <section className="px-6 lg:px-12 py-12 lg:py-16">
+        <div className="max-w-md lg:max-w-6xl mx-auto space-y-6 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0">
           {service.tiers.map((tier, i) => (
             <TierCard key={tier.name} {...tier} index={i} />
           ))}
@@ -30,7 +30,7 @@ export default function UGCPage() {
       </section>
 
       {/* Why us */}
-      <section className="px-6 py-12">
+      <section className="px-6 lg:px-12 py-12 lg:py-16">
         <div className="max-w-md mx-auto text-center">
           <motion.p
             initial={{ opacity: 0 }}

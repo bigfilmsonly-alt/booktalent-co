@@ -19,7 +19,7 @@ export function TalentApplication() {
     <section id="talent-application" className="bg-mjcc-black">
       <div className="gold-divider" />
 
-      <div className="px-6 py-20 max-w-lg mx-auto">
+      <div className="px-6 lg:px-12 py-20 lg:py-28 max-w-lg lg:max-w-2xl mx-auto">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export function TalentApplication() {
           <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
             For Talent
           </p>
-          <h2 className="font-serif text-3xl text-mjcc-cream mb-4">
+          <h2 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
             Apply to get booked.
           </h2>
           <p className="text-sm text-mjcc-muted max-w-xs mx-auto">

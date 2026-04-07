@@ -19,7 +19,7 @@ export function BrandInquiry() {
     <section id="brand-inquiry" className="bg-mjcc-charcoal">
       <div className="gold-divider" />
 
-      <div className="px-6 py-20">
+      <div className="px-6 lg:px-12 py-20 lg:py-28">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export function BrandInquiry() {
           <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
             Book Talent
           </p>
-          <h2 className="font-serif text-3xl text-mjcc-cream mb-4">
+          <h2 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
             Tell us about your campaign.
           </h2>
           <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
@@ -58,7 +58,7 @@ export function BrandInquiry() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             onSubmit={handleSubmit}
-            className="space-y-5 max-w-md mx-auto"
+            className="space-y-5 max-w-md lg:max-w-xl mx-auto"
           >
             <div>
               <label htmlFor="brand-name" className="block text-xs text-mjcc-cream/60 mb-2">

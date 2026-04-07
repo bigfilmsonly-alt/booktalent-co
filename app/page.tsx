@@ -17,7 +17,7 @@ import { Footer } from "@/components/sections/footer"
 
 export default function Home() {
   return (
-    <main className="bg-mjcc-black min-h-screen pb-20">
+    <main className="bg-mjcc-black min-h-screen pb-20 lg:pb-0">
       <Hero />
       <CredibilityBar />
       <WhyUs />

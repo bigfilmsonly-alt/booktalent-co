@@ -38,8 +38,8 @@ const metrics = [
 export function ForBrands() {
   return (
     <section id="for-brands" className="bg-mjcc-charcoal">
-      <div className="px-6 py-20">
-        <div className="text-center mb-12">
+      <div className="px-6 lg:px-12 py-20 lg:py-28">
+        <div className="text-center mb-12 lg:mb-16">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -54,7 +54,7 @@ export function ForBrands() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-3xl text-mjcc-cream leading-tight"
+            className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
             Talent that converts.
           </motion.h2>
@@ -64,14 +64,14 @@ export function ForBrands() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-sm text-mjcc-muted leading-relaxed max-w-xs mx-auto"
+            className="mt-4 text-sm lg:text-base text-mjcc-muted leading-relaxed max-w-xs lg:max-w-md mx-auto"
           >
             Stop gambling on follower counts. Our talent has been selected, trained, and proven on television.
           </motion.p>
         </div>
 
         {/* Content formats */}
-        <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 max-w-md lg:max-w-4xl mx-auto">
           {contentTypes.map((type, i) => (
             <motion.div
               key={type.title}
@@ -97,7 +97,7 @@ export function ForBrands() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 border border-mjcc-dark p-8 max-w-md mx-auto"
+          className="mt-10 lg:mt-14 border border-mjcc-dark p-8 max-w-md lg:max-w-2xl mx-auto"
         >
           <div className="grid grid-cols-3 gap-4">
             {metrics.map((metric) => (

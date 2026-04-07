@@ -44,7 +44,7 @@ export function BrandPartnership() {
     <section id="brand-partnership" className="bg-mjcc-black">
       <div className="gold-divider" />
 
-      <div className="px-6 py-20">
+      <div className="px-6 lg:px-12 py-20 lg:py-28">
         <div className="text-center mb-12">
           <motion.p
             initial={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export function BrandPartnership() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-3xl text-mjcc-cream leading-tight"
+            className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
             Partner with us.
           </motion.h2>
@@ -77,7 +77,7 @@ export function BrandPartnership() {
         </div>
 
         {/* Benefits */}
-        <div className="space-y-3 max-w-md mx-auto mb-12">
+        <div className="space-y-3 max-w-md lg:max-w-4xl mx-auto mb-12">
           {benefits.map((item, i) => (
             <motion.div
               key={item.title}
@@ -98,7 +98,7 @@ export function BrandPartnership() {
         </div>
 
         {/* Process */}
-        <div className="max-w-md mx-auto mb-12">
+        <div className="max-w-md lg:max-w-4xl mx-auto mb-12">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -136,7 +136,7 @@ export function BrandPartnership() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-md mx-auto text-center"
+          className="max-w-md lg:max-w-4xl mx-auto text-center"
         >
           <a
             href="mailto:partnerships@booktalent.co"

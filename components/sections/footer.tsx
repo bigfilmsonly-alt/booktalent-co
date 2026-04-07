@@ -6,7 +6,7 @@ import Link from "next/link"
 export function Footer() {
   return (
     <footer className="bg-mjcc-black border-t border-mjcc-dark/50">
-      <div className="px-6 py-12">
+      <div className="px-6 lg:px-12 py-12 lg:py-16 max-w-7xl mx-auto">
         {/* Logo & tagline */}
         <div className="text-center mb-8">
           <Link href="/" className="font-serif text-[16px] text-mjcc-cream tracking-tight">Book Talent</Link>
@@ -19,7 +19,7 @@ export function Footer() {
         </div>
 
         {/* Links */}
-        <div className="grid grid-cols-3 gap-4 mb-8 text-center max-w-md mx-auto">
+        <div className="grid grid-cols-3 gap-4 lg:gap-12 mb-8 text-center lg:text-left max-w-md lg:max-w-3xl mx-auto">
           <div>
             <h4 className="text-[10px] text-mjcc-gold uppercase tracking-wider mb-3">Navigate</h4>
             <ul className="space-y-2">

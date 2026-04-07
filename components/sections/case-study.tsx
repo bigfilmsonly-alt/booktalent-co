@@ -7,8 +7,8 @@ export function CaseStudy() {
     <section id="results" className="bg-mjcc-black">
       <div className="gold-divider" />
 
-      <div className="px-6 py-20">
-        <div className="text-center mb-12">
+      <div className="px-6 lg:px-12 py-20 lg:py-28">
+        <div className="text-center mb-12 lg:mb-16">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -23,7 +23,7 @@ export function CaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-3xl text-mjcc-cream leading-tight"
+            className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
             What a campaign looks like.
           </motion.h2>
@@ -34,7 +34,7 @@ export function CaseStudy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="max-w-md mx-auto"
+          className="max-w-md lg:max-w-3xl mx-auto"
         >
           {/* Campaign details */}
           <div className="grid grid-cols-2 gap-6 pb-8 border-b border-mjcc-dark/40">

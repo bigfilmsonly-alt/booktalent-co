@@ -202,7 +202,7 @@ export function TalentBookingModal({ talent, onClose }: TalentBookingModalProps)
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 z-[201] bg-mjcc-charcoal max-h-[92vh] overflow-y-auto"
+            className="fixed bottom-0 left-0 right-0 lg:bottom-auto lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-w-lg lg:max-h-[85vh] z-[201] bg-mjcc-charcoal max-h-[92vh] overflow-y-auto"
             style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
           >
             {/* Drag indicator */}

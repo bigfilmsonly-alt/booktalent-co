@@ -26,8 +26,8 @@ export function WhyUs() {
     <section id="why-book-talent" className="bg-mjcc-black">
       <div className="gold-divider" />
 
-      <div className="px-6 py-20">
-        <div className="text-center mb-12">
+      <div className="px-6 lg:px-12 py-20 lg:py-28">
+        <div className="text-center mb-12 lg:mb-16">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -42,13 +42,13 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-serif text-3xl text-mjcc-cream leading-tight"
+            className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
             What makes us different.
           </motion.h2>
         </div>
 
-        <div className="space-y-4 max-w-md mx-auto">
+        <div className="space-y-4 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8 max-w-md lg:max-w-4xl mx-auto">
           {differentiators.map((item, i) => (
             <motion.div
               key={item.title}
