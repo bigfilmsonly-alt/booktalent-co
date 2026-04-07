@@ -113,7 +113,7 @@ export const talentRoster: TalentProfile[] = [
     engagement: "4.5%",
     networks: ["Bravo", "BET"],
     specialties: ["Fashion", "Drama"],
-    image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=600&h=600&fit=crop&crop=face&q=80",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=600&fit=crop&crop=face&q=80",
     talentId: "BT-007",
   },
   {
@@ -127,7 +127,7 @@ export const talentRoster: TalentProfile[] = [
     engagement: "6.8%",
     networks: ["MTV"],
     specialties: ["Fitness", "Travel"],
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=600&fit=crop&crop=face&q=80",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop&crop=face&q=80",
     talentId: "BT-008",
   },
   {
