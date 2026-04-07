@@ -46,17 +46,15 @@ export function Navigation() {
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
       }
     } else {
-      router.push(tab.routeHref)
       window.scrollTo({ top: 0, behavior: "instant" })
+      router.push(tab.routeHref)
     }
   }
 
   // Scroll to top when navigating to a new page
   useEffect(() => {
-    if (!isHome) {
-      window.scrollTo({ top: 0, behavior: "instant" })
-    }
-  }, [pathname, isHome])
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }, [pathname])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
