@@ -12,12 +12,12 @@ export default function TermsPage() {
         <div className="space-y-6 text-sm text-mjcc-muted leading-relaxed">
           <div>
             <h2 className="text-mjcc-cream font-medium mb-2">Acceptance of Terms</h2>
-            <p>By accessing booktalent.co, you agree to these terms. If you do not agree, do not use the site. Book Talent is a division of Big Films Only.</p>
+            <p>By accessing booktalent.co, you agree to these terms. If you do not agree, do not use the site. BookTalent is a division of Big Films Only.</p>
           </div>
 
           <div>
             <h2 className="text-mjcc-cream font-medium mb-2">Services</h2>
-            <p>Book Talent connects brands with television-verified talent for campaigns, live commerce, branded content, and event appearances. All bookings are subject to talent availability and mutual agreement on terms.</p>
+            <p>BookTalent connects brands with television-verified talent for campaigns, live commerce, branded content, and event appearances. All bookings are subject to talent availability and mutual agreement on terms.</p>
           </div>
 
           <div>
@@ -32,7 +32,7 @@ export default function TermsPage() {
 
           <div>
             <h2 className="text-mjcc-cream font-medium mb-2">Limitation of Liability</h2>
-            <p>Book Talent is not liable for any indirect or consequential damages arising from the use of our services. Our total liability is limited to the fees paid for the specific service in question.</p>
+            <p>BookTalent is not liable for any indirect or consequential damages arising from the use of our services. Our total liability is limited to the fees paid for the specific service in question.</p>
           </div>
 
           <div>

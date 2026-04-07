@@ -22,10 +22,9 @@ const tabs: Tab[] = [
 
 const desktopLinks = [
   { label: "Services", href: "/services" },
-  { label: "Talent", href: "/roster" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Results", href: "/#results" },
-  { label: "Leadership", href: "/#leadership" },
+  { label: "Roster", href: "/roster" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
 ]
 
 export function Navigation() {
@@ -104,7 +103,7 @@ export function Navigation() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="font-serif text-lg text-mjcc-cream tracking-tight">
-              Book Talent
+              BookTalent
             </Link>
 
             {/* Center links */}
@@ -121,12 +120,12 @@ export function Navigation() {
             </nav>
 
             {/* Right CTAs */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Link
                 href="/#talent-application"
                 className="text-[12px] text-mjcc-muted hover:text-mjcc-cream transition-colors tracking-wider uppercase"
               >
-                Apply
+                For Talent
               </Link>
               <Link
                 href="/book"

@@ -7,7 +7,7 @@ const founders = [
     name: "Jotham Hall",
     initials: "JH",
     title: "Co-Founder & CEO",
-    bio: "15+ years producing reality television across eight major networks. The vision behind Book Talent.",
+    bio: "15+ years producing reality television across eight major networks. The vision behind BookTalent.",
   },
   {
     name: "Mira",

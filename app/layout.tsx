@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Serif_Display, DM_Sans, Outfit, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Navigation } from '@/components/sections/navigation'
+import { CookieBanner } from '@/components/ui/cookie-banner'
 import './globals.css'
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -27,7 +28,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Book Talent | Book Reality TV Stars & Verified Talent for Brand Campaigns',
+  title: 'BookTalent — Television-Verified Talent. Ready to Book.',
   description: 'Book verified reality TV talent for brand partnerships, influencer campaigns, TikTok, live commerce, and branded content. 15+ years managing talent from VH1, MTV, Bravo, BET, NBC, and more. The fastest way to book proven talent.',
   keywords: [
     'book talent',
@@ -46,23 +47,23 @@ export const metadata: Metadata = {
     'branded content talent',
     'book talent online',
   ],
-  authors: [{ name: 'Book Talent' }],
+  authors: [{ name: 'BookTalent' }],
   metadataBase: new URL('https://booktalent.co'),
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Book Talent',
+    title: 'BookTalent',
   },
   openGraph: {
-    title: 'Book Talent — Book Reality TV Stars & Verified Talent',
+    title: 'BookTalent — Book Reality TV Stars & Verified Talent',
     description: 'The fastest way to book verified reality TV talent for brand campaigns. 15+ years of television relationships. Talent from VH1, MTV, Bravo, BET, NBC, and more.',
     url: 'https://booktalent.co',
-    siteName: 'Book Talent',
+    siteName: 'BookTalent',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Book Talent — Verified Reality TV Talent for Brands',
+    title: 'BookTalent — Verified Reality TV Talent for Brands',
     description: 'Book proven reality TV talent for brand partnerships, TikTok campaigns, live commerce, and branded content. booktalent.co',
   },
 }
@@ -86,6 +87,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <Navigation />
+        <CookieBanner />
         <Analytics />
       </body>
     </html>

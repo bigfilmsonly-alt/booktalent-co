@@ -3,6 +3,7 @@ import { CredibilityBar } from "@/components/sections/credibility-bar"
 import { WhyUs } from "@/components/sections/mjcc-difference"
 import { ForTalent } from "@/components/sections/for-talent"
 import { ForBrands } from "@/components/sections/for-brands"
+import { ServicesOverview } from "@/components/sections/services-overview"
 import { Roster } from "@/components/sections/roster"
 import { HowItWorks } from "@/components/sections/how-it-works"
 import { CaseStudy } from "@/components/sections/case-study"
@@ -23,6 +24,7 @@ export default function Home() {
       <WhyUs />
       <ForTalent />
       <ForBrands />
+      <ServicesOverview />
       <Roster />
       <HowItWorks />
       <CaseStudy />

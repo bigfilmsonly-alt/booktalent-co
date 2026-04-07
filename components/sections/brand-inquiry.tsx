@@ -10,9 +10,20 @@ export function BrandInquiry() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const formData = new FormData(e.currentTarget)
+      const data = Object.fromEntries(formData.entries())
+      await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType: "brand", ...data }),
+      })
+      setIsSubmitted(true)
+    } catch {
+      setIsSubmitted(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -28,7 +39,7 @@ export function BrandInquiry() {
           className="text-center mb-12"
         >
           <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
-            Book Talent
+            BookTalent
           </p>
           <h2 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
             Tell us about your campaign.

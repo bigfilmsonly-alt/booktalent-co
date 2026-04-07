@@ -20,7 +20,7 @@ export default function EnterprisePage() {
       <ServicePageHeader
         serviceNumber="06"
         title="Enterprise Partnership"
-        description="The annual bundle. Everything Book Talent offers — roster access, production, UGC, live commerce, dedicated management — locked in at one price for 12 months."
+        description="The annual bundle. Everything BookTalent offers — roster access, production, UGC, live commerce, dedicated management — locked in at one price for 12 months."
       />
 
       <div className="gold-divider" />
