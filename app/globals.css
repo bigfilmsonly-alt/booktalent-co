@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Book Talent Design System */
+  --mjcc-black: #0A0A0A;
+  --mjcc-charcoal: #1A1A1A;
+  --mjcc-dark-gray: #2A2A2A;
+  --mjcc-gold: #C9A84C;
+  --mjcc-gold-deep: #A07E35;
+  --mjcc-gold-soft: #F5EFD9;
+  --mjcc-gold-hover: #D4B85D;
+  --mjcc-cream: #F5F4F0;
+  --mjcc-white: #FFFFFF;
+  --mjcc-platinum: #B8B8B8;
+  --mjcc-warm: #9A9A96;
+  --mjcc-muted: #888888;
+  --mjcc-border: #E8E8E8;
+  --mjcc-urgent: #E63946;
+
+  /* Animation tokens */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-slow: 800ms;
+  --duration-medium: 500ms;
+
+  /* shadcn compatibility - dark theme */
+  --background: #0A0A0A;
+  --foreground: #F5F4F0;
+  --card: #1A1A1A;
+  --card-foreground: #F5F4F0;
+  --popover: #1A1A1A;
+  --popover-foreground: #F5F4F0;
+  --primary: #C9A84C;
+  --primary-foreground: #0A0A0A;
+  --secondary: #2A2A2A;
+  --secondary-foreground: #F5F4F0;
+  --muted: #2A2A2A;
+  --muted-foreground: #888888;
+  --accent: #C9A84C;
+  --accent-foreground: #0A0A0A;
+  --destructive: #E63946;
+  --destructive-foreground: #F5F4F0;
+  --border: #2A2A2A;
+  --input: #2A2A2A;
+  --ring: #C9A84C;
+  --radius: 0;
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif), 'DM Serif Display', ui-serif, Georgia, serif;
+  --font-display: var(--font-outfit), 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), 'Space Mono', ui-monospace, monospace;
+
+  /* Color System */
+  --color-mjcc-black: #0A0A0A;
+  --color-mjcc-charcoal: #1A1A1A;
+  --color-mjcc-dark: #2A2A2A;
+  --color-mjcc-gold: #C9A84C;
+  --color-mjcc-gold-deep: #A07E35;
+  --color-mjcc-gold-soft: #F5EFD9;
+  --color-mjcc-gold-hover: #D4B85D;
+  --color-mjcc-cream: #F5F4F0;
+  --color-mjcc-white: #FFFFFF;
+  --color-mjcc-platinum: #B8B8B8;
+  --color-mjcc-warm: #9A9A96;
+  --color-mjcc-muted: #888888;
+  --color-mjcc-border: #E8E8E8;
+  --color-mjcc-urgent: #E63946;
+
+  /* shadcn compatibility */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-mjcc-black text-mjcc-cream;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Noise texture — barely perceptible */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Selection */
+::selection {
+  background-color: #C9A84C;
+  color: #0A0A0A;
+}
+
+/* Section divider */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent);
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+/* Form focus */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #C9A84C !important;
+}
+
+/* Sharp edges */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
