@@ -86,7 +86,7 @@ export function ForTalent() {
           className="mt-10 text-center"
         >
           <a
-            href="#talent-application"
+            href="/apply"
             className="inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-8 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-gold-hover transition-colors duration-300 min-h-[48px]"
           >
             APPLY TO GET BOOKED

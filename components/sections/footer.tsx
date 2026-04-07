@@ -48,7 +48,7 @@ export function Footer() {
           <div>
             <h4 className="text-[10px] text-mjcc-gold uppercase tracking-wider mb-3">Connect</h4>
             <ul className="space-y-2">
-              <li><a href="/#talent-application" className="text-xs text-mjcc-muted hover:text-mjcc-cream transition-colors">Apply as Talent</a></li>
+              <li><a href="/apply" className="text-xs text-mjcc-muted hover:text-mjcc-cream transition-colors">Apply as Talent</a></li>
               <li><Link href="/book" className="text-xs text-mjcc-muted hover:text-mjcc-cream transition-colors">Book Talent</Link></li>
               <li><a href="mailto:hello@booktalent.co" className="text-xs text-mjcc-muted hover:text-mjcc-gold transition-colors">hello@booktalent.co</a></li>
             </ul>

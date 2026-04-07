@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { Home, Users, Briefcase, CalendarCheck, UserPlus } from "lucide-react"
 import Link from "next/link"
@@ -8,16 +8,15 @@ import Link from "next/link"
 interface Tab {
   label: string
   icon: typeof Home
-  routeHref: string
-  hashHref: string | null
+  href: string
 }
 
 const tabs: Tab[] = [
-  { label: "Home", icon: Home, routeHref: "/", hashHref: "#top" },
-  { label: "Services", icon: Briefcase, routeHref: "/services", hashHref: null },
-  { label: "Talent", icon: Users, routeHref: "/roster", hashHref: null },
-  { label: "Book", icon: CalendarCheck, routeHref: "/book", hashHref: null },
-  { label: "Apply", icon: UserPlus, routeHref: "/#talent-application", hashHref: "#talent-application" },
+  { label: "Home", icon: Home, href: "/" },
+  { label: "Services", icon: Briefcase, href: "/services" },
+  { label: "Talent", icon: Users, href: "/roster" },
+  { label: "Book", icon: CalendarCheck, href: "/book" },
+  { label: "Apply", icon: UserPlus, href: "/apply" },
 ]
 
 const desktopLinks = [
@@ -30,64 +29,20 @@ const desktopLinks = [
 export function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
-  const isHome = pathname === "/"
-  const isHomeRef = useRef(isHome)
-  isHomeRef.current = isHome
-  const [activeHash, setActiveHash] = useState("#top")
   const [scrolled, setScrolled] = useState(false)
-  const isScrollingRef = useRef(false)
-
-  const scrollToHash = useCallback((hash: string) => {
-    const el = document.querySelector(hash)
-    if (!el) return
-    isScrollingRef.current = true
-    setActiveHash(hash)
-    el.scrollIntoView({ behavior: "instant", block: "start" })
-    // Let the observer settle after the instant jump
-    setTimeout(() => { isScrollingRef.current = false }, 100)
-  }, [])
 
   function handleClick(tab: Tab) {
-    if (isHomeRef.current && tab.hashHref) {
-      if (tab.hashHref === "#top") {
-        isScrollingRef.current = true
-        setActiveHash("#top")
-        window.scrollTo({ top: 0, behavior: "instant" })
-        setTimeout(() => { isScrollingRef.current = false }, 100)
-      } else {
-        scrollToHash(tab.hashHref)
-      }
-    } else if (tab.hashHref) {
-      // Navigate to homepage first, then scroll to section after mount
-      router.push("/")
-      const waitForMount = () => {
-        requestAnimationFrame(() => {
-          const el = document.querySelector(tab.hashHref!)
-          if (el) {
-            scrollToHash(tab.hashHref!)
-          } else {
-            // Section not mounted yet, try again
-            requestAnimationFrame(() => {
-              setTimeout(() => {
-                scrollToHash(tab.hashHref!)
-              }, 50)
-            })
-          }
-        })
-      }
-      waitForMount()
+    if (pathname === tab.href) {
+      window.scrollTo({ top: 0, behavior: "instant" })
     } else {
       window.scrollTo({ top: 0, behavior: "instant" })
-      router.push(tab.routeHref)
+      router.push(tab.href)
     }
   }
 
-  // Scroll to top when navigating to a new non-home page
   useEffect(() => {
-    if (!isHome) {
-      window.scrollTo({ top: 0, behavior: "instant" })
-    }
-  }, [pathname, isHome])
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }, [pathname])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -95,42 +50,9 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  useEffect(() => {
-    if (!isHome) return
-
-    const hashTabs = tabs.filter((t) => t.hashHref && t.hashHref !== "#top")
-    const sectionIds = hashTabs.map((t) => t.hashHref!.replace("#", ""))
-    const visibleSections = new Set<string>()
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Skip observer updates during programmatic scrolls
-        if (isScrollingRef.current) return
-
-        for (const entry of entries) {
-          if (entry.isIntersecting) visibleSections.add(entry.target.id)
-          else visibleSections.delete(entry.target.id)
-        }
-        const active = sectionIds.find((id) => visibleSections.has(id))
-        if (active) setActiveHash(`#${active}`)
-        else setActiveHash("#top")
-      },
-      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-    )
-
-    for (const id of sectionIds) {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    }
-
-    return () => observer.disconnect()
-  }, [isHome])
-
   function isActive(tab: Tab): boolean {
-    if (isHome) return tab.hashHref === activeHash
-    const tabPath = tab.routeHref.split("#")[0] || "/"
-    if (tabPath === "/") return pathname === "/"
-    return pathname.startsWith(tabPath)
+    if (tab.href === "/") return pathname === "/"
+    return pathname.startsWith(tab.href)
   }
 
   return (
@@ -164,7 +86,7 @@ export function Navigation() {
             {/* Right CTAs */}
             <div className="flex items-center gap-4">
               <Link
-                href="/#talent-application"
+                href="/apply"
                 className="text-[12px] text-mjcc-muted hover:text-mjcc-cream transition-colors tracking-wider uppercase"
               >
                 For Talent
@@ -192,9 +114,7 @@ export function Navigation() {
               <button
                 key={tab.label}
                 onClick={() => handleClick(tab)}
-                className={`flex flex-col items-center justify-center flex-1 h-full gap-1 touch-manipulation transition-colors duration-200 ${
-                  active ? "scale-105" : ""
-                }`}
+                className="flex flex-col items-center justify-center flex-1 h-full gap-1 touch-manipulation"
                 aria-label={tab.label}
               >
                 <div

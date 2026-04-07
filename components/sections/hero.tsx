@@ -52,7 +52,7 @@ export function Hero() {
             className="mt-10 flex flex-col lg:flex-row lg:justify-center gap-3 max-w-[280px] lg:max-w-none mx-auto"
           >
             <a
-              href="#talent-application"
+              href="/apply"
               className="inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black py-4 lg:px-10 text-sm font-medium tracking-wider hover:bg-mjcc-gold-deep transition-colors duration-300 min-h-[48px]"
             >
               APPLY AS TALENT
