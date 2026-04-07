@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { Home, Users, Briefcase, CalendarCheck, UserPlus } from "lucide-react"
 import Link from "next/link"
@@ -35,26 +35,59 @@ export function Navigation() {
   isHomeRef.current = isHome
   const [activeHash, setActiveHash] = useState("#top")
   const [scrolled, setScrolled] = useState(false)
+  const isScrollingRef = useRef(false)
+
+  const scrollToHash = useCallback((hash: string) => {
+    const el = document.querySelector(hash)
+    if (!el) return
+    isScrollingRef.current = true
+    setActiveHash(hash)
+    el.scrollIntoView({ behavior: "instant", block: "start" })
+    // Let the observer settle after the instant jump
+    setTimeout(() => { isScrollingRef.current = false }, 100)
+  }, [])
 
   function handleClick(tab: Tab) {
     if (isHomeRef.current && tab.hashHref) {
-      setActiveHash(tab.hashHref)
       if (tab.hashHref === "#top") {
-        window.scrollTo({ top: 0, behavior: "smooth" })
+        isScrollingRef.current = true
+        setActiveHash("#top")
+        window.scrollTo({ top: 0, behavior: "instant" })
+        setTimeout(() => { isScrollingRef.current = false }, 100)
       } else {
-        const el = document.querySelector(tab.hashHref)
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+        scrollToHash(tab.hashHref)
       }
+    } else if (tab.hashHref) {
+      // Navigate to homepage first, then scroll to section after mount
+      router.push("/")
+      const waitForMount = () => {
+        requestAnimationFrame(() => {
+          const el = document.querySelector(tab.hashHref!)
+          if (el) {
+            scrollToHash(tab.hashHref!)
+          } else {
+            // Section not mounted yet, try again
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                scrollToHash(tab.hashHref!)
+              }, 50)
+            })
+          }
+        })
+      }
+      waitForMount()
     } else {
       window.scrollTo({ top: 0, behavior: "instant" })
       router.push(tab.routeHref)
     }
   }
 
-  // Scroll to top when navigating to a new page
+  // Scroll to top when navigating to a new non-home page
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" })
-  }, [pathname])
+    if (!isHome) {
+      window.scrollTo({ top: 0, behavior: "instant" })
+    }
+  }, [pathname, isHome])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -71,6 +104,9 @@ export function Navigation() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        // Skip observer updates during programmatic scrolls
+        if (isScrollingRef.current) return
+
         for (const entry of entries) {
           if (entry.isIntersecting) visibleSections.add(entry.target.id)
           else visibleSections.delete(entry.target.id)
