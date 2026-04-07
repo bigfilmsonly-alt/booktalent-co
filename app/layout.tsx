@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Serif_Display, DM_Sans, Outfit, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Navigation } from '@/components/sections/navigation'
-import { CookieBanner } from '@/components/ui/cookie-banner'
+
 import './globals.css'
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -87,7 +87,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <Navigation />
-        <CookieBanner />
+
         <Analytics />
       </body>
     </html>

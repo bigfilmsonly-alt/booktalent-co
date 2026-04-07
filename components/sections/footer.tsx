@@ -7,19 +7,19 @@ export function Footer() {
   return (
     <footer className="bg-mjcc-black border-t border-mjcc-dark/50">
       <div className="px-6 lg:px-12 py-12 lg:py-16 max-w-7xl mx-auto">
-        {/* Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-          {/* Brand */}
-          <div className="col-span-2 lg:col-span-1">
-            <Link href="/" className="font-serif text-lg text-mjcc-cream tracking-tight">BookTalent</Link>
-            <p className="mt-2 text-[13px] text-mjcc-muted italic">
-              The Network Behind The Network.
-            </p>
-            <p className="mt-2 text-[11px] text-mjcc-muted">
-              Miami, FL — Los Angeles, CA
-            </p>
-          </div>
+        {/* Brand — always centered on mobile */}
+        <div className="text-center lg:text-left mb-10">
+          <Link href="/" className="font-serif text-lg text-mjcc-cream tracking-tight">BookTalent</Link>
+          <p className="mt-2 text-[13px] text-mjcc-muted italic">
+            The Network Behind The Network.
+          </p>
+          <p className="mt-2 text-[11px] text-mjcc-muted">
+            Miami, FL — Los Angeles, CA
+          </p>
+        </div>
 
+        {/* Links — stacked centered on mobile, 3-col grid on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 text-center lg:text-left">
           {/* Browse */}
           <div>
             <h4 className="text-[10px] text-mjcc-gold uppercase tracking-wider mb-3">Browse</h4>
@@ -52,7 +52,7 @@ export function Footer() {
               <li><Link href="/book" className="text-xs text-mjcc-muted hover:text-mjcc-cream transition-colors">Book Talent</Link></li>
               <li><a href="mailto:hello@booktalent.co" className="text-xs text-mjcc-muted hover:text-mjcc-gold transition-colors">hello@booktalent.co</a></li>
             </ul>
-            <div className="flex items-center gap-4 mt-4">
+            <div className="flex items-center justify-center lg:justify-start gap-4 mt-4">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-mjcc-muted hover:text-mjcc-gold transition-colors" aria-label="Instagram">
                 <Instagram size={16} />
               </a>
@@ -64,7 +64,7 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-mjcc-dark/40 pt-6 flex flex-col lg:flex-row items-center justify-between gap-2">
+        <div className="border-t border-mjcc-dark/40 pt-6 flex flex-col items-center gap-2 text-center">
           <p className="text-[10px] text-mjcc-muted">
             &copy; 2026 BookTalent. All rights reserved. A division of Big Films Only.
           </p>
