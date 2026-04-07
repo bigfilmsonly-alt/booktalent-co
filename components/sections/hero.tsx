@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 
-const networks = ["VH1", "MTV", "BRAVO", "BET", "FOOD NETWORK", "NBC", "HALLMARK", "USA NETWORK"]
+const networks = ["MTV", "FOOD NETWORK", "NBC", "HALLMARK", "USA NETWORK", "OWN", "CBS"]
 
 export function Hero() {
   return (
@@ -29,7 +29,7 @@ export function Hero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-[42px] sm:text-5xl lg:text-7xl xl:text-8xl text-mjcc-cream leading-[1.05] tracking-tight"
           >
-            Book television-verified
+            Book television verified
             <br />
             <span className="text-mjcc-gold">talent.</span>
           </motion.h1>
@@ -41,7 +41,7 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 lg:mt-8 text-[15px] lg:text-[17px] text-mjcc-muted leading-relaxed max-w-[300px] lg:max-w-[560px] mx-auto"
           >
-            Fifteen years of television relationships. Reality TV personalities from VH1, MTV, Bravo, and beyond — vetted, camera-trained, and ready to book.
+            Fifteen years of television relationships. Reality TV personalities from MTV, NBC, Food Network, and beyond. Vetted, camera trained, ready to book.
           </motion.p>
 
           {/* CTAs */}
@@ -73,7 +73,7 @@ export function Hero() {
             className="mt-4"
           >
             <Link href="/schedule" className="text-xs text-mjcc-muted underline hover:text-mjcc-gold transition-colors">
-              Or schedule a 20-minute call directly
+              Or schedule a 20 minute call directly
             </Link>
           </motion.div>
         </div>

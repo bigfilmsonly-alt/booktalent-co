@@ -28,8 +28,8 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'BookTalent — Television-Verified Talent. Ready to Book.',
-  description: 'Book verified reality TV talent for brand partnerships, influencer campaigns, TikTok, live commerce, and branded content. 15+ years managing talent from VH1, MTV, Bravo, BET, NBC, and more. The fastest way to book proven talent.',
+  title: 'BookTalent. Television Verified Talent. Ready to Book.',
+  description: 'Book verified reality TV talent for brand partnerships, influencer campaigns, TikTok, live commerce, and branded content. 15+ years managing talent from MTV, Food Network, NBC, Hallmark, and more. The fastest way to book proven talent.',
   keywords: [
     'book talent',
     'book reality TV talent',
@@ -55,15 +55,15 @@ export const metadata: Metadata = {
     title: 'BookTalent',
   },
   openGraph: {
-    title: 'BookTalent — Book Reality TV Stars & Verified Talent',
-    description: 'The fastest way to book verified reality TV talent for brand campaigns. 15+ years of television relationships. Talent from VH1, MTV, Bravo, BET, NBC, and more.',
+    title: 'BookTalent. Book Reality TV Stars and Verified Talent.',
+    description: 'The fastest way to book verified reality TV talent for brand campaigns. 15+ years of television relationships. Talent from MTV, Food Network, NBC, Hallmark, and more.',
     url: 'https://booktalent.co',
     siteName: 'BookTalent',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BookTalent — Verified Reality TV Talent for Brands',
+    title: 'BookTalent. Verified Reality TV Talent for Brands.',
     description: 'Book proven reality TV talent for brand partnerships, TikTok campaigns, live commerce, and branded content. booktalent.co',
   },
 }

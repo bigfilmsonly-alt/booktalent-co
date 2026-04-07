@@ -60,7 +60,7 @@ export function TierCard({
       <ul className="space-y-3 mb-6">
         {includes.map((item) => (
           <li key={item} className="text-sm text-mjcc-muted leading-relaxed flex gap-2">
-            <span className="text-mjcc-gold/50 shrink-0">—</span>
+            <span className="text-mjcc-gold/50 shrink-0">&bull;</span>
             <span>{item}</span>
           </li>
         ))}

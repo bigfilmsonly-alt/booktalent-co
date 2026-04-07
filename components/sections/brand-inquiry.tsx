@@ -45,7 +45,7 @@ export function BrandInquiry() {
             Tell us about your campaign.
           </h2>
           <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
-            We&apos;ll match you with television-verified talent within 48 hours.
+            We&apos;ll match you with television verified talent within 48 hours.
           </p>
         </motion.div>
 
@@ -124,10 +124,10 @@ export function BrandInquiry() {
                 className="w-full px-4 py-3 bg-mjcc-dark border border-mjcc-dark text-mjcc-cream focus:border-mjcc-gold transition-colors appearance-none cursor-pointer text-sm"
               >
                 <option value="" className="bg-mjcc-dark">Select range</option>
-                <option value="10k-25k" className="bg-mjcc-dark">$10K – $25K</option>
-                <option value="25k-50k" className="bg-mjcc-dark">$25K – $50K</option>
-                <option value="50k-100k" className="bg-mjcc-dark">$50K – $100K</option>
-                <option value="100k-250k" className="bg-mjcc-dark">$100K – $250K</option>
+                <option value="10k-25k" className="bg-mjcc-dark">$10K to $25K</option>
+                <option value="25k-50k" className="bg-mjcc-dark">$25K to $50K</option>
+                <option value="50k-100k" className="bg-mjcc-dark">$50K to $100K</option>
+                <option value="100k-250k" className="bg-mjcc-dark">$100K to $250K</option>
                 <option value="250k+" className="bg-mjcc-dark">$250K+</option>
               </select>
             </div>

@@ -189,7 +189,7 @@ export default function TalentProfilePage() {
                 className="border-b border-mjcc-dark/50 pb-4"
               >
                 <p className="text-mjcc-cream text-[15px]">
-                  <span className="text-mjcc-gold mr-2">&mdash;</span>
+                  <span className="text-mjcc-gold mr-2">&bull;</span>
                   {credit.show}
                 </p>
                 <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1.5">

@@ -16,7 +16,7 @@ const benefits = [
     description: "Monthly dashboards, audience insights, and ROI tracking on every campaign.",
   },
   {
-    title: "Co-Branded Content",
+    title: "Co Branded Content",
     description: "Original IP and vertical dramas designed around your brand, powered by Big Films Only.",
   },
 ]
@@ -30,7 +30,7 @@ const partnerProcess = [
   {
     number: "02",
     title: "Strategy Session",
-    description: "We build a custom plan — talent recommendations, formats, cadence, and pricing.",
+    description: "We build a custom plan. Talent recommendations, formats, cadence, and pricing.",
   },
   {
     number: "03",
@@ -72,7 +72,7 @@ export function BrandPartnership() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-4 text-sm text-mjcc-muted leading-relaxed max-w-xs mx-auto"
           >
-            Go beyond one-off bookings. Dedicated support, preferred rates, and priority roster access.
+            Go beyond single bookings. Dedicated support, preferred rates, and priority roster access.
           </motion.p>
         </div>
 

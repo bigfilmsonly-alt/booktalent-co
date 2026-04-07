@@ -14,7 +14,7 @@ const team = [
 const steps = [
   {
     number: "01",
-    title: "Book a 20-minute slot",
+    title: "Book a 20 minute slot",
     body: "Choose a time that works for you. We're available Monday through Friday.",
   },
   {

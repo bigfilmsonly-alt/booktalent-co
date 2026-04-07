@@ -16,7 +16,7 @@ export const caseStudies: CaseStudy[] = [
     packageType: "IGNITE PACKAGE",
     format: "TIKTOK + REELS",
     narrative:
-      "How a major beauty brand reached 2.3M millennial women in 14 days using three television-verified creators.",
+      "How a major beauty brand reached 2.3M millennial women in 14 days using three television verified creators.",
     metrics: [
       { value: "2.3M", label: "Impressions" },
       { value: "18.7%", label: "Engagement" },
@@ -30,7 +30,7 @@ export const caseStudies: CaseStudy[] = [
     packageType: "SPARK PACKAGE",
     format: "TIKTOK + YOUTUBE SHORTS",
     narrative:
-      "From a single creator post to 47K product page visits in 30 days — proof that one verified voice outperforms ten unvetted ones.",
+      "From a single creator post to 47K product page visits in 30 days. Proof that one verified voice outperforms ten unvetted ones.",
     metrics: [
       { value: "850K", label: "Impressions" },
       { value: "12.4%", label: "Engagement" },
@@ -42,7 +42,7 @@ export const caseStudies: CaseStudy[] = [
     brand: "The Fashion Brand",
     talent: "The Crossover Roster",
     packageType: "PRIMETIME PACKAGE",
-    format: "MULTI-PLATFORM",
+    format: "MULTI PLATFORM",
     narrative:
       "How five creators from three different reality franchises drove a 340% lift in branded search over 90 days.",
     metrics: [
@@ -58,10 +58,10 @@ export const caseStudies: CaseStudy[] = [
     packageType: "GROWTH UGC RETAINER",
     format: "$10K/MO RETAINER",
     narrative:
-      "Twelve creators, sixty videos, and a 4x reduction in CPM — the result of pairing ad-ready UGC with television-trained talent.",
+      "Twelve creators, sixty videos, and a 4x reduction in CPM. The result of pairing ad ready UGC with television trained talent.",
     metrics: [
       { value: "4x", label: "Lower CPM" },
-      { value: "60", label: "Ad-Ready Assets" },
+      { value: "60", label: "Ad Ready Assets" },
       { value: "6mo", label: "Partnership" },
     ],
   },

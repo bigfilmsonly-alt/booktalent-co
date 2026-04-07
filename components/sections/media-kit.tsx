@@ -24,7 +24,7 @@ export function MediaKit() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-3 text-sm text-mjcc-muted"
           >
-            Roster, rates, formats, and case studies — everything you need in one download.
+            Roster, rates, formats, and case studies. Everything you need in one download.
           </motion.p>
 
           <motion.form

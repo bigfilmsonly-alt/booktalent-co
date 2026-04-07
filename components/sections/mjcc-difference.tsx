@@ -5,23 +5,23 @@ import { motion } from "framer-motion"
 const differentiators = [
   {
     number: "01",
-    title: "Television-Verified Talent",
-    description: "Every creator on BookTalent has confirmed broadcast credits across networks like VH1, MTV, Bravo, BET, and NBC. They have cleared network compliance, FCC standards, and production background checks. That is a vetting process no algorithm — and no agency in the creator economy — can replicate.",
+    title: "Television Verified Talent",
+    description: "Every creator on BookTalent has confirmed broadcast credits across networks like MTV, Food Network, NBC, OWN, and CBS. They have cleared network compliance, FCC standards, and production background checks. That is a vetting process no algorithm can replicate. No other agency in the creator economy can either.",
   },
   {
     number: "02",
     title: "Production Company Built In",
-    description: "BookTalent is not just a booking platform. We produce content. Big Films Only — our production arm — creates branded vertical drama series, original IP, and campaign content at a level no influencer agency can match. Find the talent, book the talent, produce the content. All under one roof.",
+    description: "BookTalent is not just a booking platform. We produce content. Big Films Only is our production arm. It creates branded vertical drama series, original IP, and campaign content at a level no influencer agency can match. Find the talent. Book the talent. Produce the content. All under one roof, all from a single partner.",
   },
   {
     number: "03",
     title: "Live Commerce Pipeline",
-    description: "Our talent was literally trained to sell on camera by television networks. We activate them on TikTok Shop, Amazon Live, and Instagram Live Shopping for real-time, camera-ready commerce. Think QVC meets reality TV meets the creator economy. Nobody else has this capability built into their talent pipeline.",
+    description: "Our talent was literally trained to sell on camera by television networks. We activate them on TikTok Shop, Amazon Live, and Instagram Live Shopping for real time, camera ready commerce. Think QVC meets reality TV meets the creator economy. Nobody else has this capability built into their talent pipeline.",
   },
   {
     number: "04",
     title: "Reunion and Crossover Content",
-    description: "We are the only company with the relationships to produce crossover content between cast members from different reality franchises. Brand-sponsored reunion content that creates tentpole cultural moments no other agency can manufacture. This is what fifteen years of television relationships unlock.",
+    description: "We are the only company with the relationships to produce crossover content between cast members from different reality franchises. Brand sponsored reunion content that creates tentpole cultural moments no other agency can manufacture. This is what fifteen years of television relationships actually unlock.",
   },
 ]
 
@@ -48,7 +48,7 @@ export function WhyUs() {
             transition={{ duration: 0.6 }}
             className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
-            What makes us different.
+            What you book here you cannot book anywhere else.
           </motion.h2>
         </div>
 

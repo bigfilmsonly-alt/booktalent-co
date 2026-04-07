@@ -10,10 +10,7 @@ import { Footer } from "@/components/sections/footer"
 
 const allNetworks = [
   "All Networks",
-  "VH1",
   "MTV",
-  "Bravo",
-  "BET",
   "Food Network",
   "NBC",
   "Hallmark",
@@ -110,7 +107,7 @@ export default function RosterPage() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-[32px] sm:text-4xl text-mjcc-cream leading-[1.1] tracking-tight"
           >
-            Television-verified talent. Ready to book.
+            Television verified talent. Ready to book.
           </motion.h1>
 
           <motion.p

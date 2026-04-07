@@ -4,12 +4,12 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 
 const serviceCards = [
-  { number: "01", title: "Campaign Packages", description: "Multi-talent, multi-platform sponsored content campaigns.", price: "$15K – $250K", href: "/services/campaigns" },
-  { number: "02", title: "Vertical Drama Production", description: "Original branded series produced by Big Films Only.", price: "$125K – $500K", href: "/services/production" },
-  { number: "03", title: "Live Commerce", description: "Real-time shopping events on TikTok Shop, Amazon Live, Instagram.", price: "$12K – $150K", href: "/services/commerce" },
-  { number: "04", title: "UGC Retainers", description: "Monthly retainers for whitelisted ad content at scale.", price: "$5K – $20K / month", href: "/services/ugc" },
-  { number: "05", title: "Talent Management", description: "Three tiers of representation for verified reality TV creators.", price: "$0 – $1,500 / month", href: "/services/management" },
-  { number: "06", title: "Enterprise Partnership", description: "The annual bundle. Roster, production, UGC, commerce, all in one.", price: "$500,000 / year", href: "/services/enterprise" },
+  { number: "01", title: "Campaign Packages", description: "Multi talent, multi platform sponsored content campaigns.", price: "$15K to $250K", href: "/services/campaigns" },
+  { number: "02", title: "Vertical Drama Production", description: "Original branded series produced by Big Films Only.", price: "$125K to $500K", href: "/services/production" },
+  { number: "03", title: "Live Commerce", description: "Real time shopping events on TikTok Shop, Amazon Live, Instagram.", price: "$12K to $150K", href: "/services/commerce" },
+  { number: "04", title: "UGC Retainers", description: "Monthly retainers for whitelisted ad content at scale.", price: "$5K to $20K per month", href: "/services/ugc" },
+  { number: "05", title: "Talent Management", description: "Three tiers of representation for verified reality TV creators.", price: "$0 to $1,500 per month", href: "/services/management" },
+  { number: "06", title: "Enterprise Partnership", description: "The annual bundle. Roster, production, UGC, commerce, all in one.", price: "$500,000 per year", href: "/services/enterprise" },
 ]
 
 export function ServicesOverview() {
@@ -45,7 +45,7 @@ export function ServicesOverview() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-4 text-sm lg:text-base text-mjcc-muted leading-relaxed max-w-lg mx-auto"
           >
-            From single-creator campaigns to year-long enterprise partnerships — every package is built around television-verified talent and production-grade content.
+            From single creator campaigns to year long enterprise partnerships. Every package is built around television verified talent and production grade content.
           </motion.p>
         </div>
 

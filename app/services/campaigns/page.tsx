@@ -15,7 +15,7 @@ export default function CampaignsPage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Multi-talent, multi-platform content campaigns built around television-verified creators. Three tiers — from testing the waters to full-scale enterprise activations."
+        description="Multi talent, multi platform content campaigns built around television verified creators. Three tiers, from testing the waters to full scale enterprise activations."
       />
 
       <div className="gold-divider" />
@@ -38,7 +38,7 @@ export default function CampaignsPage() {
             viewport={{ once: true }}
             className="text-sm text-mjcc-muted leading-relaxed"
           >
-            Every creator in our campaigns has confirmed broadcast television credits. No bought followers. No fake engagement. Your brand gets proven performers — not algorithm lottery picks.
+            Every creator in our campaigns has confirmed broadcast television credits. No bought followers. No fake engagement. Your brand gets proven performers, not algorithm lottery picks.
           </motion.p>
         </div>
       </section>

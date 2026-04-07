@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         <div className="space-y-6 text-sm text-mjcc-muted leading-relaxed">
           <div>
             <h2 className="text-mjcc-cream font-medium mb-2">Information We Collect</h2>
-            <p>We collect information you provide directly — name, email, company, and campaign details submitted through our forms. We also collect standard analytics data including page views and device information via Vercel Analytics.</p>
+            <p>We collect information you provide directly, including name, email, company, and campaign details submitted through our forms. We also collect standard analytics data including page views and device information via Vercel Analytics.</p>
           </div>
 
           <div>

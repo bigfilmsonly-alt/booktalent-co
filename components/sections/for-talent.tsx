@@ -5,11 +5,11 @@ import { motion } from "framer-motion"
 const services = [
   {
     title: "Brand Partnerships",
-    description: "Premium deals from brands that value your on-camera credibility — not just your follower count.",
+    description: "Premium deals from brands that value your on camera credibility, not just your follower count.",
   },
   {
-    title: "Original Content & IP",
-    description: "Vertical dramas, docu-series, and original concepts with your name on them.",
+    title: "Original Content and IP",
+    description: "Vertical dramas, docuseries, and original concepts with your name on them.",
   },
   {
     title: "Live Commerce",

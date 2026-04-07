@@ -70,7 +70,7 @@ export function CaseStudy() {
 
           {/* Narrative */}
           <p className="text-sm text-mjcc-muted leading-relaxed text-center pt-8 border-t border-mjcc-dark/40">
-            A two-season VH1 veteran with 800K Instagram followers outperformed previous influencer partnerships by 340%.
+            A two-season MTV veteran with 800K Instagram followers outperformed previous influencer partnerships by 340%.
           </p>
         </motion.div>
 

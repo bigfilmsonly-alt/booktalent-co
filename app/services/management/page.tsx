@@ -15,7 +15,7 @@ export default function ManagementPage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Three tiers of representation for verified reality TV creators — from emerging talent to marquee names. Dedicated management, brand matching, and career strategy."
+        description="Three tiers of representation for verified reality TV creators, from emerging talent to marquee names. Dedicated management, brand matching, and career strategy."
       />
 
       <div className="gold-divider" />
@@ -38,7 +38,7 @@ export default function ManagementPage() {
             viewport={{ once: true }}
             className="text-sm text-mjcc-muted leading-relaxed"
           >
-            We don&apos;t just manage talent — we book them. Every creator gets access to our brand pipeline, production capabilities, and 15 years of industry relationships.
+            We don&apos;t just manage talent. We book them. Every creator gets access to our brand pipeline, production capabilities, and 15 years of industry relationships.
           </motion.p>
         </div>
       </section>

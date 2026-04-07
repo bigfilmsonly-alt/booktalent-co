@@ -16,18 +16,18 @@ const serviceOptions = [
 ]
 
 const budgetOptions = [
-  "$10K – $25K",
-  "$25K – $50K",
-  "$50K – $100K",
-  "$100K – $250K",
-  "$250K – $500K",
+  "$10K to $25K",
+  "$25K to $50K",
+  "$50K to $100K",
+  "$100K to $250K",
+  "$250K to $500K",
   "$500K+",
 ]
 
 const timelineOptions = [
   "Immediate",
-  "1–2 months",
-  "3–6 months",
+  "1 to 2 months",
+  "3 to 6 months",
   "Ongoing",
 ]
 

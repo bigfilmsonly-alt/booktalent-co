@@ -75,7 +75,7 @@ export function Leadership() {
           className="mt-12 lg:mt-16 max-w-md lg:max-w-2xl mx-auto text-center"
         >
           <p className="font-serif text-lg text-mjcc-cream italic leading-relaxed">
-            &ldquo;Every brand should be able to book real talent — not just whoever the algorithm suggests.&rdquo;
+            &ldquo;Every brand should be able to book real talent. Not just whoever the algorithm suggests.&rdquo;
           </p>
           <cite className="mt-4 block text-sm text-mjcc-muted not-italic">
             Jotham Hall

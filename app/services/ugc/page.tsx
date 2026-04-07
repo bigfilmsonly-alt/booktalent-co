@@ -15,7 +15,7 @@ export default function UGCPage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Monthly content retainers for whitelisted ad creative at scale. Television-quality UGC from verified creators, delivered on a cadence."
+        description="Monthly content retainers for whitelisted ad creative at scale. Television quality UGC from verified creators, delivered on a cadence."
       />
 
       <div className="gold-divider" />
@@ -38,7 +38,7 @@ export default function UGCPage() {
             viewport={{ once: true }}
             className="text-sm text-mjcc-muted leading-relaxed"
           >
-            UGC from creators with real television training and real audiences — not stock-quality content from anonymous accounts.
+            UGC from creators with real television training and real audiences. Not stock quality content from anonymous accounts.
           </motion.p>
         </div>
       </section>

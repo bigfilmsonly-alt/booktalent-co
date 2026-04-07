@@ -13,7 +13,7 @@ const contentTypes = [
   },
   {
     title: "Instagram Reels",
-    description: "Production-quality Reels from talent that knows how to hit their marks.",
+    description: "Production quality Reels from talent that knows how to hit their marks.",
   },
   {
     title: "Vertical Dramas",

@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Book Talent Design System */
+  /* BookTalent Design System */
   --mjcc-black: #0A0A0A;
   --mjcc-charcoal: #1A1A1A;
   --mjcc-dark-gray: #2A2A2A;
@@ -155,4 +155,21 @@ input:focus, textarea:focus, select:focus {
 /* Sharp edges */
 *, *::before, *::after {
   border-radius: 0 !important;
+}
+
+/* Prevent orphan words on text elements */
+h1, h2, h3, h4, h5, h6,
+.hero-sub,
+.section-sub,
+.tagline,
+.hero-label,
+.section-label,
+blockquote,
+.pull-quote {
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+
+p {
+  text-wrap: pretty;
 }

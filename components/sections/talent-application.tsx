@@ -165,10 +165,10 @@ export function TalentApplication() {
                 className="w-full px-4 py-3 bg-mjcc-dark border border-mjcc-dark text-mjcc-cream focus:border-mjcc-gold transition-colors appearance-none cursor-pointer text-sm"
               >
                 <option value="" className="bg-mjcc-dark">Select range</option>
-                <option value="10k-50k" className="bg-mjcc-dark">10K – 50K</option>
-                <option value="50k-100k" className="bg-mjcc-dark">50K – 100K</option>
-                <option value="100k-500k" className="bg-mjcc-dark">100K – 500K</option>
-                <option value="500k-1m" className="bg-mjcc-dark">500K – 1M</option>
+                <option value="10k-50k" className="bg-mjcc-dark">10K to 50K</option>
+                <option value="50k-100k" className="bg-mjcc-dark">50K to 100K</option>
+                <option value="100k-500k" className="bg-mjcc-dark">100K to 500K</option>
+                <option value="500k-1m" className="bg-mjcc-dark">500K to 1M</option>
                 <option value="1m+" className="bg-mjcc-dark">1M+</option>
               </select>
             </div>

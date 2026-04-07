@@ -15,7 +15,7 @@ export default function CommercePage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Live shopping events with talent trained to sell on camera — on TikTok Shop, Amazon Live, and Instagram. From single events to year-long programs."
+        description="Live shopping events with talent trained to sell on camera. On TikTok Shop, Amazon Live, and Instagram. From single events to year long programs."
       />
 
       <div className="gold-divider" />
@@ -38,7 +38,7 @@ export default function CommercePage() {
             viewport={{ once: true }}
             className="text-sm text-mjcc-muted leading-relaxed"
           >
-            Our talent sold on television before TikTok Shop existed. Camera-ready, conversion-proven, trained to sell live to millions.
+            Our talent sold on television before TikTok Shop existed. Camera ready, conversion proven, trained to sell live to millions.
           </motion.p>
         </div>
       </section>

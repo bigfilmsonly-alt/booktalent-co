@@ -14,7 +14,7 @@ export function Footer() {
             The Network Behind The Network.
           </p>
           <p className="mt-2 text-[11px] text-mjcc-muted">
-            Miami, FL — Los Angeles, CA
+            Miami, FL. Los Angeles, CA.
           </p>
         </div>
 

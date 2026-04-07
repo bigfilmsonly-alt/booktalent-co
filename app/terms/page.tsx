@@ -27,7 +27,7 @@ export default function TermsPage() {
 
           <div>
             <h2 className="text-mjcc-cream font-medium mb-2">Intellectual Property</h2>
-            <p>All content on this site — including text, design, and branding — is owned by Big Films Only. Campaign content rights are defined in individual booking agreements.</p>
+            <p>All content on this site, including text, design, and branding, is owned by Big Films Only. Campaign content rights are defined in individual booking agreements.</p>
           </div>
 
           <div>

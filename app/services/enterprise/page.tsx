@@ -8,7 +8,7 @@ import { Footer } from "@/components/sections/footer"
 
 const bundleItems = [
   { component: "Exclusive Roster Access", detail: "Priority access to 10 creators for 12 months", value: "$120,000" },
-  { component: "Branded Vertical Drama", detail: "1 series (8–12 episodes) by Big Films Only", value: "$250,000" },
+  { component: "Branded Vertical Drama", detail: "1 series (8 to 12 episodes) by Big Films Only", value: "$250,000" },
   { component: "UGC Content Retainer", detail: "30 pieces/month for 12 months", value: "$240,000" },
   { component: "Live Commerce Series", detail: "4 quarterly events with 3 talent each", value: "$60,000" },
   { component: "Campaign Management", detail: "Dedicated manager, quarterly strategy, monthly reporting", value: "$48,000" },
@@ -20,7 +20,7 @@ export default function EnterprisePage() {
       <ServicePageHeader
         serviceNumber="06"
         title="Enterprise Partnership"
-        description="The annual bundle. Everything BookTalent offers — roster access, production, UGC, live commerce, dedicated management — locked in at one price for 12 months."
+        description="The annual bundle. Everything BookTalent offers, roster access, production, UGC, live commerce, dedicated management, locked in at one price for 12 months."
       />
 
       <div className="gold-divider" />
@@ -36,7 +36,7 @@ export default function EnterprisePage() {
           >
             <p className="text-xs text-mjcc-muted uppercase tracking-wider mb-2">Annual Partnership</p>
             <span className="font-mono text-4xl text-mjcc-gold font-bold">$500,000</span>
-            <p className="mt-2 text-sm text-mjcc-muted">12 months — save $218K vs. standalone pricing</p>
+            <p className="mt-2 text-sm text-mjcc-muted">12 months. Save $218K vs. standalone pricing</p>
           </motion.div>
         </div>
       </section>
@@ -120,7 +120,7 @@ export default function EnterprisePage() {
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 className="text-sm text-mjcc-muted leading-relaxed flex gap-2"
               >
-                <span className="text-mjcc-gold/50 shrink-0">—</span>
+                <span className="text-mjcc-gold/50 shrink-0">&bull;</span>
                 <span>{item}</span>
               </motion.li>
             ))}

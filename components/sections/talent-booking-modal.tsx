@@ -25,7 +25,7 @@ const bookingTypes = [
   {
     id: "tiktok",
     label: "TikTok Campaign",
-    desc: "Short-form sponsored content",
+    desc: "Short form sponsored content",
   },
   {
     id: "reels",
@@ -45,7 +45,7 @@ const bookingTypes = [
   {
     id: "event",
     label: "Event Appearance",
-    desc: "In-person activation, premiere, or launch",
+    desc: "In person activation, premiere, or launch",
   },
   {
     id: "vertical-drama",
@@ -60,15 +60,15 @@ const bookingTypes = [
   {
     id: "multiple",
     label: "Multiple / Not Sure",
-    desc: "Tell us what you need — we'll build a package",
+    desc: "Tell us what you need. We'll build a package",
   },
 ]
 
 const budgetRanges = [
-  "$10K – $25K",
-  "$25K – $50K",
-  "$50K – $100K",
-  "$100K – $250K",
+  "$10K to $25K",
+  "$25K to $50K",
+  "$50K to $100K",
+  "$100K to $250K",
   "$250K+",
 ]
 
@@ -252,7 +252,7 @@ export function TalentBookingModal({ talent, onClose }: TalentBookingModalProps)
                   ))}
                 </div>
                 <p className="text-[10px] text-mjcc-muted">
-                  Step {step} of 3 — {stepLabel}
+                  Step {step} of 3. {stepLabel}
                 </p>
               </div>
             )}
@@ -498,7 +498,7 @@ export function TalentBookingModal({ talent, onClose }: TalentBookingModalProps)
               <div className="px-5 py-16 text-center">
                 <h3 className="font-serif text-2xl text-mjcc-cream mb-3">Booking request sent.</h3>
                 <p className="text-sm text-mjcc-muted mb-1">
-                  {selectedTypeLabel} — {selectedDates.size} date{selectedDates.size !== 1 ? "s" : ""} for {talent.name}.
+                  {selectedTypeLabel}. {selectedDates.size} date{selectedDates.size !== 1 ? "s" : ""} for {talent.name}.
                 </p>
                 <p className="text-sm text-mjcc-muted">
                   Our team will confirm availability and send a proposal within 48 hours.

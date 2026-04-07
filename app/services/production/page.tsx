@@ -15,7 +15,7 @@ export default function ProductionPage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Original branded vertical drama series — 6 to 12 episodes, 2–5 minutes each — produced by Big Films Only, starring cast from our roster. Your brand is integrated into the storyline, not bolted on as an ad."
+        description="Original branded vertical drama series. 6 to 12 episodes, 2 to 5 minutes each. Produced by Big Films Only, starring cast from our roster. Your brand is integrated into the storyline, not bolted on as an ad."
       />
 
       <div className="gold-divider" />
@@ -38,7 +38,7 @@ export default function ProductionPage() {
             viewport={{ once: true }}
             className="text-sm text-mjcc-muted leading-relaxed"
           >
-            No other talent agency in the creator economy also has a production company under the same roof. Scripted reality meets branded entertainment — tentpole content nobody else can create.
+            No other talent agency in the creator economy also has a production company under the same roof. Scripted reality meets branded entertainment. Tentpole content nobody else can create.
           </motion.p>
         </div>
       </section>

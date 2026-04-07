@@ -6,9 +6,9 @@ import { Footer } from "@/components/sections/footer"
 
 const values = [
   { number: "01", title: "Verification First", description: "Every creator on our roster has confirmed broadcast credits. Every brand we partner with is qualified. Every campaign we run is vetted. We don't take shortcuts." },
-  { number: "02", title: "Production-Grade Quality", description: "We're a production company first and a talent agency second. Every piece of content we deliver meets the standards we set on national television." },
-  { number: "03", title: "Brand Safety, Always", description: "Our talent has cleared network standards and practices. Brands working with us don't worry about brand safety — it's built in." },
-  { number: "04", title: "Talent Development", description: "We don't just book deals. We build careers. Every creator on our roster has access to career strategy, content coaching, and long-term opportunity development." },
+  { number: "02", title: "Production Grade Quality", description: "We're a production company first and a talent agency second. Every piece of content we deliver meets the standards we set on national television." },
+  { number: "03", title: "Brand Safety Always", description: "Our talent has cleared network standards and practices. Brands working with us don't worry about brand safety. It's built in." },
+  { number: "04", title: "Talent Development", description: "We don't just book deals. We build careers. Every creator on our roster has access to career strategy, content coaching, and long term opportunity development." },
 ]
 
 export default function AboutPage() {
@@ -34,7 +34,7 @@ export default function AboutPage() {
             transition={{ delay: 0.3 }}
             className="block mt-4 text-sm text-mjcc-muted not-italic"
           >
-            — Jotham Hall, Co-Founder
+            Jotham Hall, Co-Founder
           </motion.cite>
         </div>
       </section>
@@ -48,10 +48,10 @@ export default function AboutPage() {
             For fifteen years, we&apos;ve been the people behind the people you watch on television.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-            Jotham produced 100+ reality shows for VH1, MTV, Bravo, BET, Food Network, NBC, Hallmark, and USA Network. Mira spent fifteen years placing personalities across the nation&apos;s top reality franchises. We watched the talent we cast, produced, and developed become household names — and then watched the creator economy explode, leaving most of them without representation that understood their value.
+            Jotham produced 100+ reality shows for MTV, Food Network, NBC, Hallmark, USA Network, OWN, and CBS. Mira spent fifteen years placing personalities across the nation&apos;s top reality franchises. We watched the talent we cast, produced, and developed become household names. Then we watched the creator economy explode, leaving most of them without representation that understood their value.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-            We watched brands burn millions on unvetted influencers with bot followings. We watched talent agencies sign anyone with a phone and a ring light. We watched the gap between television-quality talent and creator economy infrastructure get wider every year.
+            We watched brands burn millions on unvetted influencers with bot followings. We watched talent agencies sign anyone with a phone and a ring light. We watched the gap between television quality talent and creator economy infrastructure get wider every year.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-[15px] lg:text-[17px] text-mjcc-cream leading-[1.8] font-medium">
             So we built BookTalent.
@@ -67,13 +67,13 @@ export default function AboutPage() {
           <div>
             <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">The Mission</p>
             <p className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-              To represent television-verified talent, deliver production-grade content, and become the most trusted booking platform in the creator economy. Every campaign we run, every creator we sign, every brand we partner with is built on one principle: quality is non-negotiable.
+              To represent television verified talent, deliver production grade content, and become the most trusted booking platform in the creator economy. Every campaign we run, every creator we sign, every brand we partner with is built on one principle. Quality is non negotiable.
             </p>
           </div>
           <div>
             <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">The Vision</p>
             <p className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-              To become the CAA of the creator economy — the premium talent management and content production company that defines what professional creator marketing looks like in the 21st century.
+              To become the CAA of the creator economy. The premium talent management and content production company that defines what professional creator marketing looks like in the 21st century.
             </p>
           </div>
         </div>

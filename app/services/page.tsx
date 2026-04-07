@@ -35,7 +35,7 @@ export default function ServicesHub() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="mt-3 lg:mt-4 text-sm lg:text-base text-mjcc-muted leading-relaxed lg:max-w-lg"
           >
-            From single-creator campaigns to enterprise partnerships — every package built around television-verified talent.
+            From single creator campaigns to enterprise partnerships. Every package built around television verified talent.
           </motion.p>
         </div>
       </section>
