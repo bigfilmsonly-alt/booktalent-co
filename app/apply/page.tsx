@@ -1,10 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
+import Link from "next/link"
 import { Footer } from "@/components/sections/footer"
 
 export default function ApplyPage() {
+  const [path, setPath] = useState<"choose" | "talent">("choose")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -31,38 +33,138 @@ export default function ApplyPage() {
     <>
       <main className="bg-mjcc-black min-h-screen pb-20 lg:pb-0">
         <div className="px-6 lg:px-12 pt-8 lg:pt-24 pb-20 lg:pb-28 max-w-lg lg:max-w-2xl mx-auto">
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-12"
-          >
-            <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
-              For Talent
-            </p>
-            <h1 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
-              Apply to get booked.
-            </h1>
-            <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
-              Verified reality TV talent with active social presence. Submit your credits and we&apos;ll be in touch.
-            </p>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            {/* Path chooser */}
+            {path === "choose" && (
+              <motion.div
+                key="chooser"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="text-center"
+              >
+                <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
+                  Get Started
+                </p>
+                <h1 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
+                  How can we help?
+                </h1>
+                <p className="text-sm text-mjcc-muted max-w-xs mx-auto mb-12">
+                  Choose the path that fits you.
+                </p>
 
-          {isSubmitted ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
+                  {/* Apply as Talent */}
+                  <button
+                    onClick={() => setPath("talent")}
+                    className="group text-left p-6 border border-mjcc-dark/50 hover:border-mjcc-gold transition-all duration-300"
+                  >
+                    <div className="w-10 h-10 border border-mjcc-gold/30 flex items-center justify-center mb-4 group-hover:border-mjcc-gold transition-colors">
+                      <span className="text-mjcc-gold text-lg">&#9733;</span>
+                    </div>
+                    <h2 className="font-serif text-lg text-mjcc-cream mb-2">
+                      Apply as Talent
+                    </h2>
+                    <p className="text-xs text-mjcc-muted leading-relaxed">
+                      Join our roster. Submit your TV credits and social presence to get booked for brand campaigns.
+                    </p>
+                  </button>
+
+                  {/* Book Talent */}
+                  <Link
+                    href="/book"
+                    className="group text-left p-6 border border-mjcc-dark/50 hover:border-mjcc-gold transition-all duration-300"
+                  >
+                    <div className="w-10 h-10 border border-mjcc-gold/30 flex items-center justify-center mb-4 group-hover:border-mjcc-gold transition-colors">
+                      <span className="text-mjcc-gold text-lg">&#9654;</span>
+                    </div>
+                    <h2 className="font-serif text-lg text-mjcc-cream mb-2">
+                      Book Talent
+                    </h2>
+                    <p className="text-xs text-mjcc-muted leading-relaxed">
+                      You are a brand or agency looking to book television verified creators for your next campaign.
+                    </p>
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Talent application form */}
+            {path === "talent" && !isSubmitted && (
+              <motion.div
+                key="talent-header"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <button
+                  onClick={() => setPath("choose")}
+                  className="text-xs text-mjcc-muted hover:text-mjcc-cream transition-colors mb-8 flex items-center gap-2"
+                >
+                  &larr; Back
+                </button>
+
+                <div className="text-center mb-12">
+                  <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
+                    For Talent
+                  </p>
+                  <h1 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
+                    Apply to get booked.
+                  </h1>
+                  <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
+                    Verified reality TV talent with active social presence. Submit your credits and we&apos;ll be in touch.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {path === "talent" && isSubmitted && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center py-16"
             >
+              <div className="w-16 h-16 bg-mjcc-gold/10 border border-mjcc-gold/30 flex items-center justify-center mx-auto mb-6">
+                <span className="text-mjcc-gold text-2xl">&#10003;</span>
+              </div>
               <h2 className="font-serif text-2xl text-mjcc-cream mb-4">
                 Application received.
               </h2>
-              <p className="text-sm text-mjcc-muted">
+              <p className="text-sm text-mjcc-muted mb-6">
                 We respond to all qualified applicants within 5 business days.
               </p>
+
+              <div className="bg-mjcc-charcoal border border-mjcc-dark p-4 mb-6 text-left max-w-sm mx-auto">
+                <p className="text-xs text-mjcc-gold uppercase tracking-wider mb-2">What Happens Next</p>
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <span className="font-mono text-xs text-mjcc-gold shrink-0">01</span>
+                    <p className="text-xs text-mjcc-muted">Our talent team reviews your credits and social presence.</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-mono text-xs text-mjcc-gold shrink-0">02</span>
+                    <p className="text-xs text-mjcc-muted">If you qualify, we schedule a video intro call.</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-mono text-xs text-mjcc-gold shrink-0">03</span>
+                    <p className="text-xs text-mjcc-muted">Onboarding, profile setup, and your first brand match.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-xs text-mjcc-muted">
+                Questions? Email{" "}
+                <a href="mailto:talent@booktalent.co" className="text-mjcc-gold hover:underline">
+                  talent@booktalent.co
+                </a>
+              </p>
             </motion.div>
-          ) : (
+          )}
+
+          {path === "talent" && !isSubmitted && (
             <motion.form
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
