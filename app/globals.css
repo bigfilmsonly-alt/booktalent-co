@@ -8,15 +8,15 @@
   --mjcc-black: #0A0A0A;
   --mjcc-charcoal: #1A1A1A;
   --mjcc-dark-gray: #2A2A2A;
-  --mjcc-gold: #C9A84C;
-  --mjcc-gold-deep: #A07E35;
-  --mjcc-gold-soft: #F5EFD9;
-  --mjcc-gold-hover: #D4B85D;
+  --mjcc-gold: #E8B931;
+  --mjcc-gold-deep: #CC9F1C;
+  --mjcc-gold-soft: #FFF8E1;
+  --mjcc-gold-hover: #F2C94C;
   --mjcc-cream: #F5F4F0;
   --mjcc-white: #FFFFFF;
-  --mjcc-platinum: #B8B8B8;
-  --mjcc-warm: #9A9A96;
-  --mjcc-muted: #888888;
+  --mjcc-platinum: #D4D4D4;
+  --mjcc-warm: #BDBDB9;
+  --mjcc-muted: #A8A8A8;
   --mjcc-border: #E8E8E8;
   --mjcc-urgent: #E63946;
 
@@ -32,19 +32,19 @@
   --card-foreground: #F5F4F0;
   --popover: #1A1A1A;
   --popover-foreground: #F5F4F0;
-  --primary: #C9A84C;
+  --primary: #E8B931;
   --primary-foreground: #0A0A0A;
   --secondary: #2A2A2A;
   --secondary-foreground: #F5F4F0;
   --muted: #2A2A2A;
-  --muted-foreground: #888888;
-  --accent: #C9A84C;
+  --muted-foreground: #A8A8A8;
+  --accent: #E8B931;
   --accent-foreground: #0A0A0A;
   --destructive: #E63946;
   --destructive-foreground: #F5F4F0;
   --border: #2A2A2A;
   --input: #2A2A2A;
-  --ring: #C9A84C;
+  --ring: #E8B931;
   --radius: 0;
 }
 
@@ -58,10 +58,10 @@
   --color-mjcc-black: #0A0A0A;
   --color-mjcc-charcoal: #1A1A1A;
   --color-mjcc-dark: #2A2A2A;
-  --color-mjcc-gold: #C9A84C;
-  --color-mjcc-gold-deep: #A07E35;
-  --color-mjcc-gold-soft: #F5EFD9;
-  --color-mjcc-gold-hover: #D4B85D;
+  --color-mjcc-gold: #E8B931;
+  --color-mjcc-gold-deep: #CC9F1C;
+  --color-mjcc-gold-soft: #FFF8E1;
+  --color-mjcc-gold-hover: #F2C94C;
   --color-mjcc-cream: #F5F4F0;
   --color-mjcc-white: #FFFFFF;
   --color-mjcc-platinum: #B8B8B8;
@@ -115,7 +115,7 @@
   }
 }
 
-/* Noise texture — barely perceptible */
+/* Noise texture */
 .noise-overlay {
   position: absolute;
   inset: 0;
@@ -126,14 +126,14 @@
 
 /* Selection */
 ::selection {
-  background-color: #C9A84C;
+  background-color: #E8B931;
   color: #0A0A0A;
 }
 
 /* Section divider */
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(232, 185, 49, 0.4), transparent);
 }
 
 /* Marquee */
@@ -149,27 +149,141 @@
 /* Form focus */
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #C9A84C !important;
+  border-color: #E8B931 !important;
 }
 
-/* Sharp edges */
-*, *::before, *::after {
+/* Sharp edges — except nav pills and iPhone frame */
+*:not(.nav-pill):not(.nav-pill *):not(.iphone-keep-radius):not(.iphone-keep-radius *), *::before, *::after {
   border-radius: 0 !important;
 }
 
-/* Prevent orphan words on text elements */
+/* Nav pill shape */
+.nav-pill {
+  border-radius: 999px !important;
+}
+
+/* Scrolling nav ticker */
+@keyframes navScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-nav-scroll {
+  animation: navScroll 40s linear infinite;
+}
+
+.animate-nav-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth scroll feel */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Parallax section depth */
+.parallax-section {
+  will-change: transform;
+}
+
+/* Text wrapping */
 h1, h2, h3, h4, h5, h6,
-.hero-sub,
-.section-sub,
-.tagline,
-.hero-label,
-.section-label,
-blockquote,
-.pull-quote {
+.hero-sub, .section-sub, .tagline, .hero-label, .section-label,
+blockquote, .pull-quote {
   text-wrap: balance;
   text-wrap: pretty;
 }
 
 p {
   text-wrap: pretty;
+}
+
+/* ── CONVERSION DESIGN: Micro-interactions ── */
+
+/* CTA buttons — tactile press + lift effect */
+.cta-button {
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(232, 185, 49, 0.15);
+}
+
+.cta-button:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+/* ── CONVERSION DESIGN: Section contrast ── */
+
+/* Alternating sections get a subtle gold left accent when charcoal bg */
+.section-accent {
+  position: relative;
+}
+
+.section-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(232, 185, 49, 0.3), transparent);
+}
+
+/* ── CONVERSION DESIGN: Form field stagger animation ── */
+
+@keyframes fieldSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-field-animate {
+  animation: fieldSlideIn 0.4s var(--ease-cinematic) forwards;
+  opacity: 0;
+}
+
+.form-field-animate:nth-child(1) { animation-delay: 0s; }
+.form-field-animate:nth-child(2) { animation-delay: 0.05s; }
+.form-field-animate:nth-child(3) { animation-delay: 0.1s; }
+.form-field-animate:nth-child(4) { animation-delay: 0.15s; }
+.form-field-animate:nth-child(5) { animation-delay: 0.2s; }
+.form-field-animate:nth-child(6) { animation-delay: 0.25s; }
+
+/* ── CONVERSION DESIGN: Input focus glow ── */
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 1px rgba(232, 185, 49, 0.3);
+}
+
+/* ── iPhone Frame ── */
+
+/* Hide scrollbar inside iPhone frame */
+.iphone-scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.iphone-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sharp edges exception for iPhone frame rounded corners */
+.iphone-scroll-container,
+.iphone-scroll-container > * {
+  /* Allow the frame itself to be rounded */
+}
+
+/* Override the global border-radius: 0 rule for iPhone frame elements */
+@media (min-width: 1024px) {
+  [data-iphone-frame] {
+    border-radius: 55px !important;
+  }
 }
