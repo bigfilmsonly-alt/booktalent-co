@@ -16,7 +16,6 @@ const tabs: Tab[] = [
   { label: "Home", icon: Home, href: "/" },
   { label: "Services", icon: Briefcase, href: "/services" },
   { label: "Book", icon: CalendarCheck, href: "/book", primary: true },
-  { label: "Roster", icon: Users, href: "/roster" },
   { label: "Apply", icon: UserPlus, href: "/apply" },
 ]
 
@@ -74,7 +73,6 @@ export function Navigation() {
             {/* Center nav — 4 essential links */}
             <nav className="flex items-center gap-10">
               {[
-                { label: "ROSTER", href: "/roster" },
                 { label: "SERVICES", href: "/services" },
                 { label: "PRICING", href: "/pricing" },
                 { label: "ABOUT", href: "/about" },

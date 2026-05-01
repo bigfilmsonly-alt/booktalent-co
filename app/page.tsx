@@ -1,7 +1,7 @@
 import { Hero } from "@/components/sections/hero"
 import { WhyUs } from "@/components/sections/mjcc-difference"
 import { ServicesOverview } from "@/components/sections/services-overview"
-import { Roster } from "@/components/sections/roster"
+
 import { CaseStudy } from "@/components/sections/case-study"
 import { HowItWorks } from "@/components/sections/how-it-works"
 import { BrandInquiry } from "@/components/sections/brand-inquiry"
@@ -13,7 +13,6 @@ export default function Home() {
     <main className="bg-mjcc-black min-h-screen pb-20 lg:pb-0">
       <Hero />
       <WhyUs />
-      <Roster />
       <CaseStudy />
       <ServicesOverview />
       <HowItWorks />
