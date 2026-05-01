@@ -3,9 +3,12 @@
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
 import { Search, X, ChevronDown } from "lucide-react"
 import { demoRoster } from "@/lib/demo-roster"
+
+function getInitials(name: string) {
+  return name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()
+}
 import { Footer } from "@/components/sections/footer"
 
 const tierTabs = ["All", "Marquee", "Core", "Rising"]
@@ -241,46 +244,43 @@ export default function RosterPage() {
                 <div key={t.slug}>
                   <Link
                     href={`/book?interest=${t.categories[0]}`}
-                    className="block bg-mjcc-charcoal border border-transparent hover:border-mjcc-gold/40 transition-all group overflow-hidden"
+                    className="block bg-mjcc-charcoal border border-transparent hover:border-mjcc-gold/40 transition-all group"
                   >
-                    <div className="aspect-[3/4] relative overflow-hidden">
-                      <Image
-                        src={t.imageUrl}
-                        alt={t.name}
-                        fill
-                        className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                        sizes="(max-width: 640px) 50vw, 25vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
+                    <div className="aspect-[3/4] flex flex-col items-center justify-center p-4 relative">
+                      {/* Tier badge */}
                       <div className="absolute top-0 left-0 right-0 p-2 lg:p-3">
                         <span className={`inline-block text-[8px] lg:text-[9px] px-2 py-0.5 uppercase tracking-[0.12em] ${
                           t.tier === "Marquee"
-                            ? "bg-mjcc-gold/90 text-mjcc-black font-medium"
+                            ? "bg-mjcc-gold/20 text-mjcc-gold font-medium"
                             : t.tier === "Core"
-                            ? "bg-mjcc-charcoal/80 text-mjcc-cream backdrop-blur-sm border border-mjcc-dark"
-                            : "bg-black/50 text-mjcc-platinum backdrop-blur-sm"
+                            ? "bg-blue-500/10 text-blue-400"
+                            : "bg-mjcc-dark text-mjcc-platinum"
                         }`}>
                           {t.tier}
                         </span>
                       </div>
 
-                      <div className="absolute bottom-0 left-0 right-0 p-3">
-                        <h3 className="font-serif text-sm lg:text-base text-mjcc-cream leading-tight">
-                          {t.name}
-                        </h3>
-                        <p className="text-[10px] text-mjcc-platinum/80 mt-0.5 truncate">
-                          {t.genre}
-                        </p>
-                        <div className="flex items-center justify-between mt-1.5">
-                          <span className="font-mono text-[11px] text-mjcc-gold">
-                            {t.following}
-                          </span>
-                          <span className="text-[9px] text-mjcc-gold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                            Inquire
-                          </span>
-                        </div>
+                      {/* Initials */}
+                      <div className={`w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center mb-4 text-lg lg:text-xl font-medium ${
+                        t.tier === "Marquee"
+                          ? "bg-mjcc-gold/10 text-mjcc-gold border border-mjcc-gold/30"
+                          : "bg-mjcc-dark text-mjcc-platinum border border-mjcc-dark"
+                      }`}>
+                        {getInitials(t.name)}
                       </div>
+
+                      <h3 className="font-serif text-sm lg:text-base text-mjcc-cream leading-tight text-center">
+                        {t.name}
+                      </h3>
+                      <p className="text-[10px] text-mjcc-muted mt-1 text-center truncate w-full">
+                        {t.genre}
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="font-mono text-[11px] text-mjcc-gold">{t.following}</span>
+                      </div>
+                      <span className="text-[9px] text-mjcc-gold uppercase tracking-wider mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Inquire
+                      </span>
                     </div>
                   </Link>
                 </div>

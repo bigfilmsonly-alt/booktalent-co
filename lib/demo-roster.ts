@@ -20,7 +20,7 @@ export const demoRoster: DemoTalent[] = [
     following: '2.1M+',
     networks: ['Bravo'],
     categories: ['Fashion', 'Lifestyle'],
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-002',
@@ -31,7 +31,7 @@ export const demoRoster: DemoTalent[] = [
     following: '1.4M+',
     networks: ['MTV', 'E!'],
     categories: ['Fashion', 'Entertainment'],
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-003',
@@ -42,7 +42,7 @@ export const demoRoster: DemoTalent[] = [
     following: '1.5M+',
     networks: ['OWN', 'Hallmark'],
     categories: ['Beauty', 'Skincare'],
-    imageUrl: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-004',
@@ -53,7 +53,7 @@ export const demoRoster: DemoTalent[] = [
     following: '1.8M+',
     networks: ['NBC', 'USA Network'],
     categories: ['Fitness', 'Wellness'],
-    imageUrl: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-005',
@@ -64,7 +64,7 @@ export const demoRoster: DemoTalent[] = [
     following: '2.3M+',
     networks: ['NBC', 'E!'],
     categories: ['Fashion', 'Beauty'],
-    imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-006',
@@ -75,7 +75,7 @@ export const demoRoster: DemoTalent[] = [
     following: '920K+',
     networks: ['MTV', 'CBS'],
     categories: ['Comedy', 'Entertainment'],
-    imageUrl: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-007',
@@ -86,7 +86,7 @@ export const demoRoster: DemoTalent[] = [
     following: '2.7M+',
     networks: ['Food Network', 'Bravo'],
     categories: ['Food', 'Lifestyle'],
-    imageUrl: 'https://images.unsplash.com/photo-1558898479-33c0057a5d12?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-008',
@@ -97,7 +97,7 @@ export const demoRoster: DemoTalent[] = [
     following: '780K+',
     networks: ['OWN'],
     categories: ['Parenting', 'Family'],
-    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-009',
@@ -108,7 +108,7 @@ export const demoRoster: DemoTalent[] = [
     following: '1.6M+',
     networks: ['BET', 'VH1'],
     categories: ['Fitness', 'Entrepreneurship'],
-    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-010',
@@ -119,7 +119,7 @@ export const demoRoster: DemoTalent[] = [
     following: '1.1M+',
     networks: ['Bravo', 'Netflix'],
     categories: ['Travel', 'Lifestyle'],
-    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-011',
@@ -130,7 +130,7 @@ export const demoRoster: DemoTalent[] = [
     following: '640K+',
     networks: ['MTV', 'VH1'],
     categories: ['Music', 'Entertainment'],
-    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-012',
@@ -141,7 +141,7 @@ export const demoRoster: DemoTalent[] = [
     following: '520K+',
     networks: ['NBC'],
     categories: ['Wellness', 'Yoga'],
-    imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-013',
@@ -152,7 +152,7 @@ export const demoRoster: DemoTalent[] = [
     following: '890K+',
     networks: ['Food Network'],
     categories: ['Food', 'Hospitality'],
-    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-014',
@@ -163,7 +163,7 @@ export const demoRoster: DemoTalent[] = [
     following: '1.3M+',
     networks: ['Fox', 'BET'],
     categories: ['Dance', 'Entertainment'],
-    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-015',
@@ -174,7 +174,7 @@ export const demoRoster: DemoTalent[] = [
     following: '750K+',
     networks: ['HGTV', 'NBC'],
     categories: ['Home', 'Design'],
-    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
   {
     slug: 'talent-016',
@@ -185,6 +185,6 @@ export const demoRoster: DemoTalent[] = [
     following: '430K+',
     networks: ['CMT', 'Hallmark'],
     categories: ['Country', 'Lifestyle'],
-    imageUrl: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&h=800&fit=crop&crop=face&q=80',
+    imageUrl: '',
   },
 ]
