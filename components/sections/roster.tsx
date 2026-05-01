@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 import { TalentBookingModal } from "./talent-booking-modal"
 import Link from "next/link"
 import Image from "next/image"
-import { talent } from "@/lib/talent-data"
+import { demoRoster } from "@/lib/demo-roster"
 
-const featured = talent.filter(t => t.tier === "Marquee").slice(0, 8)
+const featured = demoRoster.slice(0, 8)
 
 export function Roster() {
   const [selectedTalent, setSelectedTalent] = useState<{
@@ -46,7 +46,7 @@ export function Roster() {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-3 text-xs text-mjcc-muted italic max-w-sm mx-auto"
             >
-              {talent.length} verified creators with broadcast television credits. Browse the full roster.
+              Verified creators with broadcast television credits. Browse the full roster.
             </motion.p>
           </div>
 
@@ -62,7 +62,7 @@ export function Roster() {
                 className="group relative overflow-hidden border-2 border-mjcc-gold"
               >
                 <Link
-                  href={`/roster/${t.slug}`}
+                  href="/book"
                   className="block w-full aspect-[3/4] relative overflow-hidden cursor-pointer"
                 >
                   <Image
@@ -92,7 +92,7 @@ export function Roster() {
                     <h3 className="font-serif text-lg lg:text-xl text-white leading-tight">{t.name}</h3>
                     <p className="text-[11px] text-white/85 mt-0.5 truncate">{t.genre}</p>
                     <div className="flex items-center justify-between mt-2">
-                      <span className="font-mono text-[11px] text-mjcc-gold">{t.totalFollowing}</span>
+                      <span className="font-mono text-[11px] text-mjcc-gold">{t.following}</span>
                       <span className="text-[10px] text-white/70 uppercase tracking-wider group-hover:text-mjcc-gold transition-colors">
                         Book Now
                       </span>
@@ -114,7 +114,7 @@ export function Roster() {
               href="/roster"
               className="inline-flex items-center justify-center border border-mjcc-gold/40 text-mjcc-gold px-8 py-4 text-sm font-medium tracking-wider hover:border-mjcc-gold hover:bg-mjcc-gold hover:text-mjcc-black transition-all duration-300 min-h-[48px] cta-button"
             >
-              VIEW FULL ROSTER ({talent.length} CREATORS)
+              VIEW FULL ROSTER
             </Link>
           </motion.div>
         </div>

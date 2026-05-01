@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import { Search, X, ChevronDown } from "lucide-react"
-import { talent } from "@/lib/talent-data"
+import { demoRoster } from "@/lib/demo-roster"
 import { Footer } from "@/components/sections/footer"
 
 const tierTabs = ["All", "Marquee", "Core", "Rising"]
@@ -18,41 +18,34 @@ const allNetworks = [
   "BET",
   "NBC",
   "Fox",
-  "ABC",
   "CBS",
   "Netflix",
-  "Hulu",
-  "TLC",
   "E!",
+  "Food Network",
+  "OWN",
+  "Hallmark",
+  "USA Network",
   "CMT",
-  "The CW",
-  "Lifetime",
-  "Disney Channel",
 ]
 
 const allCategories = [
   "All Categories",
-  "Acting",
-  "Music",
   "Fashion",
   "Beauty",
+  "Fitness",
   "Comedy",
   "Lifestyle",
   "Food",
-  "Fitness",
   "Entertainment",
-  "Reality TV",
-  "Sports",
   "Wellness",
   "Parenting",
-  "LGBTQ+",
-  "Outdoors",
-  "Hosting",
-  "Podcast",
-  "True Crime",
+  "Music",
+  "Travel",
+  "Dance",
+  "Home",
 ]
 
-const allSizes = ["All Sizes", "Under 1M", "1M to 10M", "10M+"]
+const allSizes = ["All Sizes", "Under 1M", "1M+"]
 
 function parseFollowing(val: string): number {
   const clean = val.replace(/[+,]/g, "")
@@ -78,19 +71,18 @@ export default function RosterPage() {
   if (search.trim()) activeFilters.push({ label: `"${search}"`, clear: () => setSearch("") })
 
   const filtered = useMemo(() => {
-    return talent.filter((t) => {
+    return demoRoster.filter((t) => {
       if (activeTier !== "All" && t.tier !== activeTier) return false
       if (network !== "All Networks" && !t.networks.includes(network)) return false
       if (category !== "All Categories" && !t.categories.includes(category)) return false
       if (size !== "All Sizes") {
-        const count = parseFollowing(t.totalFollowing)
+        const count = parseFollowing(t.following)
         if (size === "Under 1M" && count >= 1_000_000) return false
-        if (size === "1M to 10M" && (count < 1_000_000 || count >= 10_000_000)) return false
-        if (size === "10M+" && count < 10_000_000) return false
+        if (size === "1M+" && count < 1_000_000) return false
       }
       if (search.trim()) {
         const q = search.toLowerCase()
-        const haystack = `${t.name} ${t.genre} ${t.categories.join(" ")} ${t.networks.join(" ")}`.toLowerCase()
+        const haystack = `${t.name} ${t.genre} ${t.categories.join(" ")}`.toLowerCase()
         if (!haystack.includes(q)) return false
       }
       return true
@@ -134,8 +126,8 @@ export default function RosterPage() {
             transition={{ duration: 0.8, delay: 0.1, ease }}
             className="mt-4 text-[15px] text-mjcc-muted leading-relaxed max-w-lg"
           >
-            {talent.length} verified creators with confirmed broadcast credits, vetted following,
-            and active brand campaign availability.
+            Verified creators with confirmed broadcast credits, vetted following,
+            and active brand campaign availability. Individual profiles unlock for qualified brand inquiries.
           </motion.p>
         </div>
       </section>
@@ -145,7 +137,6 @@ export default function RosterPage() {
       {/* Tier filter tabs + filters */}
       <div className="sticky top-0 z-40 bg-mjcc-black/95 backdrop-blur-sm border-b border-mjcc-dark">
         <div className="max-w-md lg:max-w-5xl mx-auto px-4 py-3">
-          {/* Tier tabs */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -167,7 +158,6 @@ export default function RosterPage() {
             ))}
           </motion.div>
 
-          {/* Filters row */}
           <div className="grid grid-cols-3 gap-2 mt-2">
             <div className="relative">
               <select
@@ -181,7 +171,6 @@ export default function RosterPage() {
               </select>
               <ChevronDown size={12} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-mjcc-platinum pointer-events-none" />
             </div>
-
             <div className="relative">
               <select
                 value={category}
@@ -194,7 +183,6 @@ export default function RosterPage() {
               </select>
               <ChevronDown size={12} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-mjcc-platinum pointer-events-none" />
             </div>
-
             <div className="relative">
               <select
                 value={size}
@@ -209,7 +197,6 @@ export default function RosterPage() {
             </div>
           </div>
 
-          {/* Search */}
           <div className="relative mt-2">
             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-mjcc-platinum pointer-events-none" />
             <input
@@ -221,7 +208,6 @@ export default function RosterPage() {
             />
           </div>
 
-          {/* Active filter chips */}
           {activeFilters.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {activeFilters.map((f) => (
@@ -242,19 +228,19 @@ export default function RosterPage() {
       {/* Results count */}
       <div className="max-w-md lg:max-w-5xl mx-auto px-4 pt-6 pb-2">
         <p className="text-xs text-mjcc-muted">
-          {filtered.length} {filtered.length === 1 ? "creator" : "creators"} found
+          {filtered.length} {filtered.length === 1 ? "creator" : "creators"} shown
         </p>
       </div>
 
       {/* Talent grid */}
-      <section className="px-4 py-4 pb-40">
+      <section className="px-4 py-4 pb-20">
         <div className="max-w-md lg:max-w-5xl mx-auto">
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
               {filtered.map((t) => (
                 <div key={t.slug}>
                   <Link
-                    href={`/roster/${t.slug}`}
+                    href={`/book?interest=${t.categories[0]}`}
                     className="block bg-mjcc-charcoal border border-transparent hover:border-mjcc-gold/40 transition-all group overflow-hidden"
                   >
                     <div className="aspect-[3/4] relative overflow-hidden">
@@ -267,7 +253,6 @@ export default function RosterPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-                      {/* Tier badge */}
                       <div className="absolute top-0 left-0 right-0 p-2 lg:p-3">
                         <span className={`inline-block text-[8px] lg:text-[9px] px-2 py-0.5 uppercase tracking-[0.12em] ${
                           t.tier === "Marquee"
@@ -289,10 +274,10 @@ export default function RosterPage() {
                         </p>
                         <div className="flex items-center justify-between mt-1.5">
                           <span className="font-mono text-[11px] text-mjcc-gold">
-                            {t.totalFollowing}
+                            {t.following}
                           </span>
                           <span className="text-[9px] text-mjcc-gold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                            Book Now
+                            Inquire
                           </span>
                         </div>
                       </div>
@@ -321,6 +306,54 @@ export default function RosterPage() {
               </button>
             </motion.div>
           )}
+        </div>
+      </section>
+
+      {/* CTA to inquire */}
+      <section className="bg-mjcc-charcoal">
+        <div className="px-6 py-16">
+          <div className="max-w-md lg:max-w-3xl mx-auto text-center">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4"
+            >
+              Looking for Specific Talent?
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+              className="font-serif text-3xl text-mjcc-cream leading-[1.15] tracking-tight"
+            >
+              Tell us about your campaign.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1, ease }}
+              className="mt-4 text-[15px] text-mjcc-muted leading-relaxed max-w-lg mx-auto"
+            >
+              Our team matches you with the right creator based on your goals, audience, and budget. We will respond within two business days with a curated shortlist.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15, ease }}
+              className="mt-8"
+            >
+              <Link
+                href="/book"
+                className="inline-block px-8 py-3 bg-mjcc-gold text-mjcc-black text-sm font-medium hover:bg-mjcc-gold-hover transition-colors"
+              >
+                Submit a Campaign Brief
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
