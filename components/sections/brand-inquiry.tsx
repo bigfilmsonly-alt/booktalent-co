@@ -42,7 +42,7 @@ export function BrandInquiry() {
             BookTalent
           </p>
           <h2 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
-            Get a custom campaign proposal in 24 hours.
+            Get a custom campaign proposal within two business days.
           </h2>
           <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
             Tell us your goals and budget. We will respond with a curated talent and package recommendation.
@@ -59,7 +59,7 @@ export function BrandInquiry() {
               Your proposal is in progress.
             </h3>
             <p className="text-sm text-mjcc-muted">
-              Our team will deliver a custom proposal to your inbox within 24 hours.
+              Our team will deliver a custom proposal to your inbox withwithin two business days.
             </p>
           </motion.div>
         ) : (

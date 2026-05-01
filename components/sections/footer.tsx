@@ -24,7 +24,7 @@ export function Footer() {
           <div>
             <h4 className="text-[10px] text-mjcc-gold uppercase tracking-wider mb-3">Browse</h4>
             <ul className="space-y-2">
-              <li><Link href="/roster" className="text-xs text-mjcc-cream hover:text-mjcc-gold transition-colors">The Roster</Link></li>
+              <li><Link href="/apply" className="text-xs text-mjcc-cream hover:text-mjcc-gold transition-colors">The Roster</Link></li>
               <li><Link href="/case-studies" className="text-xs text-mjcc-cream hover:text-mjcc-gold transition-colors">Case Studies</Link></li>
               <li><Link href="/about" className="text-xs text-mjcc-cream hover:text-mjcc-gold transition-colors">About</Link></li>
               <li><Link href="/schedule" className="text-xs text-mjcc-cream hover:text-mjcc-gold transition-colors">Schedule a Call</Link></li>

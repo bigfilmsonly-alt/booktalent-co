@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 
-const networks = ["MTV", "NBC", "FOOD NETWORK", "HALLMARK", "USA", "OWN", "CBS", "BRAVO"]
+const networks = ["VH1", "MTV", "BRAVO", "BET", "FOOD NETWORK", "NBC", "HALLMARK", "USA NETWORK", "OWN", "E!", "CBS"]
 
 export function CredibilityBar() {
   return (

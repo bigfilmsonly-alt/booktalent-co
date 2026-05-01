@@ -130,7 +130,7 @@ function BookingFlowInner() {
             <div className="space-y-2">
               <div className="flex gap-3">
                 <span className="font-mono text-xs text-mjcc-gold shrink-0">01</span>
-                <p className="text-xs text-mjcc-muted">We review your brief and match talent within 24 hours.</p>
+                <p className="text-xs text-mjcc-muted">We review your brief and match talent within two business days.</p>
               </div>
               <div className="flex gap-3">
                 <span className="font-mono text-xs text-mjcc-gold shrink-0">02</span>
@@ -149,7 +149,7 @@ function BookingFlowInner() {
 
           <div className="flex flex-col gap-3">
             <Link
-              href="/#media-kit"
+              href="/case-studies"
               className="inline-flex items-center justify-center border border-mjcc-gold/40 text-mjcc-gold px-8 py-4 text-sm font-medium tracking-wider hover:border-mjcc-gold hover:bg-mjcc-gold hover:text-mjcc-black transition-all duration-300 min-h-[48px]"
             >
               DOWNLOAD MEDIA KIT

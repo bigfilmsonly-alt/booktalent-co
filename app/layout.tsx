@@ -32,10 +32,10 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Book Reality TV Stars for Brand Campaigns | BookTalent',
+    default: 'BookTalent. Television Verified Talent. Ready to Book.',
     template: '%s | BookTalent',
   },
-  description: 'Book verified reality TV talent from MTV, Food Network, NBC and more. Campaign packages from $15K. 4.2x average ROAS across 47 campaigns. Get a proposal in 24 hours.',
+  description: 'Premium talent booking for verified reality TV personalities. 74 creators with confirmed broadcast credits across 11 major networks. Book campaigns, production, live commerce, and more.',
   keywords: [
     'book reality TV talent',
     'hire reality TV stars',
@@ -61,16 +61,16 @@ export const metadata: Metadata = {
     title: 'BookTalent',
   },
   openGraph: {
-    title: 'Book Reality TV Stars for Brand Campaigns | BookTalent',
-    description: 'Verified reality TV talent from MTV, Food Network, NBC and more. Campaign packages from $15K. 4.2x average ROAS. Proposal in 24 hours.',
+    title: 'BookTalent',
+    description: 'Television Verified Talent. Ready to Book.',
     url: 'https://booktalent.co',
     siteName: 'BookTalent',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Book Reality TV Stars for Campaigns | BookTalent',
-    description: 'Verified reality TV talent for brand campaigns, TikTok, live commerce, and branded content. From $15K. booktalent.co',
+    title: 'BookTalent',
+    description: 'Television Verified Talent. Ready to Book.',
   },
 }
 

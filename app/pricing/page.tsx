@@ -175,7 +175,7 @@ export default function PricingPage() {
                     { feature: "Talent Verification", bt: "TV broadcast credits verified", trad: "Self reported metrics", diy: "No verification" },
                     { feature: "Brand Safety", bt: "Network compliance cleared", trad: "Manual review", diy: "Your responsibility" },
                     { feature: "Production Quality", bt: "In house production company", trad: "Creator handles it", diy: "Creator handles it" },
-                    { feature: "Audience Authenticity", bt: "80% rejection rate", trad: "Varies by agency", diy: "Unverified" },
+                    { feature: "Audience Authenticity", bt: "Personally vetted roster", trad: "Varies by agency", diy: "Unverified" },
                     { feature: "Content Ownership", bt: "Full ownership included", trad: "Negotiated per deal", diy: "Negotiated per deal" },
                     { feature: "Turnaround Time", bt: "12 days average", trad: "4 to 8 weeks", diy: "Unpredictable" },
                     { feature: "Satisfaction Guarantee", bt: "Talent substitution at no cost", trad: "Rarely offered", diy: "None" },

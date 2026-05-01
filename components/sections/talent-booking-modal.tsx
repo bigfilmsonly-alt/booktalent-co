@@ -202,7 +202,7 @@ export function TalentBookingModal({ talent, onClose }: TalentBookingModalProps)
                   </p>
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3 text-mjcc-muted" />
-                    <span className="text-[10px] text-mjcc-muted">Less than 60 seconds</span>
+                    <span className="text-[10px] text-mjcc-muted">Less than 5 minutes</span>
                   </div>
                 </div>
               </div>

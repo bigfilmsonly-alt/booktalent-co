@@ -425,7 +425,7 @@ export default function SchedulePage() {
               Browse the roster &rarr;
             </Link>
             <Link
-              href="/#media-kit"
+              href="/book"
               className="text-sm text-mjcc-gold hover:underline"
             >
               Download the media kit &rarr;

@@ -11,7 +11,7 @@ const comparisons = [
   },
   {
     feature: "Audience Verification",
-    booktalent: "Platform analytics access required. Follower authenticity audited. 80% of applicants rejected.",
+    booktalent: "Platform analytics access required. Follower authenticity audited. Personally vetted roster.",
     others: "Take the creator's word for it. Bots and bought followers common.",
   },
   {

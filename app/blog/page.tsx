@@ -81,7 +81,7 @@ export default function BlogPage() {
       <section className="px-6 py-16 text-center">
         <p className="text-sm text-mjcc-muted mb-4">Want these insights delivered to your inbox?</p>
         <Link
-          href="/#media-kit"
+          href="/book"
           className="inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-8 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-gold-deep transition-colors min-h-[48px]"
         >
           GET THE MEDIA KIT

@@ -139,7 +139,7 @@ export default function CaseStudiesPage() {
               BOOK TALENT
             </Link>
             <Link
-              href="/#media-kit"
+              href="/book"
               className="inline-flex items-center justify-center border border-mjcc-gold/40 text-mjcc-gold px-8 py-4 text-sm font-medium tracking-wider hover:border-mjcc-gold hover:bg-mjcc-gold hover:text-mjcc-black transition-all duration-300 min-h-[48px]"
             >
               DOWNLOAD MEDIA KIT

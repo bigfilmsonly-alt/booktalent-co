@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 
-const networks = ["MTV", "FOOD NETWORK", "NBC", "HALLMARK", "USA NETWORK", "OWN", "CBS"]
+const networks = ["VH1", "MTV", "BRAVO", "BET", "FOOD NETWORK", "NBC", "HALLMARK", "USA NETWORK", "OWN", "E!", "CBS"]
 
 export function Hero() {
   return (
@@ -37,22 +37,40 @@ export function Hero() {
             Vetted creators from the biggest networks in television. Camera trained, audience trusted, ready to deliver for your brand.
           </motion.p>
 
-          {/* Single CTA */}
+          {/* Dual CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10"
+            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <a
               href="/book"
-              className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-4 text-sm font-medium tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[52px]"
+              className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-4 text-sm font-medium tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[52px] w-full sm:w-auto max-w-[280px]"
             >
               BOOK TALENT
+            </a>
+            <a
+              href="/schedule"
+              className="cta-button inline-flex items-center justify-center border border-mjcc-cream/30 text-mjcc-cream px-10 py-4 text-sm font-medium tracking-[0.15em] hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300 min-h-[52px] w-full sm:w-auto max-w-[280px]"
+            >
+              SCHEDULE A CALL
             </a>
           </motion.div>
         </div>
       </div>
+
+      {/* Trust line */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="absolute bottom-16 left-0 right-0 text-center px-6"
+      >
+        <p className="text-[11px] lg:text-xs text-mjcc-muted/60 uppercase tracking-[0.15em] max-w-xl mx-auto">
+          A division of Big Films Only. 15+ years producing reality television. 74 creators currently bookable.
+        </p>
+      </motion.div>
 
       {/* Network marquee */}
       <motion.div

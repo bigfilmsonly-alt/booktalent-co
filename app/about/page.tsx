@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Footer } from "@/components/sections/footer"
 
 const values = [
-  { number: "01", title: "Verification First", description: "Every creator has confirmed broadcast credits. Every brand is qualified. Every campaign is vetted. 80% of applicants are rejected." },
+  { number: "01", title: "Verification First", description: "Every creator has confirmed broadcast credits. Every brand is qualified. Every campaign is vetted. Every application is personally vetted by our talent director." },
   { number: "02", title: "Production Grade Output", description: "We are a production company first. Every piece of content meets the standards we set producing 100+ shows for eight major networks." },
   { number: "03", title: "Brand Safety Built In", description: "Our talent has cleared network standards and practices. The same compliance process that protects television advertisers protects your brand." },
   { number: "04", title: "Careers, Not Just Deals", description: "Every creator gets career strategy, content coaching, and a dedicated manager. We build businesses around talent, not just one off deals." },

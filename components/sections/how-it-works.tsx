@@ -3,8 +3,8 @@
 import { motion } from "framer-motion"
 
 const steps = [
-  { number: "01", title: "Submit Your Brief", description: "Campaign objectives, budget, timeline, and target audience. Takes less than 60 seconds." },
-  { number: "02", title: "We Match You", description: "Handpicked talent based on audience alignment, content style, and campaign fit. Proposal in 24 hours." },
+  { number: "01", title: "Submit Your Brief", description: "Campaign objectives, budget, timeline, and target audience. Takes less than 5 minutes." },
+  { number: "02", title: "We Match You", description: "Handpicked talent based on audience alignment, content style, and campaign fit. Proposal within two business days." },
   { number: "03", title: "Launch", description: "Approve content, go live, track performance. Full reporting on reach, engagement, and ROI." },
 ]
 

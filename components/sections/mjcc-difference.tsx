@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 const differentiators = [
   {
     title: "Television Verified Talent",
-    description: "Every creator has confirmed broadcast credits across MTV, Food Network, NBC, OWN, and CBS. Network compliance cleared. Background checked. FCC standards met. We reject 80% of applicants.",
+    description: "Every creator has confirmed broadcast credits across VH1, MTV, Bravo, BET, Food Network, NBC, and beyond. Network compliance cleared. Background checked. FCC standards met. Every application is personally vetted by our talent director.",
   },
   {
     title: "Production Company Built In",

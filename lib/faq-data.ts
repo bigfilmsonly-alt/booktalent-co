@@ -34,7 +34,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "How do I know the audience metrics are real?",
-    answer: "We require platform analytics access during onboarding and verify follower authenticity, engagement quality, and audience demographics. We reject approximately 80% of applicants who do not pass verification.",
+    answer: "We require platform analytics access during onboarding and verify follower authenticity, engagement quality, and audience demographics. Every application is personally vetted by our talent director who do not pass verification.",
   },
   {
     question: "What if I'm not sure which package is right?",
@@ -50,6 +50,6 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "How do I get started?",
-    answer: "Submit a brief at booktalent.co/book for a proposal within 24 hours. Or book a free discovery call at booktalent.co/schedule. Either way, you hear from a real person.",
+    answer: "Submit a brief at booktalent.co/book for a proposal within two business days. Or book a free discovery call at booktalent.co/schedule. Either way, you hear from a real person.",
   },
 ]
