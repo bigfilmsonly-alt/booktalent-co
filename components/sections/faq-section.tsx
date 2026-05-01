@@ -8,7 +8,6 @@ import { faqItems } from "@/lib/faq-data"
 export function FAQSection() {
   return (
     <section id="faq" className="bg-mjcc-black">
-      <div className="gold-divider" />
 
       <div className="px-6 py-20">
         <div className="max-w-lg mx-auto">
@@ -24,23 +23,23 @@ export function FAQSection() {
             </motion.p>
 
             <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="font-serif text-3xl text-mjcc-cream leading-tight"
             >
-              Frequently asked.
+              What brands ask before booking.
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-4 text-[15px] text-mjcc-muted leading-relaxed"
             >
-              Everything brands ask before their first booking.
+              Quick answers. If you need more detail, book a call.
             </motion.p>
           </div>
 

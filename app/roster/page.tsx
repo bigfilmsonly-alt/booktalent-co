@@ -8,6 +8,16 @@ import { Search, X, ChevronDown } from "lucide-react"
 import { talentRoster } from "@/lib/talent-data"
 import { Footer } from "@/components/sections/footer"
 
+const categoryTabs = [
+  "All",
+  "Fashion & Lifestyle",
+  "Fitness & Yoga",
+  "Chefs & Food",
+  "Beauty & Skincare",
+  "Comedy & Entertainment",
+  "Parenting & Family",
+]
+
 const allNetworks = [
   "All Networks",
   "MTV",
@@ -17,6 +27,8 @@ const allNetworks = [
   "USA Network",
   "OWN",
   "CBS",
+  "BRAVO",
+  "E!",
 ]
 
 const allCategories = [
@@ -27,10 +39,13 @@ const allCategories = [
   "Comedy",
   "Lifestyle",
   "Food",
-  "Music",
   "Drama",
   "Parenting",
   "Travel",
+  "Wellness",
+  "Skincare",
+  "Yoga",
+  "Entertainment",
 ]
 
 const allSizes = ["All Sizes", "Under 500K", "500K-1M", "1M+"]
@@ -42,20 +57,15 @@ function parseFollowing(val: string): number {
   return parseFloat(clean)
 }
 
-const anim = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-}
-
 export default function RosterPage() {
+  const [activeCategory, setActiveCategory] = useState("All")
   const [network, setNetwork] = useState("All Networks")
   const [category, setCategory] = useState("All Categories")
   const [size, setSize] = useState("All Sizes")
   const [search, setSearch] = useState("")
 
   const activeFilters: { label: string; clear: () => void }[] = []
+  if (activeCategory !== "All") activeFilters.push({ label: activeCategory, clear: () => setActiveCategory("All") })
   if (network !== "All Networks") activeFilters.push({ label: network, clear: () => setNetwork("All Networks") })
   if (category !== "All Categories") activeFilters.push({ label: category, clear: () => setCategory("All Categories") })
   if (size !== "All Sizes") activeFilters.push({ label: size, clear: () => setSize("All Sizes") })
@@ -63,6 +73,7 @@ export default function RosterPage() {
 
   const filtered = useMemo(() => {
     return talentRoster.filter((t) => {
+      if (activeCategory !== "All" && t.category !== activeCategory) return false
       if (network !== "All Networks" && !t.networks.includes(network)) return false
       if (category !== "All Categories" && !t.specialties.includes(category)) return false
       if (size !== "All Sizes") {
@@ -73,14 +84,15 @@ export default function RosterPage() {
       }
       if (search.trim()) {
         const q = search.toLowerCase()
-        const haystack = `${t.name} ${t.specialties.join(" ")}`.toLowerCase()
+        const haystack = `${t.name} ${t.specialties.join(" ")} ${t.category}`.toLowerCase()
         if (!haystack.includes(q)) return false
       }
       return true
     })
-  }, [network, category, size, search])
+  }, [activeCategory, network, category, size, search])
 
   function resetFilters() {
+    setActiveCategory("All")
     setNetwork("All Networks")
     setCategory("All Categories")
     setSize("All Sizes")
@@ -91,7 +103,7 @@ export default function RosterPage() {
     <>
       {/* Hero */}
       <section className="px-6 pt-12 pb-10">
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md lg:max-w-5xl mx-auto">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -105,7 +117,7 @@ export default function RosterPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[32px] sm:text-4xl text-mjcc-cream leading-[1.1] tracking-tight"
+            className="font-serif text-[32px] sm:text-4xl lg:text-5xl text-mjcc-cream leading-[1.1] tracking-tight"
           >
             Television verified talent. Ready to book.
           </motion.h1>
@@ -114,20 +126,42 @@ export default function RosterPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-[15px] text-mjcc-muted leading-relaxed"
+            className="mt-4 text-[15px] text-mjcc-muted leading-relaxed max-w-lg"
           >
-            Every creator on our roster has confirmed broadcast television credits. Filter by network, category, or audience size to find the right talent for your brand.
+            Every creator on our roster has confirmed broadcast television credits. Filter by category, network, or audience size to find the right talent for your brand.
           </motion.p>
         </div>
       </section>
 
       <div className="gold-divider" />
 
-      {/* Sticky filter bar */}
+      {/* Category filter tabs */}
       <div className="sticky top-0 z-40 bg-mjcc-black/95 backdrop-blur-sm border-b border-mjcc-dark">
-        <div className="max-w-md mx-auto px-4 py-3">
+        <div className="max-w-md lg:max-w-5xl mx-auto px-4 py-3">
+          {/* Category tabs — horizontal scroll */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-1 px-1"
+          >
+            {categoryTabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveCategory(tab)}
+                className={`whitespace-nowrap px-4 py-2 text-xs uppercase tracking-wider transition-all duration-300 shrink-0 ${
+                  activeCategory === tab
+                    ? "bg-mjcc-gold text-mjcc-black font-medium"
+                    : "border border-mjcc-dark text-mjcc-platinum hover:border-mjcc-gold/40 hover:text-mjcc-gold"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </motion.div>
+
           {/* Filters row: 3 dropdowns side by side */}
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 gap-2 mt-2">
             <div className="relative">
               <select
                 value={network}
@@ -198,18 +232,21 @@ export default function RosterPage() {
         </div>
       </div>
 
+      {/* Results count */}
+      <div className="max-w-md lg:max-w-5xl mx-auto px-4 pt-6 pb-2">
+        <p className="text-xs text-mjcc-muted">
+          {filtered.length} {filtered.length === 1 ? "talent" : "talents"} found
+        </p>
+      </div>
+
       {/* Talent grid */}
-      <section className="px-4 py-8 pb-24">
-        <div className="max-w-md mx-auto">
+      <section className="px-4 py-4 pb-40">
+        <div className="max-w-md lg:max-w-5xl mx-auto">
           {filtered.length > 0 ? (
-            <div className="grid grid-cols-2 gap-3">
-              {filtered.map((talent, i) => (
-                <motion.div
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+              {filtered.map((talent) => (
+                <div
                   key={talent.slug}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
                     href={`/roster/${talent.slug}`}
@@ -222,11 +259,19 @@ export default function RosterPage() {
                         alt={talent.name}
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                        sizes="50vw"
+                        sizes="(max-width: 640px) 50vw, 25vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+                      {/* Category label at top */}
+                      <div className="absolute top-0 left-0 right-0 p-2 lg:p-3">
+                        <span className="inline-block text-[8px] lg:text-[9px] text-mjcc-gold bg-black/50 backdrop-blur-sm px-2 py-0.5 uppercase tracking-[0.12em]">
+                          {talent.category}
+                        </span>
+                      </div>
+
                       <div className="absolute bottom-0 left-0 right-0 p-3">
-                        <h3 className="font-serif text-sm text-mjcc-cream leading-tight">
+                        <h3 className="font-serif text-sm lg:text-base text-mjcc-cream leading-tight">
                           {talent.name}
                         </h3>
                         <p className="text-[10px] text-mjcc-platinum/80 mt-0.5 truncate">
@@ -243,7 +288,7 @@ export default function RosterPage() {
                       </div>
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
           ) : (

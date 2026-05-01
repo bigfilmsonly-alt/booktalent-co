@@ -2,22 +2,15 @@
 
 import { motion } from "framer-motion"
 
-const talentSteps = [
-  { number: "01", title: "Apply", description: "Submit your TV credits and social presence. We review every application personally." },
-  { number: "02", title: "Get Matched", description: "Paired with a dedicated manager who audits your brand and starts getting you booked." },
-  { number: "03", title: "Get Paid", description: "Receive curated briefs, deliver content, collect payment. We handle everything else." },
-]
-
-const brandSteps = [
-  { number: "01", title: "Tell Us Your Goals", description: "Campaign objectives, budget, and target audience. We learn your brand first." },
-  { number: "02", title: "We Match You", description: "Handpicked talent based on audience alignment, content style, and campaign fit." },
-  { number: "03", title: "Launch", description: "Approve content, go live, track performance. Full reporting on reach and ROI." },
+const steps = [
+  { number: "01", title: "Submit Your Brief", description: "Campaign objectives, budget, timeline, and target audience. Takes less than 60 seconds." },
+  { number: "02", title: "We Match You", description: "Handpicked talent based on audience alignment, content style, and campaign fit. Proposal in 24 hours." },
+  { number: "03", title: "Launch", description: "Approve content, go live, track performance. Full reporting on reach, engagement, and ROI." },
 ]
 
 export function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-mjcc-black">
-      <div className="gold-divider" />
 
       <div className="px-6 lg:px-12 py-20 lg:py-28">
         <div className="text-center mb-12 lg:mb-16">
@@ -31,83 +24,52 @@ export function HowItWorks() {
           </motion.p>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
-            Three steps.
+            Three steps to your first campaign.
           </motion.h2>
         </div>
 
-        {/* Side-by-side on desktop */}
-        <div className="max-w-md lg:max-w-5xl mx-auto lg:grid lg:grid-cols-2 lg:gap-16">
-          {/* Talent Track */}
-          <div className="mb-12 lg:mb-0">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-xs text-mjcc-muted uppercase tracking-[0.2em] mb-6 text-center lg:text-left"
-            >
-              For Talent
-            </motion.p>
-
-            <div className="space-y-4">
-              {talentSteps.map((step, i) => (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="flex items-start gap-4 py-4 border-b border-mjcc-dark/40"
-                >
-                  <span className="font-mono text-lg text-mjcc-gold/30 font-bold shrink-0 w-8">
-                    {step.number}
-                  </span>
-                  <div>
-                    <h4 className="text-sm text-mjcc-cream font-medium mb-1">{step.title}</h4>
-                    <p className="text-sm text-mjcc-muted leading-relaxed">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+        <div className="max-w-md lg:max-w-2xl mx-auto">
+          <div className="space-y-4">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-start gap-4 py-5 border-b border-mjcc-dark/40"
+              >
+                <span className="font-mono text-lg text-mjcc-gold/50 font-bold shrink-0 w-8">
+                  {step.number}
+                </span>
+                <div>
+                  <h4 className="text-sm text-mjcc-cream font-medium mb-1">{step.title}</h4>
+                  <p className="text-sm text-mjcc-muted leading-relaxed">{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Brand Track */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-xs text-mjcc-muted uppercase tracking-[0.2em] mb-6 text-center lg:text-left"
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-10 text-center"
+          >
+            <a
+              href="/book"
+              className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[48px]"
             >
-              For Brands
-            </motion.p>
-
-            <div className="space-y-4">
-              {brandSteps.map((step, i) => (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="flex items-start gap-4 py-4 border-b border-mjcc-dark/40"
-                >
-                  <span className="font-mono text-lg text-mjcc-gold/30 font-bold shrink-0 w-8">
-                    {step.number}
-                  </span>
-                  <div>
-                    <h4 className="text-sm text-mjcc-cream font-medium mb-1">{step.title}</h4>
-                    <p className="text-sm text-mjcc-muted leading-relaxed">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+              SUBMIT YOUR BRIEF
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

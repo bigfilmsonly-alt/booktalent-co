@@ -9,21 +9,15 @@ interface Tab {
   label: string
   icon: typeof Home
   href: string
+  primary?: boolean
 }
 
 const tabs: Tab[] = [
   { label: "Home", icon: Home, href: "/" },
   { label: "Services", icon: Briefcase, href: "/services" },
-  { label: "Talent", icon: Users, href: "/roster" },
-  { label: "Book", icon: CalendarCheck, href: "/book" },
+  { label: "Book", icon: CalendarCheck, href: "/book", primary: true },
+  { label: "Roster", icon: Users, href: "/roster" },
   { label: "Apply", icon: UserPlus, href: "/apply" },
-]
-
-const desktopLinks = [
-  { label: "Services", href: "/services" },
-  { label: "Roster", href: "/roster" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "About", href: "/about" },
 ]
 
 export function Navigation() {
@@ -55,83 +49,120 @@ export function Navigation() {
     return pathname.startsWith(tab.href)
   }
 
+  function isDesktopActive(href: string): boolean {
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
+
   return (
     <>
-      {/* ─── Desktop top navigation ─── */}
+      {/* Desktop header — glass, static, futuristic */}
       <header
         className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-mjcc-black/95 backdrop-blur-xl border-b border-mjcc-dark/40" : "bg-transparent"
+          scrolled
+            ? "bg-mjcc-black/80 backdrop-blur-2xl shadow-[0_1px_30px_rgba(232,185,49,0.04)]"
+            : "bg-mjcc-black/40 backdrop-blur-md"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-8 xl:px-12">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-10 xl:px-16">
+          <div className="flex items-center justify-between h-[72px]">
             {/* Logo */}
-            <Link href="/" className="font-serif text-lg text-mjcc-cream tracking-tight">
+            <Link href="/" className="font-serif text-[17px] text-mjcc-cream tracking-[0.4em] uppercase hover:text-mjcc-gold transition-colors duration-400">
               BookTalent
             </Link>
 
-            {/* Center links */}
-            <nav className="flex items-center gap-8">
-              {desktopLinks.map((link) => (
+            {/* Center nav — 4 essential links */}
+            <nav className="flex items-center gap-10">
+              {[
+                { label: "ROSTER", href: "/roster" },
+                { label: "SERVICES", href: "/services" },
+                { label: "PRICING", href: "/pricing" },
+                { label: "ABOUT", href: "/about" },
+              ].map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[13px] text-mjcc-muted hover:text-mjcc-cream transition-colors tracking-wide"
+                  className={`text-[10px] tracking-[0.25em] transition-colors duration-300 ${
+                    isDesktopActive(link.href)
+                      ? "text-mjcc-gold"
+                      : "text-mjcc-cream hover:text-mjcc-gold"
+                  }`}
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* Right CTAs */}
-            <div className="flex items-center gap-4">
+            {/* Right — two clear CTAs */}
+            <div className="flex items-center gap-5">
               <Link
                 href="/apply"
-                className="text-[12px] text-mjcc-muted hover:text-mjcc-cream transition-colors tracking-wider uppercase"
+                className="text-[10px] text-mjcc-cream tracking-[0.2em] border border-mjcc-cream/20 px-5 py-2.5 hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300"
               >
-                For Talent
+                JOIN AS CREATOR
               </Link>
               <Link
                 href="/book"
-                className="bg-mjcc-gold text-mjcc-black px-5 py-2 text-[12px] font-medium tracking-wider hover:bg-mjcc-gold-hover transition-colors"
+                className="text-[10px] text-mjcc-black tracking-[0.2em] bg-mjcc-gold px-5 py-2.5 font-medium hover:bg-mjcc-gold-hover transition-all duration-300"
               >
                 BOOK TALENT
               </Link>
             </div>
           </div>
         </div>
+
+        {/* Thin gold accent line at bottom of header */}
+        <div className={`h-[1px] transition-opacity duration-500 ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`} style={{ background: "linear-gradient(90deg, transparent, rgba(232, 185, 49, 0.3), transparent)" }} />
       </header>
 
-      {/* ─── Mobile bottom tab bar ─── */}
+      {/* Mobile bottom tab bar */}
       <nav
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-mjcc-black/95 backdrop-blur-2xl border-t border-mjcc-dark/40 touch-manipulation"
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-mjcc-black/90 backdrop-blur-2xl border-t border-mjcc-cream/8 touch-manipulation"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        <div className="flex items-center justify-around h-[72px] px-2">
+        <div className="flex items-end justify-around h-[70px] px-1">
           {tabs.map((tab) => {
             const active = isActive(tab)
+
+            if (tab.primary) {
+              return (
+                <button
+                  key={tab.label}
+                  onClick={() => handleClick(tab)}
+                  className="flex flex-col items-center justify-center flex-1 h-full touch-manipulation -mt-4"
+                  aria-label={tab.label}
+                >
+                  <div className="flex items-center justify-center w-[52px] h-[52px] bg-mjcc-gold shadow-[0_4px_20px_rgba(232,185,49,0.25)] mb-0.5">
+                    <tab.icon
+                      className="w-5 h-5 text-mjcc-black"
+                      strokeWidth={2.5}
+                    />
+                  </div>
+                  <span className="text-[8px] tracking-[0.2em] text-mjcc-gold font-medium uppercase mt-0.5">
+                    {tab.label}
+                  </span>
+                </button>
+              )
+            }
+
             return (
               <button
                 key={tab.label}
                 onClick={() => handleClick(tab)}
-                className="flex flex-col items-center justify-center flex-1 h-full gap-1 touch-manipulation"
+                className="flex flex-col items-center justify-center flex-1 h-full gap-0.5 touch-manipulation"
                 aria-label={tab.label}
               >
-                <div
-                  className={`flex items-center justify-center w-10 h-10 transition-all duration-200 ${
-                    active ? "bg-mjcc-gold/15" : ""
+                <tab.icon
+                  className={`w-[18px] h-[18px] transition-colors duration-200 ${
+                    active ? "text-mjcc-gold" : "text-mjcc-cream/70"
                   }`}
-                >
-                  <tab.icon
-                    className={`w-6 h-6 transition-colors duration-200 ${
-                      active ? "text-mjcc-gold" : "text-mjcc-muted"
-                    }`}
-                    strokeWidth={active ? 2.2 : 1.5}
-                  />
-                </div>
+                  strokeWidth={active ? 2.2 : 1.5}
+                />
                 <span
-                  className={`text-[11px] tracking-wide transition-colors duration-200 ${
-                    active ? "text-mjcc-gold font-semibold" : "text-mjcc-muted"
+                  className={`text-[8px] tracking-[0.15em] uppercase transition-colors duration-200 ${
+                    active ? "text-mjcc-gold font-medium" : "text-mjcc-cream/70"
                   }`}
                 >
                   {tab.label}

@@ -9,6 +9,23 @@ import { Footer } from "@/components/sections/footer"
 export default function FAQPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqItems.map(item => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            })),
+          }),
+        }}
+      />
       {/* Header */}
       <section className="px-6 pt-12 pb-16">
         <div className="max-w-lg mx-auto">

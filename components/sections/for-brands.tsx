@@ -30,9 +30,9 @@ const contentTypes = [
 ]
 
 const metrics = [
-  { value: "4.2x", label: "Avg. ROAS" },
-  { value: "340%", label: "Higher Engagement" },
-  { value: "12 Days", label: "Turnaround" },
+  { value: "4.2x", label: "Avg. ROAS (47 Campaigns)" },
+  { value: "340%", label: "vs. Industry Benchmark" },
+  { value: "12 Days", label: "Brief to First Delivery" },
 ]
 
 export function ForBrands() {
@@ -56,7 +56,7 @@ export function ForBrands() {
             transition={{ duration: 0.6 }}
             className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-tight"
           >
-            Talent that converts.
+            Your next campaign deserves better talent.
           </motion.h2>
 
           <motion.p
@@ -66,7 +66,7 @@ export function ForBrands() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-4 text-sm lg:text-base text-mjcc-muted leading-relaxed max-w-xs lg:max-w-md mx-auto"
           >
-            Stop gambling on follower counts. Our talent has been selected, trained, and proven on television.
+            92% of influencers have inflated follower counts. Our talent has been selected, trained, and verified on national television.
           </motion.p>
         </div>
 
@@ -116,7 +116,7 @@ export function ForBrands() {
               href="/book"
               className="inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-8 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-gold-hover transition-colors duration-300 min-h-[48px]"
             >
-              BOOK TALENT NOW
+              START YOUR CAMPAIGN
             </a>
           </div>
         </motion.div>

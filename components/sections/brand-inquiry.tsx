@@ -28,24 +28,24 @@ export function BrandInquiry() {
 
   return (
     <section id="brand-inquiry" className="bg-mjcc-charcoal">
-      <div className="gold-divider" />
 
       <div className="px-6 lg:px-12 py-20 lg:py-28">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
         >
           <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">
             BookTalent
           </p>
           <h2 className="font-serif text-3xl lg:text-4xl text-mjcc-cream mb-4">
-            Tell us about your campaign.
+            Get a custom campaign proposal in 24 hours.
           </h2>
           <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
-            We&apos;ll match you with television verified talent within 48 hours.
+            Tell us your goals and budget. We will respond with a curated talent and package recommendation.
           </p>
         </motion.div>
 
@@ -56,23 +56,23 @@ export function BrandInquiry() {
             className="text-center py-16"
           >
             <h3 className="font-serif text-2xl text-mjcc-cream mb-4">
-              Inquiry received.
+              Your proposal is in progress.
             </h3>
             <p className="text-sm text-mjcc-muted">
-              Our team will respond within 48 hours.
+              Our team will deliver a custom proposal to your inbox within 24 hours.
             </p>
           </motion.div>
         ) : (
           <motion.form
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             onSubmit={handleSubmit}
             className="space-y-5 max-w-md lg:max-w-xl mx-auto"
           >
             <div>
-              <label htmlFor="brand-name" className="block text-xs text-mjcc-cream/60 mb-2">
+              <label htmlFor="brand-name" className="block text-xs text-mjcc-cream/80 mb-2">
                 Your Name *
               </label>
               <input
@@ -86,7 +86,7 @@ export function BrandInquiry() {
             </div>
 
             <div>
-              <label htmlFor="brand-email" className="block text-xs text-mjcc-cream/60 mb-2">
+              <label htmlFor="brand-email" className="block text-xs text-mjcc-cream/80 mb-2">
                 Work Email *
               </label>
               <input
@@ -100,7 +100,7 @@ export function BrandInquiry() {
             </div>
 
             <div>
-              <label htmlFor="brand-company" className="block text-xs text-mjcc-cream/60 mb-2">
+              <label htmlFor="brand-company" className="block text-xs text-mjcc-cream/80 mb-2">
                 Company / Brand *
               </label>
               <input
@@ -114,7 +114,7 @@ export function BrandInquiry() {
             </div>
 
             <div>
-              <label htmlFor="brand-budget" className="block text-xs text-mjcc-cream/60 mb-2">
+              <label htmlFor="brand-budget" className="block text-xs text-mjcc-cream/80 mb-2">
                 Campaign Budget *
               </label>
               <select
@@ -133,7 +133,7 @@ export function BrandInquiry() {
             </div>
 
             <div>
-              <label htmlFor="brand-content-type" className="block text-xs text-mjcc-cream/60 mb-2">
+              <label htmlFor="brand-content-type" className="block text-xs text-mjcc-cream/80 mb-2">
                 Content Type *
               </label>
               <select
@@ -149,12 +149,14 @@ export function BrandInquiry() {
                 <option value="vertical-drama" className="bg-mjcc-dark">Vertical Dramas</option>
                 <option value="live-shopping" className="bg-mjcc-dark">Live Commerce</option>
                 <option value="events" className="bg-mjcc-dark">Event Appearances</option>
+                <option value="live-stream" className="bg-mjcc-dark">Live Streaming</option>
+                <option value="podcast" className="bg-mjcc-dark">Podcast</option>
                 <option value="multiple" className="bg-mjcc-dark">Multiple / Not Sure</option>
               </select>
             </div>
 
             <div>
-              <label htmlFor="brand-message" className="block text-xs text-mjcc-cream/60 mb-2">
+              <label htmlFor="brand-message" className="block text-xs text-mjcc-cream/80 mb-2">
                 Campaign Details *
               </label>
               <textarea
@@ -173,7 +175,7 @@ export function BrandInquiry() {
                 disabled={isSubmitting}
                 className="w-full py-4 bg-mjcc-gold text-mjcc-black text-sm font-medium tracking-wider hover:bg-mjcc-gold-hover transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase min-h-[48px]"
               >
-                {isSubmitting ? "SUBMITTING..." : "BOOK TALENT NOW"}
+                {isSubmitting ? "SUBMITTING..." : "GET YOUR PROPOSAL"}
               </button>
             </div>
           </motion.form>

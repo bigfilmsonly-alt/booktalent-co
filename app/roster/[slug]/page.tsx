@@ -92,6 +92,32 @@ export default function TalentProfilePage() {
           >
             {talent.tagline}
           </motion.p>
+
+          {/* Social links */}
+          {talent.social && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-4 flex flex-wrap gap-3"
+            >
+              {talent.social.instagram && (
+                <span className="text-xs text-mjcc-gold border border-mjcc-gold/30 px-3 py-1.5">
+                  IG {talent.social.instagram}
+                </span>
+              )}
+              {talent.social.tiktok && (
+                <span className="text-xs text-mjcc-gold border border-mjcc-gold/30 px-3 py-1.5">
+                  TT {talent.social.tiktok}
+                </span>
+              )}
+              {talent.social.youtube && (
+                <span className="text-xs text-mjcc-gold border border-mjcc-gold/30 px-3 py-1.5">
+                  YT {talent.social.youtube}
+                </span>
+              )}
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -128,6 +154,44 @@ export default function TalentProfilePage() {
       </section>
 
       <div className="gold-divider" />
+
+      {/* Previous Brand Partnerships */}
+      {talent.previousBrands && talent.previousBrands.length > 0 && (
+        <>
+          <section className="px-6 py-10">
+            <div className="max-w-md mx-auto">
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-6"
+              >
+                Brand Partnerships
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease }}
+                className="flex flex-wrap gap-3"
+              >
+                {talent.previousBrands.map((brand) => (
+                  <span
+                    key={brand}
+                    className="px-4 py-2 bg-mjcc-charcoal border border-mjcc-dark text-sm text-mjcc-cream"
+                  >
+                    {brand}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+
+          <div className="gold-divider" />
+        </>
+      )}
 
       {/* CTAs */}
       <section className="px-6 py-10">

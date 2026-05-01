@@ -5,10 +5,10 @@ import Link from "next/link"
 import { Footer } from "@/components/sections/footer"
 
 const values = [
-  { number: "01", title: "Verification First", description: "Every creator on our roster has confirmed broadcast credits. Every brand we partner with is qualified. Every campaign we run is vetted. We don't take shortcuts." },
-  { number: "02", title: "Production Grade Quality", description: "We're a production company first and a talent agency second. Every piece of content we deliver meets the standards we set on national television." },
-  { number: "03", title: "Brand Safety Always", description: "Our talent has cleared network standards and practices. Brands working with us don't worry about brand safety. It's built in." },
-  { number: "04", title: "Talent Development", description: "We don't just book deals. We build careers. Every creator on our roster has access to career strategy, content coaching, and long term opportunity development." },
+  { number: "01", title: "Verification First", description: "Every creator has confirmed broadcast credits. Every brand is qualified. Every campaign is vetted. 80% of applicants are rejected." },
+  { number: "02", title: "Production Grade Output", description: "We are a production company first. Every piece of content meets the standards we set producing 100+ shows for eight major networks." },
+  { number: "03", title: "Brand Safety Built In", description: "Our talent has cleared network standards and practices. The same compliance process that protects television advertisers protects your brand." },
+  { number: "04", title: "Careers, Not Just Deals", description: "Every creator gets career strategy, content coaching, and a dedicated manager. We build businesses around talent, not just one off deals." },
 ]
 
 export default function AboutPage() {
@@ -26,7 +26,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-3xl lg:text-5xl text-mjcc-cream leading-[1.1] italic"
           >
-            &ldquo;We didn&apos;t watch the creator economy emerge. We built the talent that&apos;s bookable in it.&rdquo;
+            &ldquo;Brands are burning millions on unvetted influencers. We built the platform that fixes that.&rdquo;
           </motion.h1>
           <motion.cite
             initial={{ opacity: 0 }}
@@ -45,16 +45,16 @@ export default function AboutPage() {
       <section className="px-6 lg:px-12 py-16 lg:py-24">
         <div className="max-w-2xl mx-auto space-y-6">
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-            For fifteen years, we&apos;ve been the people behind the people you watch on television.
+            The creator economy has a quality problem. Brands spend billions on influencer marketing every year and most of it is wasted on creators with bought followers, inconsistent content, and zero accountability.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-            Jotham produced 100+ reality shows for MTV, Food Network, NBC, Hallmark, USA Network, OWN, and CBS. Mira spent fifteen years placing personalities across the nation&apos;s top reality franchises. We watched the talent we cast, produced, and developed become household names. Then we watched the creator economy explode, leaving most of them without representation that understood their value.
+            That gap exists because there is no verification standard. Anyone with a phone and a ring light can call themselves an influencer. No background checks. No audience verification. No production standards. No recourse when they ghost a campaign.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-            We watched brands burn millions on unvetted influencers with bot followings. We watched talent agencies sign anyone with a phone and a ring light. We watched the gap between television quality talent and creator economy infrastructure get wider every year.
+            BookTalent exists to close that gap. We built a platform where every creator has confirmed broadcast television credits across networks like MTV, Food Network, NBC, and CBS. They have cleared network compliance, passed background checks, and proven they can perform on camera professionally.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-[15px] lg:text-[17px] text-mjcc-cream leading-[1.8] font-medium">
-            So we built BookTalent.
+            Fifteen years of television relationships. 100+ reality shows produced. 50+ verified creators managed. One standard: if they have not been on national television, they are not on our roster.
           </motion.p>
         </div>
       </section>
@@ -127,13 +127,13 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="px-6 lg:px-12 py-16 text-center">
-        <h2 className="font-serif text-2xl lg:text-3xl text-mjcc-cream mb-6">Ready to book?</h2>
+        <h2 className="font-serif text-2xl lg:text-3xl text-mjcc-cream mb-6">See what verified talent can do for your brand.</h2>
         <div className="flex flex-col lg:flex-row justify-center gap-3">
           <Link href="/book" className="inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-8 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-gold-deep transition-colors min-h-[48px]">
-            BOOK TALENT
+            GET A FREE PROPOSAL
           </Link>
           <Link href="/schedule" className="inline-flex items-center justify-center border border-mjcc-cream/20 text-mjcc-cream px-8 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-cream hover:text-mjcc-black transition-all min-h-[48px]">
-            SCHEDULE A CALL
+            TALK TO OUR TEAM
           </Link>
         </div>
       </section>

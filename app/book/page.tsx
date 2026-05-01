@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, Suspense } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
@@ -11,6 +11,8 @@ const serviceOptions = [
   { value: "commerce", label: "Live Commerce Event", desc: "TikTok Shop, Amazon Live, Instagram" },
   { value: "ugc", label: "UGC Content Retainer", desc: "Monthly whitelisted ad content" },
   { value: "management", label: "Talent Management", desc: "Apply for representation" },
+  { value: "live-stream", label: "Live Streaming", desc: "Twitch, YouTube Live, Instagram Live" },
+  { value: "podcast", label: "Podcast", desc: "Guest appearances and hosted episodes" },
   { value: "enterprise", label: "Enterprise Partnership", desc: "The $500K annual bundle" },
   { value: "unsure", label: "Not sure yet", desc: "Help me decide" },
 ]
@@ -34,13 +36,14 @@ const timelineOptions = [
 function BookingFlowInner() {
   const searchParams = useSearchParams()
   const initialService = searchParams.get("service") || ""
+  const initialTalent = searchParams.get("talent") || ""
 
-  const [step, setStep] = useState(initialService ? 2 : 1)
+  const [step, setStep] = useState(1)
   const [selectedService, setSelectedService] = useState(initialService)
   const [formData, setFormData] = useState({
     budget: "",
     timeline: "",
-    goals: "",
+    goals: initialTalent ? `Interested in booking: ${initialTalent}` : "",
     name: "",
     email: "",
     company: "",
@@ -48,6 +51,17 @@ function BookingFlowInner() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+
+  // Pre-select service from query param
+  useEffect(() => {
+    if (initialService) {
+      const valid = serviceOptions.some(o => o.value === initialService)
+      if (valid) {
+        setSelectedService(initialService)
+        setStep(2)
+      }
+    }
+  }, [initialService])
 
   const handleServiceSelect = (value: string) => {
     setSelectedService(value)
@@ -63,7 +77,20 @@ function BookingFlowInner() {
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.company) return
     setIsSubmitting(true)
-    await new Promise((r) => setTimeout(r, 1500))
+    try {
+      await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "booking",
+          service: selectedService,
+          talent: initialTalent,
+          ...formData,
+        }),
+      })
+    } catch {
+      // continue to confirmation
+    }
     setIsSubmitting(false)
     setIsSubmitted(true)
   }
@@ -73,6 +100,7 @@ function BookingFlowInner() {
   }
 
   if (isSubmitted) {
+    const serviceName = serviceOptions.find(o => o.value === selectedService)?.label || selectedService
     return (
       <div className="bg-mjcc-black min-h-screen pb-20 flex flex-col items-center justify-center px-6">
         <motion.div
@@ -80,18 +108,59 @@ function BookingFlowInner() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-md text-center"
         >
+          <div className="w-16 h-16 bg-mjcc-gold/10 border border-mjcc-gold/30 flex items-center justify-center mx-auto mb-6">
+            <span className="text-mjcc-gold text-2xl">&#10003;</span>
+          </div>
+
           <h1 className="font-serif text-3xl text-mjcc-cream mb-4">
             Your booking request is in.
           </h1>
-          <p className="text-sm text-mjcc-muted leading-relaxed mb-8">
-            We review every inquiry personally. Our team will be in touch within 24 hours with a curated proposal based on your goals and budget.
+
+          <div className="bg-mjcc-charcoal border border-mjcc-dark p-4 mb-6 text-left">
+            <p className="text-xs text-mjcc-gold uppercase tracking-wider mb-2">Booking Summary</p>
+            <div className="space-y-1">
+              <p className="text-sm text-mjcc-cream">{serviceName}</p>
+              <p className="text-xs text-mjcc-muted">{formData.budget} &middot; {formData.timeline}</p>
+              {initialTalent && <p className="text-xs text-mjcc-muted">Talent: {initialTalent}</p>}
+            </div>
+          </div>
+
+          <div className="bg-mjcc-charcoal border border-mjcc-dark p-4 mb-8 text-left">
+            <p className="text-xs text-mjcc-gold uppercase tracking-wider mb-2">What Happens Next</p>
+            <div className="space-y-2">
+              <div className="flex gap-3">
+                <span className="font-mono text-xs text-mjcc-gold shrink-0">01</span>
+                <p className="text-xs text-mjcc-muted">We review your brief and match talent within 24 hours.</p>
+              </div>
+              <div className="flex gap-3">
+                <span className="font-mono text-xs text-mjcc-gold shrink-0">02</span>
+                <p className="text-xs text-mjcc-muted">You receive a curated proposal with talent options and pricing.</p>
+              </div>
+              <div className="flex gap-3">
+                <span className="font-mono text-xs text-mjcc-gold shrink-0">03</span>
+                <p className="text-xs text-mjcc-muted">Approve the package and we begin production.</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-sm text-mjcc-muted mb-6">
+            Check your inbox at <span className="text-mjcc-cream">{formData.email}</span> for a confirmation. We review every inquiry personally.
           </p>
-          <Link
-            href="/#media-kit"
-            className="inline-flex items-center border border-mjcc-gold/40 text-mjcc-gold px-8 py-4 text-sm font-medium tracking-wider hover:border-mjcc-gold hover:bg-mjcc-gold hover:text-mjcc-black transition-all duration-300 min-h-[48px]"
-          >
-            DOWNLOAD MEDIA KIT
-          </Link>
+
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/#media-kit"
+              className="inline-flex items-center justify-center border border-mjcc-gold/40 text-mjcc-gold px-8 py-4 text-sm font-medium tracking-wider hover:border-mjcc-gold hover:bg-mjcc-gold hover:text-mjcc-black transition-all duration-300 min-h-[48px]"
+            >
+              DOWNLOAD MEDIA KIT
+            </Link>
+            <Link
+              href="/case-studies"
+              className="text-sm text-mjcc-gold hover:underline"
+            >
+              See campaign results while you wait &rarr;
+            </Link>
+          </div>
         </motion.div>
       </div>
     )

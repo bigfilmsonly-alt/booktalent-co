@@ -77,7 +77,7 @@ export default function CaseStudiesPage() {
                 </p>
 
                 {/* Metrics */}
-                <div className="flex justify-between">
+                <div className="flex justify-between mb-8">
                   {study.metrics.map((metric) => (
                     <div key={metric.label} className="text-center">
                       <p className="font-serif text-3xl text-mjcc-gold">
@@ -90,28 +90,23 @@ export default function CaseStudiesPage() {
                   ))}
                 </div>
 
+                {/* Testimonial */}
+                {study.testimonial && (
+                  <div className="border-l-2 border-mjcc-gold/40 pl-4 mt-6">
+                    <p className="text-sm text-mjcc-cream leading-relaxed italic">
+                      &ldquo;{study.testimonial.quote}&rdquo;
+                    </p>
+                    <p className="text-xs text-mjcc-muted mt-2">
+                      {study.testimonial.name}, {study.testimonial.role}
+                    </p>
+                  </div>
+                )}
+
                 {/* Subtle bottom border */}
                 <div className="border-b border-mjcc-dark/40 mt-12" />
               </motion.article>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <section className="px-6 pb-12">
-        <div className="max-w-2xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease }}
-            className="text-xs text-mjcc-platinum leading-relaxed"
-          >
-            Case studies represent campaigns from BookTalent&apos;s roster and
-            Big Films Only&apos;s production history. Brand names available upon
-            request to qualified inquiries.
-          </motion.p>
         </div>
       </section>
 

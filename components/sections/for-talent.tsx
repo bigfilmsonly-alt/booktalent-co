@@ -5,19 +5,19 @@ import { motion } from "framer-motion"
 const services = [
   {
     title: "Brand Partnerships",
-    description: "Premium deals from brands that value your on camera credibility, not just your follower count.",
+    description: "Premium brand deals that pay what your on camera credibility is worth, not what your follower count suggests.",
   },
   {
     title: "Original Content and IP",
-    description: "Vertical dramas, docuseries, and original concepts with your name on them.",
+    description: "Vertical dramas, docuseries, and original concepts with your name attached and your ownership built in.",
   },
   {
     title: "Live Commerce",
-    description: "TikTok Shop. Amazon Live. Instagram Shopping. You were trained to sell on camera.",
+    description: "TikTok Shop. Amazon Live. Instagram Shopping. You were literally trained to sell on camera by television networks.",
   },
   {
     title: "Career Management",
-    description: "Dedicated management, legal support, content strategy, and financial planning.",
+    description: "Dedicated management, legal support, content strategy, and a team that actually picks up the phone.",
   },
 ]
 
@@ -89,7 +89,7 @@ export function ForTalent() {
             href="/apply"
             className="inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-8 py-4 text-sm font-medium tracking-wider hover:bg-mjcc-gold-hover transition-colors duration-300 min-h-[48px]"
           >
-            APPLY TO GET BOOKED
+            APPLY IN 2 MINUTES
           </a>
         </motion.div>
       </div>
