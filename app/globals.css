@@ -12,11 +12,11 @@
   --mjcc-gold-deep: #CC9F1C;
   --mjcc-gold-soft: #FFF8E1;
   --mjcc-gold-hover: #F2C94C;
-  --mjcc-cream: #F5F4F0;
+  --mjcc-cream: #FFFFFF;
   --mjcc-white: #FFFFFF;
-  --mjcc-platinum: #D4D4D4;
-  --mjcc-warm: #BDBDB9;
-  --mjcc-muted: #A8A8A8;
+  --mjcc-platinum: #E0E0E0;
+  --mjcc-warm: #D0D0D0;
+  --mjcc-muted: #B0B0B0;
   --mjcc-border: #E8E8E8;
   --mjcc-urgent: #E63946;
 
@@ -62,11 +62,11 @@
   --color-mjcc-gold-deep: #CC9F1C;
   --color-mjcc-gold-soft: #FFF8E1;
   --color-mjcc-gold-hover: #F2C94C;
-  --color-mjcc-cream: #F5F4F0;
+  --color-mjcc-cream: #FFFFFF;
   --color-mjcc-white: #FFFFFF;
-  --color-mjcc-platinum: #B8B8B8;
-  --color-mjcc-warm: #9A9A96;
-  --color-mjcc-muted: #888888;
+  --color-mjcc-platinum: #E0E0E0;
+  --color-mjcc-warm: #D0D0D0;
+  --color-mjcc-muted: #B0B0B0;
   --color-mjcc-border: #E8E8E8;
   --color-mjcc-urgent: #E63946;
 
@@ -105,7 +105,7 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-mjcc-black text-mjcc-cream;
+    @apply bg-mjcc-black text-white font-medium;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;

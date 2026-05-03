@@ -17,7 +17,7 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="pt-10 lg:pt-14 text-center"
       >
-        <Link href="/" className="font-serif text-[15px] lg:text-[17px] text-mjcc-cream tracking-[0.4em] uppercase">
+        <Link href="/" className="font-serif text-[17px] lg:text-[19px] text-white tracking-[0.4em] uppercase font-bold">
           BookTalent
         </Link>
       </motion.div>
@@ -30,7 +30,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
-            className="font-serif text-[36px] sm:text-5xl lg:text-6xl text-mjcc-cream leading-[1.08] tracking-tight"
+            className="font-serif text-[38px] sm:text-5xl lg:text-7xl text-white leading-[1.08] tracking-tight font-bold"
           >
             Premium talent.
             <br />
@@ -43,7 +43,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.15, ease }}
-            className="mt-5 text-[15px] lg:text-[17px] text-mjcc-muted leading-relaxed max-w-md mx-auto"
+            className="mt-6 text-[16px] lg:text-[18px] text-white font-semibold leading-relaxed max-w-md mx-auto"
           >
             74 verified creators across 11 networks. Book talent for campaigns, live commerce, and branded content.
           </motion.p>
@@ -57,13 +57,13 @@ export default function Home() {
           >
             <Link
               href="/book"
-              className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-4 text-sm font-medium tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[52px] w-full sm:w-auto max-w-[260px]"
+              className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-4 text-[15px] font-bold tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[56px] w-full sm:w-auto max-w-[280px]"
             >
               BOOK TALENT
             </Link>
             <Link
               href="/apply"
-              className="cta-button inline-flex items-center justify-center border border-mjcc-cream/30 text-mjcc-cream px-10 py-4 text-sm font-medium tracking-[0.15em] hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300 min-h-[52px] w-full sm:w-auto max-w-[260px]"
+              className="cta-button inline-flex items-center justify-center border-2 border-white text-white px-10 py-4 text-[15px] font-bold tracking-[0.15em] hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300 min-h-[56px] w-full sm:w-auto max-w-[280px]"
             >
               APPLY AS TALENT
             </Link>
@@ -83,8 +83,8 @@ export default function Home() {
               { value: "290M+", label: "Reach" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <span className="block font-mono text-lg lg:text-xl text-mjcc-gold">{s.value}</span>
-                <span className="block text-[9px] lg:text-[10px] text-mjcc-muted uppercase tracking-wider mt-1">{s.label}</span>
+                <span className="block font-mono text-xl lg:text-2xl text-mjcc-gold font-bold">{s.value}</span>
+                <span className="block text-[10px] lg:text-[11px] text-white/80 uppercase tracking-wider mt-1 font-semibold">{s.label}</span>
               </div>
             ))}
           </motion.div>
@@ -97,7 +97,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-center text-[10px] lg:text-[11px] text-mjcc-muted/50 uppercase tracking-[0.15em] px-6 mb-4"
+          className="text-center text-[11px] lg:text-[12px] text-white/60 uppercase tracking-[0.15em] px-6 mb-4 font-semibold"
         >
           A division of Big Films Only. Campaign packages from $15K.
         </motion.p>
@@ -106,13 +106,13 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.7 }}
-          className="border-t border-mjcc-dark/40 py-4 overflow-hidden"
+          className="border-t border-white/10 py-4 overflow-hidden"
         >
           <div className="animate-marquee flex whitespace-nowrap items-center">
             {[...networks, ...networks, ...networks, ...networks].map((network, i) => (
               <span
                 key={i}
-                className="mx-8 lg:mx-10 text-[11px] lg:text-[13px] font-bold text-mjcc-cream/30 tracking-[3px] uppercase"
+                className="mx-8 lg:mx-10 text-[12px] lg:text-[14px] font-bold text-white/50 tracking-[3px] uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {network}
