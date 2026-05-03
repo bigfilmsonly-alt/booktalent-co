@@ -19,7 +19,7 @@ export default function Home() {
       <WhyUs />
       <StatsSection />
       <Leadership />
-      <RosterPreview />
+      {/* <RosterPreview /> */}
       <CaseStudy />
       <ServicesOverview />
       <HowItWorks />
