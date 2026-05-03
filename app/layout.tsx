@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Serif_Display, DM_Sans, Outfit, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Navigation } from '@/components/sections/navigation'
-import { StickyBookBar } from '@/components/sections/sticky-book-bar'
-import { ExitIntentPopup } from '@/components/sections/exit-intent-popup'
 import { IPhoneFrame } from '@/components/sections/iphone-frame'
 
 import './globals.css'
@@ -129,8 +127,6 @@ export default function RootLayout({
         <IPhoneFrame>
           {children}
           <Navigation />
-          <StickyBookBar />
-          <ExitIntentPopup />
         </IPhoneFrame>
 
         <Analytics />
