@@ -59,8 +59,8 @@ export default function ApplyPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
                   {/* Apply as New Talent */}
-                  <button
-                    onClick={() => setView("apply")}
+                  <Link
+                    href="/apply/talent"
                     className="group text-left p-6 border border-mjcc-dark/50 hover:border-mjcc-gold transition-all duration-300"
                   >
                     <div className="w-10 h-10 border border-mjcc-gold/30 flex items-center justify-center mb-4 group-hover:border-mjcc-gold transition-colors">
@@ -70,9 +70,10 @@ export default function ApplyPage() {
                       Apply as Talent
                     </h2>
                     <p className="text-xs text-mjcc-muted leading-relaxed">
-                      New to BookTalent? Submit your TV credits and social presence to get started.
+                      Actor, model, creator, musician, or all of the above. Build your profile free and
+                      get found. We only make money when you do.
                     </p>
-                  </button>
+                  </Link>
 
                   {/* Book Talent */}
                   <Link

@@ -22,8 +22,10 @@ export function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
 
-  // Hide nav on homepage (it has its own CTAs)
+  // Hide nav on homepage (it has its own CTAs) and inside the talent questionnaire,
+  // which is a focused flow with its own fixed bottom bar that this one would sit on top of.
   if (pathname === "/") return null
+  if (pathname.startsWith("/apply/talent")) return null
 
   function handleClick(tab: Tab) {
     window.scrollTo({ top: 0, behavior: "instant" })

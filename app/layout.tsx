@@ -30,25 +30,25 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'BookTalent. Television Verified Talent. Ready to Book.',
+    default: 'BookTalent. Entertainment Verified Talent. Ready to Book.',
     template: '%s | BookTalent',
   },
-  description: 'Premium talent booking for verified reality TV personalities. 74 creators with confirmed broadcast credits across 11 major networks. Book campaigns, production, live commerce, and more.',
+  description: 'The marketplace and agency for actors, models, influencers, musicians, and creators. Build a profile free and get booked, or search talent by exactly what your campaign needs. A division of Big Films Only.',
   keywords: [
-    'book reality TV talent',
-    'hire reality TV stars',
-    'reality TV influencer marketing',
+    'talent marketplace',
+    'book actors models influencers',
+    'talent agency creator economy',
+    'find talent for casting',
+    'book models for campaign',
+    'hire actors for brand content',
     'TikTok Shop influencer agency',
     'UGC content agency',
     'live shopping influencer',
     'branded content production company',
-    'influencer marketing agency CPG',
-    'book celebrity for product launch',
-    'television verified talent',
-    'reality TV brand partnerships',
-    'influencer campaign management',
-    'creator economy talent agency',
-    'book talent for TikTok',
+    'talent representation no upfront cost',
+    'search talent by ethnicity language skills',
+    'book creators for product launch',
+    'casting search platform',
     'live commerce talent booking',
   ],
   authors: [{ name: 'BookTalent' }],
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'BookTalent',
-    description: 'Television Verified Talent. Ready to Book.',
+    description: 'Entertainment Verified Talent. Ready to Book.',
     url: 'https://booktalent.co',
     siteName: 'BookTalent',
     type: 'website',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BookTalent',
-    description: 'Television Verified Talent. Ready to Book.',
+    description: 'Entertainment Verified Talent. Ready to Book.',
   },
 }
 
@@ -97,7 +97,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "BookTalent",
               url: "https://booktalent.co",
-              description: "Television verified talent agency connecting brands with reality TV creators for campaigns, live commerce, and branded content.",
+              description: "Talent marketplace and agency connecting brands with verified actors, models, musicians, creators, and entertainment professionals for campaigns, live commerce, and branded content.",
               foundingDate: "2023",
               founder: [
                 { "@type": "Person", name: "Jotham Hall", jobTitle: "Co-Founder & CEO" },

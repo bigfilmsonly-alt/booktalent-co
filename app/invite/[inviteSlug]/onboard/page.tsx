@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation"
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import { getTalentByInviteSlug } from "@/lib/talent-data"
 import { Footer } from "@/components/sections/footer"
@@ -92,7 +92,10 @@ export default function OnboardPage() {
             </div>
           </div>
 
-          <AnimatePresence mode="wait">
+          {/* AnimatePresence removed: same framer-motion 11 / React 19 mode="wait"
+              failure as /book, where step 2 mounts stuck at opacity 0 and the flow
+              dead ends. Plain conditionals remount and animate in correctly. */}
+          <div>
             {/* STEP 1: Your Info */}
             {step === 1 && (
               <motion.div
@@ -308,7 +311,7 @@ export default function OnboardPage() {
                 </Link>
               </motion.div>
             )}
-          </AnimatePresence>
+          </div>
         </div>
       </section>
 

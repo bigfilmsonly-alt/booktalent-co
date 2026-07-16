@@ -119,16 +119,10 @@ export default function SchedulePage() {
               </p>
               <div className="flex flex-col items-center gap-3">
                 <Link
-                  href="/roster"
+                  href="/services"
                   className="text-sm text-mjcc-gold hover:underline"
                 >
-                  Browse the roster while you wait &rarr;
-                </Link>
-                <Link
-                  href="/case-studies"
-                  className="text-sm text-mjcc-gold hover:underline"
-                >
-                  See what past campaigns delivered &rarr;
+                  Explore what we produce while you wait &rarr;
                 </Link>
               </div>
             </motion.div>

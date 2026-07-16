@@ -1,8 +1,26 @@
 "use client"
 
 import { ReactNode } from "react"
+import { usePathname } from "next/navigation"
+
+/**
+ * Routes that opt out of the phone mockup.
+ *
+ * The frame renders {children} twice: once inside the desktop mockup and once for
+ * mobile. Both copies stay mounted, so a stateful page gets two independent React
+ * trees running their effects side by side. That is harmless for the presentational
+ * pages this was built for, but a long form would be two live copies of itself
+ * racing each other on the same autosave key. Focused flows render once, full screen.
+ */
+const UNFRAMED = ["/apply/talent"]
 
 export function IPhoneFrame({ children }: { children: ReactNode }) {
+  const pathname = usePathname()
+
+  if (UNFRAMED.some((p) => pathname.startsWith(p))) {
+    return <>{children}</>
+  }
+
   return (
     <>
       {/* Desktop: black background with centered iPhone */}

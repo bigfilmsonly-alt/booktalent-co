@@ -51,10 +51,13 @@ export default function AboutPage() {
             That gap exists because there is no verification standard. Anyone with a phone and a ring light can call themselves an influencer. No background checks. No audience verification. No production standards. No recourse when they ghost a campaign.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-            BookTalent exists to close that gap. We built a platform where every creator has confirmed broadcast television credits across networks like MTV, Food Network, NBC, and CBS. They have cleared network compliance, passed background checks, and proven they can perform on camera professionally.
+            There is a second gap running the other way. Most working talent has no representation at all. A model with editorial credits and 40K followers has nobody pitching her. An actor with a series credit cannot get a meeting. A musician with a real catalog gets quoted the same generic rate as someone who went viral once. The agencies that could help them will not take a call under a million followers.
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-[15px] lg:text-[17px] text-mjcc-cream leading-[1.8] font-medium">
-            Fifteen years of television relationships. 100+ reality shows produced. 50+ verified creators managed. One standard: if they have not been on national television, they are not on our roster.
+          <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
+            BookTalent closes both gaps at once. Actors, models, musicians, and creators build a verified profile that captures exactly what they do and who they can credibly portray. Brands and casting directors search on those attributes and book directly. Joining costs nothing. We take a commission when work is booked, which means we only earn when our talent earns.
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="text-[15px] lg:text-[17px] text-mjcc-cream leading-[1.8] font-medium">
+            Fifteen years of entertainment relationships. 100+ reality shows produced. A working production company behind every booking. One standard: we verify what talent claim before a brand ever sees the profile.
           </motion.p>
         </div>
       </section>
@@ -67,7 +70,7 @@ export default function AboutPage() {
           <div>
             <p className="text-xs text-mjcc-gold uppercase tracking-[0.2em] mb-4">The Mission</p>
             <p className="text-[15px] lg:text-[17px] text-mjcc-muted leading-[1.8]">
-              To represent television verified talent, deliver production grade content, and become the most trusted booking platform in the creator economy. Every campaign we run, every creator we sign, every brand we partner with is built on one principle. Quality is non negotiable.
+              To represent the talent this industry overlooks, deliver production grade content, and become the most trusted booking platform in the creator economy. Every campaign we run, every talent we sign, every brand we partner with is built on one principle. Quality is non negotiable.
             </p>
           </div>
           <div>

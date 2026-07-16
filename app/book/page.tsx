@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
 
 const serviceOptions = [
@@ -149,16 +149,10 @@ function BookingFlowInner() {
 
           <div className="flex flex-col gap-3">
             <Link
-              href="/case-studies"
+              href="/services"
               className="inline-flex items-center justify-center border border-mjcc-gold/40 text-mjcc-gold px-8 py-4 text-sm font-medium tracking-wider hover:border-mjcc-gold hover:bg-mjcc-gold hover:text-mjcc-black transition-all duration-300 min-h-[48px]"
             >
-              DOWNLOAD MEDIA KIT
-            </Link>
-            <Link
-              href="/case-studies"
-              className="text-sm text-mjcc-gold hover:underline"
-            >
-              See campaign results while you wait &rarr;
+              EXPLORE SERVICES
             </Link>
           </div>
         </motion.div>
@@ -193,7 +187,16 @@ function BookingFlowInner() {
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
+        {/*
+          AnimatePresence removed deliberately. Under framer-motion 11 with React 19
+          its mode="wait" handoff does not fire, so picking a service advanced the
+          stepper to 2 while step 2 stayed stuck at `initial` (opacity 0) and never
+          animated in. The booker saw the step 1 list forever and the funnel dead
+          ended on the first click. Plain conditionals remount each step, so
+          initial -> animate runs normally. Exit props below are inert without
+          AnimatePresence and are left only to keep this diff small.
+        */}
+        <div>
           {/* Step 1: Service selection */}
           {step === 1 && (
             <motion.div
@@ -390,7 +393,7 @@ function BookingFlowInner() {
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </div>
       </div>
     </div>
   )

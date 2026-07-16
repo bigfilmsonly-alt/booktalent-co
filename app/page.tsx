@@ -34,8 +34,8 @@ export default function Home() {
           >
             Premium talent.
             <br />
-            Proven on{" "}
-            <span className="text-mjcc-gold">television.</span>
+            Verified in{" "}
+            <span className="text-mjcc-gold">entertainment.</span>
           </motion.h1>
 
           {/* Sub */}
@@ -45,7 +45,8 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.15, ease }}
             className="mt-6 text-[16px] lg:text-[18px] text-white font-semibold leading-relaxed max-w-md mx-auto"
           >
-            74 verified creators across 11 networks. Book talent for campaigns, live commerce, and branded content.
+            The marketplace and agency for actors, models, influencers, and creators. Build your profile free. We only
+            make money when you do.
           </motion.p>
 
           {/* Two CTAs */}
@@ -77,10 +78,10 @@ export default function Home() {
             className="mt-12 flex justify-center gap-8 lg:gap-12"
           >
             {[
-              { value: "74", label: "Creators" },
-              { value: "11", label: "Networks" },
               { value: "15+", label: "Years" },
-              { value: "290M+", label: "Reach" },
+              { value: "100+", label: "Shows" },
+              { value: "10", label: "Verticals" },
+              { value: "10%", label: "Commission" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <span className="block font-mono text-xl lg:text-2xl text-mjcc-gold font-bold">{s.value}</span>
@@ -99,7 +100,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.6 }}
           className="text-center text-[11px] lg:text-[12px] text-white/60 uppercase tracking-[0.15em] px-6 mb-4 font-semibold"
         >
-          A division of Big Films Only. Campaign packages from $15K.
+          A division of Big Films Only. Free for talent. Campaign packages from $15K.
         </motion.p>
 
         <motion.div
