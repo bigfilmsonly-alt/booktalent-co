@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'BookTalent — Book Reality TV Stars for Brand Campaigns'
+export const alt = 'BookTalent. Entertainment verified talent, ready to book.'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -86,8 +86,8 @@ export default async function Image() {
           >
             <span>Premium talent.</span>
             <span style={{ display: 'flex' }}>
-              Proven on{' '}
-              <span style={{ color: '#E8B931', marginLeft: 16 }}>television.</span>
+              Verified in{' '}
+              <span style={{ color: '#E8B931', marginLeft: 16 }}>entertainment.</span>
             </span>
           </div>
 
@@ -103,7 +103,7 @@ export default async function Image() {
               display: 'flex',
             }}
           >
-            Vetted creators from MTV, Food Network, NBC and more.
+            Actors, models, influencers and creators. Verified and bookable.
           </div>
 
           {/* CTA pill */}

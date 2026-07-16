@@ -305,7 +305,7 @@ export function StepMediaTerms({ draft, patch }: { draft: QuestionnaireDraft; pa
           columns={1}
           options={REPRESENTATION_TIERS.map((r) => ({
             value: r.value,
-            label: `${r.label} — ${r.price}, ${r.commission}% commission`,
+            label: `${r.label}. ${r.price}, ${r.commission}% commission`,
             hint: r.summary,
           }))}
           value={t.tier ?? "marketplace"}
