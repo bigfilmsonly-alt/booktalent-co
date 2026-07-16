@@ -37,6 +37,30 @@ export default function SearchPage() {
   const [total, setTotal] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const [briefEmail, setBriefEmail] = useState("")
+  const [sendingBrief, setSendingBrief] = useState(false)
+  const [briefSent, setBriefSent] = useState(false)
+  const [briefError, setBriefError] = useState<string | null>(null)
+
+  const sendBrief = useCallback(async () => {
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(briefEmail)) return
+    setSendingBrief(true)
+    setBriefError(null)
+    try {
+      const res = await fetch("/api/booker/brief", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, email: briefEmail }),
+      })
+      if (!res.ok) throw new Error(String(res.status))
+      setBriefSent(true)
+    } catch {
+      setBriefError("That did not send. Try again, or book a call and we will take it live.")
+    } finally {
+      setSendingBrief(false)
+    }
+  }, [briefEmail, query])
+
   // Parse locally on every keystroke. No network, no debounce needed.
   useEffect(() => {
     setParsed(parseQuery(query))
@@ -206,26 +230,74 @@ export default function SearchPage() {
             </div>
           )}
 
-          {/* Not connected is a different empty and must never look like "no matches". */}
-          {status === "not_connected" && (
-            <div className="border border-mjcc-gold/30 p-8 text-center">
-              <p className="text-[11px] text-mjcc-gold uppercase tracking-[0.2em] font-bold mb-3">
+          {/* Not connected is a different empty and must never look like "no matches".
+              Capture is inline: one email field and a button, right where they already
+              are. Bouncing them into a three step form that gates on budget would
+              throw away the one thing we just earned, which is a booker who has told
+              us exactly what they want. */}
+          {status === "not_connected" && !briefSent && (
+            <div className="border border-mjcc-gold/30 p-8">
+              <p className="text-[11px] text-mjcc-gold uppercase tracking-[0.2em] font-bold mb-3 text-center">
                 Search opens soon
               </p>
-              <p className="text-[15px] text-white font-semibold leading-relaxed">
+              <p className="text-[15px] text-white font-semibold leading-relaxed text-center">
                 We read your brief correctly. The roster is still onboarding.
               </p>
+              <p className="text-[13px] text-mjcc-muted mt-3 leading-relaxed max-w-md mx-auto text-center">
+                Leave your email and we will come back with names that fit this brief as they clear
+                verification, ahead of the public roster.
+              </p>
+
+              <div className="mt-7 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                <input
+                  type="email"
+                  inputMode="email"
+                  value={briefEmail}
+                  onChange={(e) => setBriefEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && sendBrief()}
+                  placeholder="you@company.com"
+                  className="flex-1 bg-mjcc-charcoal border border-white/15 text-white px-4 py-3 text-[15px] placeholder:text-white/25 focus:border-mjcc-gold focus:outline-none transition-colors min-h-[52px]"
+                />
+                <button
+                  type="button"
+                  onClick={sendBrief}
+                  disabled={sendingBrief || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(briefEmail)}
+                  className="cta-button bg-mjcc-gold text-mjcc-black px-7 py-3 text-[13px] font-bold tracking-[0.12em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[52px] disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                >
+                  {sendingBrief ? "SENDING..." : "SEND THIS BRIEF"}
+                </button>
+              </div>
+              {briefError && (
+                <p className="text-[12px] text-mjcc-urgent font-semibold mt-3 text-center">{briefError}</p>
+              )}
+              <p className="text-[11px] text-mjcc-muted mt-4 text-center">
+                No budget questions. We come back with names first.
+              </p>
+            </div>
+          )}
+
+          {briefSent && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease }}
+              className="border border-mjcc-gold/30 p-8 text-center"
+            >
+              <p className="text-[11px] text-mjcc-gold uppercase tracking-[0.2em] font-bold mb-3">
+                Brief received
+              </p>
+              <p className="text-[16px] text-white font-semibold leading-relaxed">
+                We have it. Someone will come back to you personally.
+              </p>
               <p className="text-[13px] text-mjcc-muted mt-3 leading-relaxed max-w-md mx-auto">
-                BookTalent is signing talent now. Send us this brief and we will come back to you with
-                names as they clear verification, ahead of the public roster.
+                A real person reads every brief. If you want to talk it through sooner, book a call.
               </p>
               <Link
-                href="/book"
-                className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-8 py-4 text-[13px] font-bold tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[52px] mt-7"
+                href="/schedule"
+                className="inline-block mt-6 text-[12px] text-mjcc-gold font-bold tracking-[0.15em] border-b border-mjcc-gold pb-1"
               >
-                SEND THIS BRIEF
+                BOOK A CALL &rarr;
               </Link>
-            </div>
+            </motion.div>
           )}
         </div>
       </div>

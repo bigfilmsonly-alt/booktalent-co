@@ -101,11 +101,11 @@ export default function Home() {
                 <span className="text-[11px] font-semibold opacity-70 mt-1">Free to join</span>
               </Link>
               <Link
-                href="/book"
+                href="/search"
                 className="cta-button group flex flex-col items-center justify-center border-2 border-white text-white px-10 py-5 hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300 min-h-[64px] w-full sm:w-auto sm:min-w-[260px]"
               >
                 <span className="text-[15px] font-bold tracking-[0.12em]">I AM BOOKING TALENT</span>
-                <span className="text-[11px] font-semibold opacity-70 mt-1">Tell us who you need</span>
+                <span className="text-[11px] font-semibold opacity-70 mt-1">Describe who you need</span>
               </Link>
             </motion.div>
           </div>
@@ -236,7 +236,7 @@ export default function Home() {
           <div className="mt-14 lg:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16">
             {[
               { who: "For talent", steps: TALENT_STEPS, href: "/apply/talent", cta: "JOIN FREE" },
-              { who: "For bookers", steps: BOOKER_STEPS, href: "/book", cta: "START A BOOKING" },
+              { who: "For bookers", steps: BOOKER_STEPS, href: "/search", cta: "SEARCH TALENT" },
             ].map((col, ci) => (
               <motion.div
                 key={col.who}
@@ -363,11 +363,11 @@ export default function Home() {
               <span className="text-[11px] font-semibold opacity-70 mt-1">Free to join</span>
             </Link>
             <Link
-              href="/book"
+              href="/search"
               className="cta-button flex flex-col items-center justify-center border-2 border-white text-white px-10 py-5 hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300 min-h-[64px] w-full sm:w-auto sm:min-w-[260px]"
             >
               <span className="text-[15px] font-bold tracking-[0.12em]">I AM BOOKING TALENT</span>
-              <span className="text-[11px] font-semibold opacity-70 mt-1">Tell us who you need</span>
+              <span className="text-[11px] font-semibold opacity-70 mt-1">Describe who you need</span>
             </Link>
           </motion.div>
 

@@ -17,6 +17,9 @@ const serviceOptions = [
   { value: "unsure", label: "Not sure yet", desc: "Help me decide" },
 ]
 
+// "Not sure yet" exists so budget stops being a wall. Plenty of real briefs arrive
+// before a number does, and refusing to take those is refusing the work. It is also
+// useful signal in its own right: it says talk to me, not send me a rate card.
 const budgetOptions = [
   "$10K to $25K",
   "$25K to $50K",
@@ -24,6 +27,7 @@ const budgetOptions = [
   "$100K to $250K",
   "$250K to $500K",
   "$500K+",
+  "Not sure yet",
 ]
 
 const timelineOptions = [

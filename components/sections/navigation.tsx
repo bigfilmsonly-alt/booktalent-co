@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { Home, CalendarCheck, UserPlus } from "lucide-react"
+import { Home, Search, UserPlus } from "lucide-react"
 import Link from "next/link"
 
 interface Tab {
@@ -12,10 +12,14 @@ interface Tab {
   primary?: boolean
 }
 
+// Both tabs land on the thing itself, not on a page that asks again what they want.
+// "Find" goes to search rather than the three step brief form, and "Apply" goes
+// straight into the questionnaire rather than the talent-or-brand chooser they
+// already answered by tapping.
 const tabs: Tab[] = [
   { label: "Home", icon: Home, href: "/" },
-  { label: "Book", icon: CalendarCheck, href: "/book", primary: true },
-  { label: "Apply", icon: UserPlus, href: "/apply" },
+  { label: "Find", icon: Search, href: "/search", primary: true },
+  { label: "Apply", icon: UserPlus, href: "/apply/talent" },
 ]
 
 export function Navigation() {
@@ -49,16 +53,16 @@ export function Navigation() {
 
             <div className="flex items-center gap-5">
               <Link
-                href="/apply"
+                href="/apply/talent"
                 className="text-[10px] text-mjcc-cream tracking-[0.2em] border border-mjcc-cream/20 px-5 py-2.5 hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300"
               >
-                APPLY
+                JOIN AS TALENT
               </Link>
               <Link
-                href="/book"
+                href="/search"
                 className="text-[10px] text-mjcc-black tracking-[0.2em] bg-mjcc-gold px-5 py-2.5 font-medium hover:bg-mjcc-gold-hover transition-all duration-300"
               >
-                BOOK TALENT
+                FIND TALENT
               </Link>
             </div>
           </div>
