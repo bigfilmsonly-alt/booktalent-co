@@ -53,7 +53,7 @@ export default function FAQPage() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="mt-4 text-[15px] text-mjcc-muted leading-relaxed"
           >
-            Everything you need to know about booking television-verified talent.
+            Everything you need to know about booking entertainment verified talent.
           </motion.p>
         </div>
       </section>

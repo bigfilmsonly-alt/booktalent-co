@@ -17,7 +17,7 @@ export default function TermsPage() {
 
           <div>
             <h2 className="text-mjcc-cream font-medium mb-2">Services</h2>
-            <p>BookTalent connects brands with television-verified talent for campaigns, live commerce, branded content, and event appearances. All bookings are subject to talent availability and mutual agreement on terms.</p>
+            <p>BookTalent connects brands with entertainment verified talent for campaigns, live commerce, branded content, and event appearances. All bookings are subject to talent availability and mutual agreement on terms.</p>
           </div>
 
           <div>

@@ -43,7 +43,7 @@ export const services: ServiceDefinition[] = [
         usageRights: "30 days",
         bestFor: "DTC brands testing creator content for the first time",
         includes: [
-          "1 television verified creator matched to your brand",
+          "1 entertainment verified talent matched to your brand",
           "3 to 5 pieces of original short form content",
           "Cross platform delivery. TikTok, Reels, Shorts",
           "30 day organic usage rights",
@@ -69,7 +69,7 @@ export const services: ServiceDefinition[] = [
         bestFor: "Mid market brands running seasonal pushes or product launches",
         featured: true,
         includes: [
-          "3 television verified creators with audience overlap",
+          "3 entertainment verified talent with audience overlap",
           "10 to 15 pieces of original short form content",
           "Pre campaign strategy session",
           "Cross platform delivery. TikTok, Instagram, YouTube",
@@ -97,7 +97,7 @@ export const services: ServiceDefinition[] = [
         usageRights: "90 days",
         bestFor: "Fortune 500, major CPG, entertainment studios",
         includes: [
-          "5 to 8 television verified creators (mixed tier strategy)",
+          "5 to 8 entertainment verified talent (mixed tier strategy)",
           "25 to 40 pieces of premium content across all platforms",
           "Pre campaign strategy + audience analysis + brand alignment",
           "Whitelisted ad content rights",
@@ -319,7 +319,7 @@ export const services: ServiceDefinition[] = [
     slug: "management",
     title: "Talent Management",
     shortTitle: "Management",
-    description: "Three tiers of representation for verified reality TV creators.",
+    description: "Three tiers of representation for verified entertainment talent.",
     priceRange: "$0 to $1,500 / month",
     tiers: [
       {

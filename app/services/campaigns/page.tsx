@@ -15,7 +15,7 @@ export default function CampaignsPage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Multi talent, multi platform content campaigns built around television verified creators. Three tiers, from testing the waters to full scale enterprise activations."
+        description="Multi talent, multi platform content campaigns built around entertainment verified talent. Three tiers, from testing the waters to full scale enterprise activations."
       />
 
       <div className="gold-divider" />

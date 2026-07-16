@@ -61,7 +61,7 @@ export default function PricingPage() {
             Transparent pricing. No hidden fees.
           </h1>
           <p className="mt-4 text-[15px] lg:text-[17px] text-mjcc-muted leading-relaxed max-w-lg mx-auto">
-            Every package is built around television verified talent. Choose the service and tier that fits your goals and budget.
+            Every package is built around entertainment verified talent. Choose the service and tier that fits your goals and budget.
           </p>
         </div>
       </section>

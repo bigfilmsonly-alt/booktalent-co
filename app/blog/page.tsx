@@ -4,7 +4,7 @@ import { Footer } from "@/components/sections/footer"
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Insights on influencer marketing, creator economy trends, live commerce strategy, and working with television verified talent. From the BookTalent team.",
+  description: "Insights on influencer marketing, creator economy trends, live commerce strategy, and working with entertainment verified talent. From the BookTalent team.",
 }
 
 const posts = [
@@ -18,7 +18,7 @@ const posts = [
   {
     slug: "reality-tv-creators-vs-social-media-influencers",
     title: "Reality TV Creators vs. Social Media Influencers: What Brands Need to Know",
-    excerpt: "Why television verified creators outperform traditional influencers on engagement, brand safety, and ROI.",
+    excerpt: "Why verified credentials beat raw follower counts on engagement, brand safety, and ROI.",
     category: "Strategy",
     date: "Coming Soon",
   },

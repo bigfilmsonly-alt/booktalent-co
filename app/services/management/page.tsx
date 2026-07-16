@@ -15,7 +15,7 @@ export default function ManagementPage() {
       <ServicePageHeader
         serviceNumber={service.number}
         title={service.title}
-        description="Three tiers of representation for verified reality TV creators, from emerging talent to marquee names. Dedicated management, brand matching, and career strategy."
+        description="Three tiers of representation for verified entertainment talent, from emerging talent to marquee names. Dedicated management, brand matching, and career strategy."
       />
 
       <div className="gold-divider" />

@@ -118,7 +118,7 @@ export default function ApplyPage() {
                     Apply to get booked.
                   </h1>
                   <p className="text-sm text-mjcc-muted max-w-xs mx-auto">
-                    Verified reality TV talent with active social presence. Submit your credits and we will be in touch.
+                    Already on the BookTalent roster? Submit your credits and we will be in touch.
                   </p>
                 </div>
 
