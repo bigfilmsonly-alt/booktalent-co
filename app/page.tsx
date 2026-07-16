@@ -62,8 +62,11 @@ export default function Home() {
             >
               BOOK TALENT
             </Link>
+            {/* Straight into the questionnaire. This used to point at /apply, which
+                asked "How can we help?" and made them pick talent-vs-brand a second
+                time after they had already picked it here. */}
             <Link
-              href="/apply"
+              href="/apply/talent"
               className="cta-button inline-flex items-center justify-center border-2 border-white text-white px-10 py-4 text-[15px] font-bold tracking-[0.15em] hover:border-mjcc-gold hover:text-mjcc-gold transition-all duration-300 min-h-[56px] w-full sm:w-auto max-w-[280px]"
             >
               APPLY AS TALENT

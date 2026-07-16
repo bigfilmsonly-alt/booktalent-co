@@ -14,22 +14,30 @@ import Link from "next/link"
 import { SECTION_FOR_TYPE } from "@/lib/talent/vocab"
 import { emptyDraft, type QuestionnaireDraft } from "@/lib/talent/types"
 import { loadDraft, saveDraft, clearDraft } from "@/lib/talent/draft-store"
-import { StepTypes, StepUniversal, StepMediaTerms } from "@/components/apply/steps-core"
+import { StepTypes, StepEssentials, StepDetails, StepMediaTerms } from "@/components/apply/steps-core"
 import { SectionActor, SectionInfluencer, SectionModel, SectionPerformer } from "@/components/apply/steps-conditional"
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-type StepId = "types" | "universal" | "actor" | "influencer" | "model" | "performer" | "media"
+type StepId = "types" | "essentials" | "details" | "actor" | "influencer" | "model" | "performer" | "media"
 
 const STEP_TITLES: Record<StepId, string> = {
   types: "Your work",
-  universal: "About you",
+  essentials: "Get in",
+  details: "About you",
   actor: "Acting",
   influencer: "Your audience",
   model: "Modelling",
   performer: "Your craft",
-  media: "Media and terms",
+  media: "Media",
 }
+
+/**
+ * Signup is types + essentials. Everything after is enrichment, and the talent is
+ * already in the system by then, so abandoning it costs a complete profile rather
+ * than the whole lead.
+ */
+const SIGNUP_STEPS: StepId[] = ["types", "essentials"]
 
 export default function TalentQuestionnaire() {
   const [draft, setDraft] = useState<QuestionnaireDraft>(emptyDraft())
@@ -38,6 +46,8 @@ export default function TalentQuestionnaire() {
   const [resumed, setResumed] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [signedUp, setSignedUp] = useState(false)
+  const [showWelcome, setShowWelcome] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   // Resume where they left off.
@@ -64,11 +74,13 @@ export default function TalentQuestionnaire() {
     const conditional = (["actor", "influencer", "model", "performer"] as const).filter((s) =>
       sections.has(s),
     )
-    return ["types", "universal", ...conditional, "media"]
+    return [...SIGNUP_STEPS, "details", ...conditional, "media"]
   }, [draft.talentTypes])
 
   const current = steps[Math.min(index, steps.length - 1)]
   const isLast = index >= steps.length - 1
+  const isSignupStep = SIGNUP_STEPS.includes(current)
+  const isLastSignupStep = current === SIGNUP_STEPS[SIGNUP_STEPS.length - 1]
 
   const patch = useCallback((fn: (d: QuestionnaireDraft) => void) => {
     setDraft((prev) => {
@@ -99,14 +111,25 @@ export default function TalentQuestionnaire() {
     return () => clearTimeout(t)
   }, [draft, current, hydrated])
 
-  const canAdvance = current !== "types" || draft.talentTypes.length > 0
+  const u = draft.universal
+  const emailLooksReal = !!u.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(u.email)
+  const essentialsReady =
+    !!u.stageName?.trim() && emailLooksReal && !!draft.terms.agreedAgencyOfRecord && !!draft.terms.agreedCommission
+
+  const canAdvance =
+    current === "types" ? draft.talentTypes.length > 0
+    : current === "essentials" ? essentialsReady
+    : true
 
   const next = () => {
     if (!canAdvance) return
     patch((d) => {
       if (!d.completedSteps.includes(current)) d.completedSteps = [...d.completedSteps, current]
     })
-    if (isLast) return void submit()
+    // Finishing the essentials IS the signup. Send it now rather than at the end,
+    // so a profile abandoned halfway through enrichment is still a real lead.
+    if (isLastSignupStep && !signedUp) return void send("signup")
+    if (isLast) return void send("complete")
     setIndex((i) => Math.min(i + 1, steps.length - 1))
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
@@ -116,31 +139,89 @@ export default function TalentQuestionnaire() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const submit = async () => {
+  const send = async (phase: "signup" | "complete") => {
     setSubmitting(true)
     setError(null)
     try {
       const res = await fetch("/api/talent/profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(draft),
+        body: JSON.stringify({ ...draft, phase }),
       })
       if (!res.ok) throw new Error(`Submit failed (${res.status})`)
-      await clearDraft()
-      setSubmitted(true)
+      if (phase === "signup") {
+        setSignedUp(true)
+        setShowWelcome(true)
+      } else {
+        await clearDraft()
+        setSubmitted(true)
+      }
     } catch {
-      // Never destroy their answers on a failed submit. The draft stays on disk so
-      // a reload picks up exactly where they were.
-      setError("We could not submit that. Your answers are saved, so you can try again.")
+      // Never destroy their answers on a failure. The draft stays on disk so a
+      // reload picks up exactly where they were.
+      setError(
+        phase === "signup"
+          ? "We could not create your profile just then. Your answers are saved, so try again."
+          : "We could not save that. Your answers are saved, so you can try again.",
+      )
     } finally {
       setSubmitting(false)
     }
+  }
+
+  const continueToProfile = () => {
+    setShowWelcome(false)
+    setIndex(SIGNUP_STEPS.length)
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   if (!hydrated) {
     return (
       <main className="bg-mjcc-black min-h-[100svh] flex items-center justify-center">
         <p className="text-[13px] text-mjcc-muted">Loading...</p>
+      </main>
+    )
+  }
+
+  // The signup landed. They are in the system with consent on record, so everything
+  // from here is optional and framed as their upside, not our paperwork.
+  if (showWelcome) {
+    return (
+      <main className="bg-mjcc-black min-h-[100svh] flex items-center justify-center px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease }}
+          className="max-w-md text-center"
+        >
+          <p className="text-[11px] text-mjcc-gold uppercase tracking-[0.25em] mb-4 font-bold">You are in</p>
+          <h1 className="font-serif text-3xl lg:text-5xl text-white font-bold mb-5 leading-[1.1]">
+            Welcome to BookTalent.
+          </h1>
+          <p className="text-[15px] lg:text-[16px] text-white font-semibold leading-relaxed mb-3">
+            Your profile exists. Nothing else is required and nothing is owed unless you book.
+          </p>
+          <p className="text-[13px] text-mjcc-muted leading-relaxed mb-10">
+            The next few questions are what bookers actually search on: the ages you play, the
+            languages you speak, what you can credibly portray. Profiles that answer them get found.
+            Ones that do not, mostly do not.
+          </p>
+          <div className="flex flex-col gap-3">
+            <button
+              type="button"
+              onClick={continueToProfile}
+              className="cta-button inline-flex items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-4 text-[14px] font-bold tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[56px]"
+            >
+              FINISH MY PROFILE
+            </button>
+            <Link
+              href="/"
+              className="text-[12px] text-mjcc-muted hover:text-mjcc-gold underline underline-offset-4 py-2"
+            >
+              I will finish later
+            </Link>
+          </div>
+        </motion.div>
       </main>
     )
   }
@@ -219,7 +300,8 @@ export default function TalentQuestionnaire() {
           transition={{ duration: 0.35, ease }}
         >
           {current === "types" && <StepTypes draft={draft} patch={patch} />}
-          {current === "universal" && <StepUniversal draft={draft} patch={patch} />}
+          {current === "essentials" && <StepEssentials draft={draft} patch={patch} />}
+          {current === "details" && <StepDetails draft={draft} patch={patch} />}
           {current === "actor" && <SectionActor draft={draft} patch={patch} />}
           {current === "influencer" && <SectionInfluencer draft={draft} patch={patch} />}
           {current === "model" && <SectionModel draft={draft} patch={patch} />}
@@ -244,11 +326,19 @@ export default function TalentQuestionnaire() {
             disabled={!canAdvance || submitting}
             className="cta-button flex-1 bg-mjcc-gold text-mjcc-black px-8 py-4 text-[13px] font-bold tracking-[0.15em] hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[52px] disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            {submitting ? "SUBMITTING..." : isLast ? "SUBMIT PROFILE" : "CONTINUE"}
+            {submitting
+              ? "SAVING..."
+              : isLastSignupStep && !signedUp
+                ? "CREATE MY PROFILE"
+                : isLast
+                  ? "SAVE PROFILE"
+                  : "CONTINUE"}
           </button>
         </div>
         <p className="text-center text-[10px] text-mjcc-muted pb-3 px-6">
-          Saved automatically. Leave and come back any time.
+          {isSignupStep
+            ? "Free to join. 10% only when you book."
+            : "Saved automatically. Leave and come back any time."}
         </p>
       </div>
     </main>

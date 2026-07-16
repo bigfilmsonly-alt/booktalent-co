@@ -152,8 +152,8 @@ input:focus, textarea:focus, select:focus {
   border-color: #E8B931 !important;
 }
 
-/* Sharp edges — except nav pills and iPhone frame */
-*:not(.nav-pill):not(.nav-pill *):not(.iphone-keep-radius):not(.iphone-keep-radius *), *::before, *::after {
+/* Sharp edges — except nav pills */
+*:not(.nav-pill):not(.nav-pill *), *::before, *::after {
   border-radius: 0 !important;
 }
 
@@ -263,27 +263,3 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 1px rgba(232, 185, 49, 0.3);
 }
 
-/* ── iPhone Frame ── */
-
-/* Hide scrollbar inside iPhone frame */
-.iphone-scroll-container {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.iphone-scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Sharp edges exception for iPhone frame rounded corners */
-.iphone-scroll-container,
-.iphone-scroll-container > * {
-  /* Allow the frame itself to be rounded */
-}
-
-/* Override the global border-radius: 0 rule for iPhone frame elements */
-@media (min-width: 1024px) {
-  [data-iphone-frame] {
-    border-radius: 55px !important;
-  }
-}

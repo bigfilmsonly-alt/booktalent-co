@@ -48,10 +48,82 @@ export function StepTypes({ draft, patch }: { draft: QuestionnaireDraft; patch: 
 }
 
 // ---------------------------------------------------------------------------
-// STEP 2 — Universal
+// STEP 2 — Essentials. This is the whole signup.
+//
+// Everything here is the minimum to create a real lead with consent: who you are,
+// how to reach you, where you are, and agreement to the commission. It is four
+// fields and two checkboxes, and it submits. The old version asked 23 questions
+// before capturing an email, so anyone who quit partway left nothing behind.
+// Enrichment happens after, when they have already committed.
 // ---------------------------------------------------------------------------
 
-export function StepUniversal({ draft, patch }: { draft: QuestionnaireDraft; patch: Patch }) {
+export function StepEssentials({ draft, patch }: { draft: QuestionnaireDraft; patch: Patch }) {
+  const u = draft.universal
+  const t = draft.terms
+  const tier = REPRESENTATION_TIERS.find((x) => x.value === (t.tier ?? "marketplace"))!
+
+  return (
+    <>
+      <Field label="Your name" hint="However you are known professionally.">
+        <TextInput
+          value={u.stageName}
+          onChange={(v) => patch((d) => { d.universal.stageName = v })}
+          placeholder="Jane Rivera"
+        />
+      </Field>
+
+      <Field label="Email" hint="Where bookings come in. We do not sell it or spam you.">
+        <TextInput
+          type="email"
+          inputMode="email"
+          value={u.email}
+          onChange={(v) => patch((d) => { d.universal.email = v })}
+          placeholder="you@email.com"
+        />
+      </Field>
+
+      <Field label="City" hint="Bookers search by market.">
+        <TextInput value={u.city} onChange={(v) => patch((d) => { d.universal.city = v })} placeholder="Miami" />
+      </Field>
+
+      <Field label="Will you travel for work?">
+        <YesNo value={u.willingToTravel} onChange={(v) => patch((d) => { d.universal.willingToTravel = v })} />
+      </Field>
+
+      <div className="mb-8 border border-mjcc-gold/30 p-5">
+        <p className="text-[13px] text-white font-bold mb-1">The deal</p>
+        <p className="text-[12px] text-mjcc-muted mb-4 leading-relaxed">
+          Free to join. We take {tier.commission}% when you book work through BookTalent, and nothing
+          if you do not. Work you find on your own stays entirely yours.
+        </p>
+        <div className="space-y-1">
+          <Checkbox
+            checked={t.agreedAgencyOfRecord}
+            onChange={(v) => patch((d) => { d.terms.agreedAgencyOfRecord = v })}
+            label="BookTalent acts as my agency of record for work booked through this platform."
+          />
+          <Checkbox
+            checked={t.agreedCommission}
+            onChange={(v) =>
+              patch((d) => {
+                d.terms.agreedCommission = v
+                d.terms.agreedTermsVersion = TERMS_VERSION
+                d.terms.agreedAt = v ? new Date().toISOString() : undefined
+              })
+            }
+            label={`I agree to ${tier.commission}% commission on work booked through BookTalent.`}
+          />
+        </div>
+      </div>
+    </>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// PROFILE DETAILS — everything that makes you findable. Shown after signup.
+// ---------------------------------------------------------------------------
+
+export function StepDetails({ draft, patch }: { draft: QuestionnaireDraft; patch: Patch }) {
   const u = draft.universal
   const langs: LanguageSkill[] = u.languages ?? []
 
@@ -72,31 +144,16 @@ export function StepUniversal({ draft, patch }: { draft: QuestionnaireDraft; pat
 
   return (
     <>
-      <Field label="Legal name" hint="Used for contracts and payment. Never shown publicly.">
+      {/* Name, email, city and travel are already captured at signup. */}
+      <Field label="Legal name" hint="For contracts and payment. Never shown publicly." optional>
         <TextInput value={u.legalName} onChange={(v) => patch((d) => { d.universal.legalName = v })} placeholder="Jane Rivera" />
-      </Field>
-
-      <Field label="Stage name or handle" hint="What you are known as professionally.">
-        <TextInput value={u.stageName} onChange={(v) => patch((d) => { d.universal.stageName = v })} placeholder="Jane R." />
-      </Field>
-
-      <Field label="Email">
-        <TextInput type="email" inputMode="email" value={u.email} onChange={(v) => patch((d) => { d.universal.email = v })} placeholder="you@email.com" />
       </Field>
 
       <Field label="Phone" optional>
         <TextInput type="tel" inputMode="tel" value={u.phone} onChange={(v) => patch((d) => { d.universal.phone = v })} placeholder="(305) 555 0134" />
       </Field>
 
-      <Field label="City" hint="Where you are based. Bookers search by market.">
-        <TextInput value={u.city} onChange={(v) => patch((d) => { d.universal.city = v })} placeholder="Miami" />
-      </Field>
-
-      <Field label="Will you travel for work?">
-        <YesNo value={u.willingToTravel} onChange={(v) => patch((d) => { d.universal.willingToTravel = v })} />
-      </Field>
-
-      <Field label="Would you relocate for the right booking?">
+      <Field label="Would you relocate for the right booking?" optional>
         <YesNo value={u.willingToRelocate} onChange={(v) => patch((d) => { d.universal.willingToRelocate = v })} />
       </Field>
 
@@ -223,7 +280,6 @@ export function StepUniversal({ draft, patch }: { draft: QuestionnaireDraft; pat
 
 export function StepMediaTerms({ draft, patch }: { draft: QuestionnaireDraft; patch: Patch }) {
   const t = draft.terms
-  const tier = REPRESENTATION_TIERS.find((x) => x.value === (t.tier ?? "marketplace"))!
 
   return (
     <>
@@ -256,34 +312,6 @@ export function StepMediaTerms({ draft, patch }: { draft: QuestionnaireDraft; pa
           onSelect={(v) => patch((d) => { d.terms.tier = v as typeof d.terms.tier })}
         />
       </Field>
-
-      <div className="mb-8 border border-mjcc-gold/30 p-5">
-        <p className="text-[13px] text-white font-bold mb-3">The agreement</p>
-        <div className="space-y-3">
-          <Checkbox
-            checked={t.agreedAgencyOfRecord}
-            onChange={(v) => patch((d) => { d.terms.agreedAgencyOfRecord = v })}
-            label="BookTalent acts as my agency of record for work booked through this platform."
-            hint="This applies only to bookings that come through BookTalent. Work you find yourself stays yours."
-          />
-          <Checkbox
-            checked={t.agreedCommission}
-            onChange={(v) =>
-              patch((d) => {
-                d.terms.agreedCommission = v
-                d.terms.agreedTermsVersion = TERMS_VERSION
-                d.terms.agreedAt = v ? new Date().toISOString() : undefined
-              })
-            }
-            label={`I agree to ${tier.commission}% commission on work booked through BookTalent.`}
-            hint={
-              tier.value === "marketplace"
-                ? "No monthly fee and no upfront cost. If you do not book, you do not pay."
-                : `${tier.price}, plus ${tier.commission}% on booked work.`
-            }
-          />
-        </div>
-      </div>
 
       <Field label="Anything else we should know?" optional>
         <TextArea value={draft.performer.notableWork} onChange={(v) => patch((d) => { d.performer.notableWork = v })} placeholder="Credits, links, context, whatever helps us place you." rows={4} />

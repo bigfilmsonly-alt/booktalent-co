@@ -18,6 +18,11 @@ interface SubmitResult {
   error?: string
 }
 
+/**
+ * Both phases validate identically. Signup already carries the name, email and
+ * consent, so there is nothing extra to require at completion, and demanding more
+ * for the enrichment pass would just reintroduce the wall we removed.
+ */
 function validate(draft: QuestionnaireDraft): string | null {
   if (!draft || typeof draft !== "object") return "Malformed payload."
   if (!Array.isArray(draft.talentTypes) || draft.talentTypes.length === 0) {
@@ -32,18 +37,23 @@ function validate(draft: QuestionnaireDraft): string | null {
   }
   const t = draft.terms ?? {}
   if (!t.agreedAgencyOfRecord || !t.agreedCommission) {
-    return "Both agreements must be accepted before submitting."
+    return "Both agreements must be accepted."
   }
   return null
 }
 
 export async function POST(req: Request): Promise<NextResponse<SubmitResult>> {
-  let draft: QuestionnaireDraft
+  let draft: QuestionnaireDraft & { phase?: "signup" | "complete" }
   try {
-    draft = (await req.json()) as QuestionnaireDraft
+    draft = (await req.json()) as QuestionnaireDraft & { phase?: "signup" | "complete" }
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid JSON." }, { status: 400 })
   }
+
+  // 'signup' is the 30 second entry: name, email, city, consent. 'complete' is the
+  // enrichment pass. Both are real profiles; the difference is only how much of the
+  // searchable detail is filled in, so a signup is never discarded as a partial.
+  const phase = draft.phase === "complete" ? "complete" : "signup"
 
   const invalid = validate(draft)
   if (invalid) {
@@ -107,7 +117,8 @@ export async function POST(req: Request): Promise<NextResponse<SubmitResult>> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        formType: "talent-questionnaire",
+        formType: phase === "signup" ? "talent-signup" : "talent-profile-complete",
+        phase,
         tier,
         commissionPct: DEFAULT_COMMISSION_PCT,
         profile: profileRow,
