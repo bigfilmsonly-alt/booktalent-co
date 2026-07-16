@@ -15,10 +15,22 @@ import { parseQuery } from "@/lib/talent/parse-query"
 
 export const runtime = "nodejs"
 
+interface BriefBody {
+  query?: string
+  email?: string
+  name?: string
+  company?: string
+  role?: string
+  service?: string
+  budget?: string
+  timeline?: string
+  goals?: string
+}
+
 export async function POST(req: Request) {
-  let body: { query?: string; email?: string; name?: string }
+  let body: BriefBody
   try {
-    body = (await req.json()) as { query?: string; email?: string; name?: string }
+    body = (await req.json()) as BriefBody
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid JSON." }, { status: 400 })
   }
@@ -26,12 +38,14 @@ export async function POST(req: Request) {
   const query = (body.query ?? "").trim()
   const email = (body.email ?? "").trim()
 
+  // Only these two. Everything else on the form is optional by design.
   if (!query) return NextResponse.json({ ok: false, error: "Tell us who you need." }, { status: 422 })
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ ok: false, error: "A valid email is required." }, { status: 422 })
   }
 
   const parsed = parseQuery(query)
+  const blank = (v?: string) => (v && v.trim() ? v.trim() : null)
 
   try {
     const origin = new URL(req.url).origin
@@ -40,16 +54,30 @@ export async function POST(req: Request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         formType: "booker-brief",
-        email,
-        name: body.name ?? null,
-        briefRaw: query,
-        // Structured so it can be replayed against search_talent() later, and so a
-        // human reading it in an inbox can see the criteria at a glance.
-        briefParsed: parsed.filters,
-        understood: parsed.understood.map((u) => `${u.label}: ${u.values.join(", ")}`),
+        contact: {
+          email,
+          name: blank(body.name),
+          company: blank(body.company),
+          role: blank(body.role),
+        },
+        project: {
+          service: blank(body.service),
+          budget: blank(body.budget),
+          timeline: blank(body.timeline),
+          goals: blank(body.goals),
+        },
+        brief: {
+          raw: query,
+          // Structured so it replays against search_talent() unchanged once there is a
+          // roster, and so a human reading this in an inbox sees the criteria at a glance.
+          parsed: parsed.filters,
+          understood: parsed.understood.map((u) => `${u.label}: ${u.values.join(", ")}`),
+          unmatched: parsed.unmatched,
+        },
       }),
     })
   } catch {
+    // Losing the notification must not lose the brief. Log enough to recover it by hand.
     console.error("booker brief: notify failed", { email, query })
   }
 

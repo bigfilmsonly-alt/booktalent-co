@@ -26,10 +26,12 @@ export function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
 
-  // Hide nav on homepage (it has its own CTAs) and inside the talent questionnaire,
-  // which is a focused flow with its own fixed bottom bar that this one would sit on top of.
+  // Hide on the homepage (it has its own CTAs) and on any page that owns a fixed
+  // bottom action bar. The mobile nav is also fixed to the bottom, so on those pages
+  // it lands directly on top of the one button the page exists to get pressed.
   if (pathname === "/") return null
   if (pathname.startsWith("/apply/talent")) return null
+  if (pathname.startsWith("/search")) return null
 
   function handleClick(tab: Tab) {
     window.scrollTo({ top: 0, behavior: "instant" })
