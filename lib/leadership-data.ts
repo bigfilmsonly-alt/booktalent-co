@@ -80,7 +80,7 @@ export const proof: Proof[] = []
  */
 export const credentials = [
   { value: "15+", label: "Years in entertainment" },
-  { value: "100+", label: "Shows produced" },
+  { value: "100+", label: "Reality shows produced" },
   { value: "10", label: "Talent verticals" },
-  { value: "10%", label: "Commission, only when you book" },
+  { value: "$0", label: "Cost to join" },
 ]

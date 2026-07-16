@@ -8,12 +8,19 @@
  * can grow without a migration.
  */
 
+/**
+ * Order is deliberate. Reality leads because it is the one vertical BookTalent has
+ * actually earned: 100+ reality shows produced, real network relationships, a real
+ * production arm. Everything below it is a credible offer; reality is a track record.
+ * This list drives both the homepage chips and the questionnaire's first question,
+ * so the order is the priority signal in both places.
+ */
 export const TALENT_TYPES = [
+  { value: "reality", label: "Reality TV", hint: "Competition, docuseries, franchise" },
   { value: "actor", label: "Actor", hint: "Film, television, theater, commercial" },
   { value: "influencer", label: "Influencer / Creator", hint: "Social platforms, UGC, brand content" },
   { value: "model", label: "Model", hint: "Fashion, commercial, editorial, fitness" },
   { value: "musician", label: "Musician", hint: "Recording artist, DJ, producer" },
-  { value: "reality", label: "Reality TV", hint: "Competition, docuseries, franchise" },
   { value: "athlete", label: "Athlete", hint: "Professional, Olympic, collegiate" },
   { value: "comedian", label: "Comedian", hint: "Stand up, sketch, improv" },
   { value: "host", label: "Host", hint: "Television, podcast, live events" },

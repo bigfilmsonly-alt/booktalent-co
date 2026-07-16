@@ -26,7 +26,7 @@ const ease = [0.16, 1, 0.3, 1] as const
 const TALENT_STEPS = [
   { n: "01", t: "Build your profile", d: "Four fields to get in. The rest is what makes you findable: the ages you play, the languages you speak, who you can credibly portray." },
   { n: "02", t: "Get verified", d: "We check every credential by hand before a booker sees you. That check is why they trust the results." },
-  { n: "03", t: "Get booked", d: "Bookers search and reach you directly. We handle the contract and the payment. Ten percent, only when you book." },
+  { n: "03", t: "Get booked", d: "Bookers search and reach you directly. We handle the contract and the payment, and our commission comes out of the booking, never out of your pocket." },
 ]
 
 const BOOKER_STEPS = [
@@ -81,8 +81,9 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.15, ease }}
               className="mt-4 lg:mt-7 text-[14px] lg:text-[19px] text-white font-semibold leading-relaxed max-w-xl mx-auto"
             >
-              Most talent never gets in the room. We put you in it. Actors, models, influencers, and
-              creators, discovered by the producers and brands who actually book.
+              Most talent never gets in the room. We put you in it. Reality TV personalities, actors,
+              models, influencers, and creators, discovered by the producers and brands who actually
+              book.
             </motion.p>
 
             {/* Two paths, one tap each. */}
@@ -97,7 +98,7 @@ export default function Home() {
                 className="cta-button group flex flex-col items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-5 hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[64px] w-full sm:w-auto sm:min-w-[260px]"
               >
                 <span className="text-[15px] font-bold tracking-[0.12em]">I AM TALENT, JOIN FREE</span>
-                <span className="text-[11px] font-semibold opacity-70 mt-1">10% only when you book</span>
+                <span className="text-[11px] font-semibold opacity-70 mt-1">Free to join</span>
               </Link>
               <Link
                 href="/book"
@@ -212,8 +213,8 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.18, ease }}
             className="mt-5 text-[13px] lg:text-[14px] text-mjcc-muted leading-relaxed"
           >
-            Joining costs nothing. We take ten percent when work is booked through the platform, which
-            means we only earn when our talent earns. Work you find yourself stays entirely yours.
+            Joining costs nothing and we only earn when our talent earns. Work you find yourself stays
+            entirely yours. The full terms are on the signup, before you agree to anything.
           </motion.p>
         </div>
       </section>
@@ -286,6 +287,20 @@ export default function Home() {
             is built to hold that instead of flattening it.
           </motion.p>
 
+          {/* Reality is not one vertical among eleven here. It is the one with a track
+              record behind it, and saying so is both the honest framing and the
+              strongest thing on this page. */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.18, ease }}
+            className="mt-7 text-[14px] lg:text-[15px] text-mjcc-muted leading-relaxed max-w-2xl mx-auto"
+          >
+            Reality is where we started and where we are strongest. Our founder produced more than 100
+            reality shows across MTV, Bravo, Food Network, VH1, BET, NBC, Hallmark and USA Network. If
+            you have been on one of those, you are talking to people who know exactly what your credit
+            is worth.
+          </motion.p>
+
           <motion.div
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.15 }}
@@ -345,7 +360,7 @@ export default function Home() {
               className="cta-button flex flex-col items-center justify-center bg-mjcc-gold text-mjcc-black px-10 py-5 hover:bg-mjcc-gold-deep transition-all duration-300 min-h-[64px] w-full sm:w-auto sm:min-w-[260px]"
             >
               <span className="text-[15px] font-bold tracking-[0.12em]">I AM TALENT, JOIN FREE</span>
-              <span className="text-[11px] font-semibold opacity-70 mt-1">10% only when you book</span>
+              <span className="text-[11px] font-semibold opacity-70 mt-1">Free to join</span>
             </Link>
             <Link
               href="/book"
