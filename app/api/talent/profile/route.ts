@@ -80,10 +80,13 @@ export async function POST(req: Request): Promise<NextResponse<SubmitResult>> {
     date_of_birth: draft.universal?.dateOfBirth ?? null,
     presents_age_min: draft.universal?.presentsAgeMin ?? null,
     presents_age_max: draft.universal?.presentsAgeMax ?? null,
+    // Identity fields are no longer collected on the form; they stay in the payload
+    // shape so the DB insert does not change, and default empty.
     gender_identity: draft.universal?.genderIdentity ?? null,
     genders_portrayable: draft.universal?.gendersPortrayable ?? [],
     ethnicity: draft.universal?.ethnicity ?? [],
     ethnicities_portrayable: draft.universal?.ethnicitiesPortrayable ?? [],
+    values: draft.universal?.values ?? null,
     languages: (draft.universal?.languages ?? []).map((l) => l.language),
     language_fluency: Object.fromEntries(
       (draft.universal?.languages ?? []).map((l) => [l.language, l.fluency]),

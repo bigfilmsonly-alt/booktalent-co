@@ -63,15 +63,30 @@ export const GENDER_IDENTITIES = [
 export const GENDER_PRESENTATIONS = ["Woman", "Man", "Non binary", "Androgynous"]
 
 /**
- * Ethnicity vocabulary. Used for two distinct questions: what you are, and what
- * you can authentically portray. A Filipino performer may credibly read as Latino
- * or Pacific Islander, and casting searches the portrayable set, not the identity.
+ * Casting range. This is deliberately NOT an identity question.
+ *
+ * We do not ask talent to declare their ethnicity, which is sensitive personal data
+ * we do not need and would rather not hold. We ask what they read as on camera, which
+ * is a professional capability, the same class of answer as "accents I perform." A
+ * performer may credibly read as more than one, and bookers search this set.
+ *
+ * `value` is the canonical string the parser and search match on and MUST NOT change,
+ * or "black actor" stops matching. `label` is what talent sees and can be softened
+ * freely. Kept short and appearance-oriented rather than clinical.
  */
-export const ETHNICITIES = [
-  "Black / African descent", "White / European descent", "Latino / Hispanic",
-  "East Asian", "South Asian", "Southeast Asian", "Filipino",
-  "Middle Eastern / North African", "Native American / Indigenous",
-  "Pacific Islander", "Caribbean", "Mixed / Multiracial",
+export const CASTING_LOOKS = [
+  { value: "Black / African descent", label: "Black" },
+  { value: "White / European descent", label: "White" },
+  { value: "Latino / Hispanic", label: "Latino or Hispanic" },
+  { value: "East Asian", label: "East Asian" },
+  { value: "South Asian", label: "South Asian" },
+  { value: "Southeast Asian", label: "Southeast Asian" },
+  { value: "Filipino", label: "Filipino" },
+  { value: "Middle Eastern / North African", label: "Middle Eastern or North African" },
+  { value: "Native American / Indigenous", label: "Native or Indigenous" },
+  { value: "Pacific Islander", label: "Pacific Islander" },
+  { value: "Caribbean", label: "Caribbean" },
+  { value: "Mixed / Multiracial", label: "Racially ambiguous or mixed" },
 ]
 
 export const LANGUAGES = [

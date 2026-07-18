@@ -63,10 +63,18 @@ export interface UniversalAnswers {
   presentsAgeMin?: number
   presentsAgeMax?: number
 
+  // Identity fields (genderIdentity, ethnicity) are retained in the type and DB but
+  // are no longer collected on the form. We ask what talent PLAYS, not what they are.
+  // Kept nullable so the schema does not change and a future authentic-casting flow
+  // could opt in to collecting them with explicit, separate consent.
   genderIdentity?: string
   gendersPortrayable?: string[]
   ethnicity?: string[]
+  /** Castable range, populated from the "what do you read as" question. Searchable. */
   ethnicitiesPortrayable?: string[]
+
+  /** Free text. What the talent will and will not put their name behind. */
+  values?: string
 
   languages?: LanguageSkill[]
   accents?: string[]

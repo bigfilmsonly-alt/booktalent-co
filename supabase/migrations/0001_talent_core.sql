@@ -113,6 +113,9 @@ create table talent_profiles (
   rate_notes text,
   availability availability_type,
 
+  -- What the talent will and will not put their name behind. Brand-safety signal.
+  values text,
+
   socials jsonb not null default '{}'::jsonb,
 
   -- Representation + commission. commission_rate_pct is the CURRENT rate; it is

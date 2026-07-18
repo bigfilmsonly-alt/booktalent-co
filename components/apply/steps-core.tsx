@@ -5,7 +5,7 @@
  */
 
 import {
-  TALENT_TYPES, GENDER_IDENTITIES, GENDER_PRESENTATIONS, ETHNICITIES, LANGUAGES,
+  TALENT_TYPES, GENDER_PRESENTATIONS, CASTING_LOOKS, LANGUAGES,
   FLUENCY_LEVELS, ACCENTS, BUILDS, UNION_STATUSES, BOOKING_TYPES, AVAILABILITY,
   REPRESENTATION_TIERS, TERMS_VERSION,
 } from "@/lib/talent/vocab"
@@ -176,23 +176,37 @@ export function StepDetails({ draft, patch }: { draft: QuestionnaireDraft; patch
         />
       </Field>
 
-      <Field label="Gender identity">
-        <ChipSingle options={GENDER_IDENTITIES} value={u.genderIdentity} onSelect={(v) => patch((d) => { d.universal.genderIdentity = v })} />
-      </Field>
-
-      <Field label="Genders you can present as" hint="For casting purposes. Select all you can credibly play.">
+      {/* Same principle as casting looks below: we ask what you play, not how you
+          identify. Gender identity is sensitive data we do not need to book work. */}
+      <Field label="Gender you play on camera" hint="Select every gender you credibly present as for a role. This is what bookers cast on.">
         <ChipMulti options={GENDER_PRESENTATIONS} selected={u.gendersPortrayable ?? []} onToggle={(v) => patch((d) => { d.universal.gendersPortrayable = toggle(d.universal.gendersPortrayable, v) })} />
       </Field>
 
-      <Field label="Your ethnicity" hint="Select all that apply.">
-        <ChipMulti options={ETHNICITIES} selected={u.ethnicity ?? []} onToggle={(v) => patch((d) => { d.universal.ethnicity = toggle(d.universal.ethnicity, v) })} />
+      {/* One question, and it is about castable range, not identity. We deliberately
+          do not ask talent to declare their ethnicity: it is sensitive data we do not
+          need to make a booking, and framing this as "what can you play" is both the
+          more comfortable question to answer and the one bookers actually search. */}
+      <Field
+        label="What do you read as on camera?"
+        hint="This is about range, not labels. Pick every look you are credibly cast as, or could play. Plenty of people read as more than one, and the wider and truer your range, the more rooms you get into. Casting directors search on exactly this."
+      >
+        <ChipMulti options={CASTING_LOOKS} selected={u.ethnicitiesPortrayable ?? []} onToggle={(v) => patch((d) => { d.universal.ethnicitiesPortrayable = toggle(d.universal.ethnicitiesPortrayable, v) })} />
       </Field>
 
+      {/* "What you stand for." Values are becoming a real matching axis for brands,
+          and letting talent name what they will and will not put their name behind is
+          both a differentiator and a brand-safety signal. Optional and free text. */}
       <Field
-        label="Ethnicities you can authentically portray"
-        hint="Separate from the question above, and often wider. If you are Filipino and casting directors have credibly seen you as Latino or Pacific Islander, check those too. This is the field bookers search, so it is one of the highest value answers on the form."
+        label="What you stand for"
+        hint="Brands increasingly match on values. Tell us what you will put your name behind, and what you will not touch, so we only bring you work that fits."
+        optional
       >
-        <ChipMulti options={ETHNICITIES} selected={u.ethnicitiesPortrayable ?? []} onToggle={(v) => patch((d) => { d.universal.ethnicitiesPortrayable = toggle(d.universal.ethnicitiesPortrayable, v) })} />
+        <TextArea
+          value={u.values}
+          onChange={(v) => patch((d) => { d.universal.values = v })}
+          placeholder="Causes you support, categories you avoid, the thing you will not compromise on."
+          rows={3}
+        />
       </Field>
 
       <Field label="Languages you speak" hint="Set your fluency for each one you pick.">
